@@ -114,6 +114,19 @@
         "allow": []
       }
     ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          ".storybook/**",
+          "stories/**",
+          "**/*.stories.tsx",
+          "**/*.stories.ts",
+          "**/*.spec.tsx",
+          "**/*.spec.ts"
+        ]
+      }
+    ],
     "import/no-mutable-exports": "error",
     "import/no-named-as-default-member": "error",
     "import/no-named-as-default": "error",
