@@ -1,3 +1,11 @@
+:root{
+  --background: #E5E5E5;
+  --primary-color: #00984A;
+  --secondary-color: #D3D800;
+  --text-color: #3D3D4D;
+  --placeholder-color: #A8A8B3;
+}
+
 html,
 body {
   padding: 0;
