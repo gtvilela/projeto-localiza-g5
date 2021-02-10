@@ -27,9 +27,9 @@ Obs.: Gentileza utilizar o npm para instalações, pois o projeto foi criado por
 ### Padronização de branches
 
 <ul>
-  <li><strong>feature/<strong>nome-da-branch</li>
-  <li><strong>hotfix/<strong>nome-da-branch</li>
-  <li><strong>release/<strong>nome-da-branch</li>
+  <li><strong>feature/</strong>nome-da-branch</li>
+  <li><strong>hotfix/</strong>nome-da-branch</li>
+  <li><strong>release/</strong>nome-da-branch</li>
  </ul>
 
 ### Padronização commits:
