@@ -64,7 +64,8 @@ As rotas podem ser acessadas e editadas em `pages/api/hello.js`.
 (Especificação dos testes)
 
 ## Inicialização :timer_clock:
-First, run the development server:
+
+Para inicialização do servidor:
 
 ```bash
 npm run dev
