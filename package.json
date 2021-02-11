@@ -56,4 +56,3 @@
     "*.{tsx,ts}": "eslint --cache --fix"
   }
 }
-
