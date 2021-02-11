@@ -25,7 +25,7 @@ const Sessions: FC = () => {
       <Content>
         <ContainerImage>
           <Image
-            src="/images/logo-green.svg"
+            src="/assets/logo-green.svg"
             alt="Logo SJCC"
             width={268}
             height={52}
