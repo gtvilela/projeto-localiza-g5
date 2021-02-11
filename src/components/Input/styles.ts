@@ -8,13 +8,20 @@ interface ContainerProps {
 
 export const Container = styled.div<ContainerProps>`
   background: #fff;
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 16px;
-  width: 100%;
+  width: 25%;
+
+  // TODO: border #FFF quando aplicar background
+  border: 2px solid #808080;
   color: #666360;
+
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+
+  & + div {
+    margin-top: 8px;
+  }
 
   ${(props) =>
     props.isErrored &&
@@ -42,6 +49,7 @@ export const Container = styled.div<ContainerProps>`
     background: transparent;
     border: 0;
     color: #000;
+    /* font-family: 'Roboto', sans-serif; */
     font-size: 1em;
     outline: none;
 
