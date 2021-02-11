@@ -1,15 +1,9 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { IPropsDropdown } from './types';
 import { DropdownContainer } from './styles';
+import Link from 'next/link';
 
 const Dropdown: FC<IPropsDropdown> = ({ isOpen, items}) => {
-  const [selection, setSelection] = useState({});
-
-
-  const handleOnClick = (item) => {
-    setSelection(item);
-  };
-
 
   return (
     <DropdownContainer>
@@ -17,9 +11,11 @@ const Dropdown: FC<IPropsDropdown> = ({ isOpen, items}) => {
         <ul className="dd-list">
           {items.map((item) => (
             <li key={item.id}>
-              <button type="button" onClick={() => handleOnClick(item)}>
+              <Link href={`/${item.value.toLowerCase()}`}>
+              <a>
                 <span>{item.value}</span>
-              </button>
+              </a>
+              </Link>
             </li>
           ))}
         </ul>
