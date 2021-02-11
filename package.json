@@ -12,9 +12,12 @@
     "coverage": "jest --coverage"
   },
   "dependencies": {
+    "@unform/core": "^2.1.5",
+    "@unform/web": "^2.1.5",
     "next": "10.0.6",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-icons": "^4.2.0",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
@@ -56,4 +59,3 @@
     "*.{tsx,ts}": "eslint --cache --fix"
   }
 }
-
