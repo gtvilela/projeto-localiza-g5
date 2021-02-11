@@ -1,51 +1,54 @@
 import styled from 'styled-components';
+import theme from '../../styles/theme';
 
 export const HeaderContainer = styled.header`
-
-nav {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 92px;
-  background: #00984A;
-}
+  flex-direction: column;
+  text-decoration: none;
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 92px;
+    background: ${theme.colors.primary};
+  }
 `;
 
 export const LogoContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    .logo-link {
-      margin-left: 90px;
-      margin-right: 40px;
-    }
-
-    .icon-voltar {
-      display: flex;
-      align-items: center;
-      color: #fff;
-      cursor: pointer;
-      text-decoration:none;
-
-      span {
-        margin-left: 5px;
-      }
-    }
-`;
-
-export const UsuarioContainer = styled.div`
+  .logo-link {
+    margin-left: 90px;
     margin-right: 40px;
+  }
+
+  .icon-vetor {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+
+    span {
+      margin-left: 5px;
+    }
+  }
 `;
 
-export const Usuario = styled.a`
+export const UserContainer = styled.div`
+  margin-right: 60px;
+`;
+
+export const User = styled.a`
   display: flex;
   align-items: center;
-  flex-direction: row;
   cursor: pointer;
+  width: 100%;
 
-  .nome-usuario {
+  .user-name {
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
@@ -56,10 +59,9 @@ export const Usuario = styled.a`
   }
 `;
 
-
-export const FotoPerfil = styled.div`
+export const ImageUser = styled.div`
   width: 40px;
   height: 40px;
-  background: #ACACAC;
+  background: ${theme.colors.placeholder};
   border-radius: 50%;
 `;
