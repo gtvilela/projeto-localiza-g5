@@ -10,18 +10,13 @@ export const Container = styled.div<ContainerProps>`
   background: #fff;
   border-radius: 10px;
   padding: 16px;
-  width: 25%;
-
-  // TODO: border #FFF quando aplicar background
-  border: 2px solid #808080;
+  width: 100%;
   color: #666360;
 
   display: flex;
   align-items: center;
 
-  & + div {
-    margin-top: 8px;
-  }
+  margin-bottom: 8px;
 
   ${(props) =>
     props.isErrored &&
