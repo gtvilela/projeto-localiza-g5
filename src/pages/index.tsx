@@ -1,7 +1,9 @@
 import React from "react";
 
+import Header from '@components/Header/Header'
+
 export default function Home() {
   return (
-      <h1>Dashboard</h1>
+      <Header  hidden={false}/>
   );
 }
