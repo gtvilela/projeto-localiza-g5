@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useRef, useEffect } from 'react';
 import { ImageUser, HeaderContainer, UserContainer, User, LogoContainer } from './style';
 import { IPropsHeader } from './types/index';
 import Dropdown from '../Dropdown/Dropdown';
@@ -8,10 +8,28 @@ import Dropdown from '../Dropdown/Dropdown';
 const Header: FC<IPropsHeader> = ({ hidden = true, items}) => {
 
   const [open, setOpen] = useState(false);
-  const toggle = (open: boolean) => setOpen(open);
+  const toggle = (open: boolean) => {setOpen(open)};
+  const wrapperRef = useRef(null);
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (ref.current && !ref.current.contains(event.target)) {
+                setOpen(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [ref]);
+}
+
+useOutsideAlerter(wrapperRef);
 
   return (
-    <HeaderContainer>
+    <HeaderContainer ref={wrapperRef}>
       <nav>
         <LogoContainer>
           <Link href="/">
@@ -36,7 +54,9 @@ const Header: FC<IPropsHeader> = ({ hidden = true, items}) => {
             onClick={() => toggle(!open)}
             >
               <div className="user-name">Usuário</div>
-              <ImageUser />
+              <ImageUser>
+                <Image className="icon-user" src="/assets/user.svg" width={35} height={35} />
+              </ImageUser>
             </User>
         </UserContainer>
       </nav>

@@ -23,6 +23,7 @@ export const LogoContainer = styled.div`
   .logo-link {
     margin-left: 90px;
     margin-right: 40px;
+    min-width: 165px;
   }
 
   .icon-vetor {
@@ -35,7 +36,15 @@ export const LogoContainer = styled.div`
     span {
       margin-left: 5px;
     }
+
   }
+
+  @media (max-width: 596px) {
+    .icon-vetor {
+      display: none;
+    }
+  }
+
 `;
 
 export const UserContainer = styled.div`
@@ -62,6 +71,11 @@ export const User = styled.a`
 export const ImageUser = styled.div`
   width: 40px;
   height: 40px;
-  background: ${theme.colors.placeholder};
+  background: #d8d8d8;
+  border: 3px solid ${theme.colors.placeholder};
   border-radius: 50%;
+
+  .icon-user {
+  border-radius: 50%;
+}
 `;

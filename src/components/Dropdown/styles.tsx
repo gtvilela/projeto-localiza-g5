@@ -17,19 +17,19 @@ export const DropdownContainer = styled.div`
       outline: none;
 
       &:first-of-type {
-        > button {
+        > a {
           border-top: 1px solid #ccc;
           border-top-left-radius: 4px;
           border-top-right-radius: 4px;
         }
       }
 
-      &:last-of-type > button {
+      &:last-of-type > a {
         border-bottom-left-radius: 4px;
         border-bottom-right-radius: 4px;
       }
 
-      button {
+      a {
         display: flex;
         justify-content: space-between;
         background-color: ${theme.colors.primary};
@@ -41,6 +41,7 @@ export const DropdownContainer = styled.div`
         text-align: center;
         border-left: 1px solid #ccc;
         border-right: 1px solid #ccc;
+        text-decoration: none;
 
         span {
           color: #fff;
