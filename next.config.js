@@ -4,4 +4,7 @@ module.exports = {
   withImage: withImages({
     esModule: true,
   }),
+  images: {
+    domains: ['www.localiza.com'],
+  },
 };
