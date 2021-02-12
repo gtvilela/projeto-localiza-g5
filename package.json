@@ -12,11 +12,13 @@
     "coverage": "jest --coverage"
   },
   "dependencies": {
+    "@storybook/addon-centered": "^5.3.21",
+    "@storybook/addon-info": "^5.3.21",
     "@unform/core": "^2.1.5",
     "@unform/web": "^2.1.5",
     "next": "10.0.6",
-    "polished": "^4.1.0",
     "next-images": "^1.7.0",
+    "polished": "^4.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-icons": "^4.2.0",
