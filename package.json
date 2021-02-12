@@ -12,6 +12,8 @@
     "coverage": "jest --coverage"
   },
   "dependencies": {
+    "@storybook/addon-centered": "^5.3.21",
+    "@storybook/addon-info": "^5.3.21",
     "@unform/core": "^2.1.5",
     "@unform/web": "^2.1.5",
     "next": "10.0.6",
