@@ -30,7 +30,11 @@ const Input: React.FC<IPropsInput> = ({ name, containerStyle = {}, icon: Icon, .
 
   return (
     <Container style={containerStyle} isErrored={Boolean(error)} isFilled={isFilled} isFocused={isFocused}>
-      {Icon && <Icon size={20} />}
+      {Icon && (
+        <div>
+          <Icon size={18} />
+        </div>
+      )}
       <input onFocus={handleInputFocus} onBlur={handleInputBlur} defaultValue={defaultValue} ref={inputRef} {...rest} />
     </Container>
   );

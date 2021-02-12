@@ -8,12 +8,11 @@ interface ContainerProps {
 
 export const Container = styled.div<ContainerProps>`
   background: #fff;
-  border-radius: 10px;
-  padding: 16px;
+  border-radius: 4px;
   width: 100%;
   border: 2px solid #fff;
   color: #666360;
-
+  height: 48px;
   display: flex;
   align-items: center;
 
@@ -34,27 +33,32 @@ export const Container = styled.div<ContainerProps>`
       transition: all 500ms ease;
     `}
 
-  ${(props) =>
-    props.isFilled &&
-    css`
-      color: #00984a;
-    `}
+    div {
+      padding: 0 12px;
+      border-right: 1px solid #a8a8b3;
+      display: flex;
+      height: 60%;
+      align-items: center;
+      justify-content: center;
+      color: #a8a8b3;
+
+      ${(props) =>
+      props.isFilled &&
+      css`
+        color: #00984a;
+      `}
+    }
 
   input {
-    flex: 1;
+    width: 100%;
     background: transparent;
     border: 0;
     color: #000;
-    /* font-family: 'Roboto', sans-serif; */
-    font-size: 1em;
     outline: none;
+    padding: 0 8px;
 
     &::placeholder {
       color: #666360;
     }
-  }
-
-  svg {
-    margin-right: 16px;
   }
 `;
