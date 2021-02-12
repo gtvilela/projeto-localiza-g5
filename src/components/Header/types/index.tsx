@@ -1,3 +1,5 @@
 export interface IPropsHeader {
-  hidden: boolean
+  hidden: boolean,
+  multiSelect?: boolean,
+  items: { id: number; value: string; }[]
 }
