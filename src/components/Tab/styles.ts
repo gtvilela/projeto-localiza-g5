@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const TabContainer = styled.div`
-  width: 100%px;
+  width: 100%;
 `;
 
 export const TabHeader = styled.div`
@@ -14,8 +14,4 @@ export const TabHeader = styled.div`
 export const TabHeaderItem = styled.button`
   outline: none;
   background: transparent;
-`;
-
-export const TabContent = styled.div`
-  padding: 20px;
 `;

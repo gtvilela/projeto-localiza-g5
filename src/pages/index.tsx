@@ -1,4 +1,5 @@
 import React from "react";
+import {items} from '../components/Dropdown/types/items';
 
 import Header from '@components/Header/Header'
 import { FiUser } from 'react-icons/fi';
