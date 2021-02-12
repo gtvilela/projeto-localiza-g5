@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react';
-import Header from './Header';
-import { IPropsHeader } from './types';
+import Header from '../components/Header/Header';
+import { IPropsHeader } from '../components/Header/types';
 
 export default {
   title: 'Components/Header',
@@ -15,5 +15,5 @@ Default.args = {};
 export const Voltar = Template.bind({});
 Voltar.args = {
   icon: '',
-  hidden: false
+  hidden: false,
 };
