@@ -1,7 +1,10 @@
 const theme = {
   colors: {
-    white: '#fff',
-    green: '#f00'
+    background: '#E5E5E5',
+    primaryColor: '#00984A',
+    secondaryColor: '#D3D800',
+    textColor: '#3D3D4D',
+    placeholderColor: '#A8A8B3',
   }
 }
 
