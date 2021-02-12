@@ -1,9 +1,13 @@
 import React from "react";
+import {items} from '../components/Dropdown/types/items';
 
 import Header from '@components/Header/Header'
 
 export default function Home() {
   return (
-      <Header  hidden={true}/>
+    <div>
+      <Header items={items} hidden={false}/>
+      <div>Teste</div>
+    </div>
   );
 }

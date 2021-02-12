@@ -4,8 +4,8 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { FiLock, FiUser } from 'react-icons/fi';
 
-import Input from './index';
-import { IPropsInput } from './types';
+import Input from '../components/Input';
+import { IPropsInput } from '../components/Input/types';
 
 const controls = {
   icon: {
@@ -34,13 +34,6 @@ export default {
   title: 'Components/Input',
   component: Input,
   argTypes: controls,
-  decorators: [
-    (Story) => (
-      <div style={{ minWidth: 245, width: '20vw' }}>
-        <Story />
-      </div>
-    ),
-  ],
 } as Meta;
 
 const Template: Story<IPropsInput> = (args: IPropsInput) => {

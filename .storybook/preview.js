@@ -1,16 +1,18 @@
-export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
-  backgrounds: {
-    default: 'light',
-    values: [
-      {
-        name: 'light',
-        value: '#E5E5E5',
-      },
-      {
-        name: 'dark',
-        value: '#414141',
-      },
-    ],
+import { configure, addParameters, addDecorator } from '@storybook/react';
+import { withInfo } from '@storybook/addon-info';
+import centered from '@storybook/addon-centered';
+
+import theme from './theme';
+
+import './reset.css';
+
+addParameters({
+  options: {
+    theme,
   },
-};
+});
+
+addDecorator(withInfo);
+addDecorator(centered);
+
+configure(require.context('../src/stories', true, /\.stories\.tsx$/), module);
