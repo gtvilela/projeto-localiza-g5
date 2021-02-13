@@ -1,11 +1,12 @@
 import React from "react";
-import {items} from '../components/Dropdown/types/items';
 
 import Header from '@components/Header/Header'
 import { FiUser } from 'react-icons/fi';
 import InputCalendario from "@components/InputCalendario/InputCalendario";
 
-export default function Home() {
+import { Content, BoxCards } from '@styles/pages/dashboard';
+
+const Dashboard = () => {
   return (
     <>
       <Header  hidden={false} />
@@ -14,3 +15,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Dashboard

@@ -2,8 +2,9 @@ import React, { FC } from 'react';
 import { IPropsDropdown } from './types';
 import { DropdownContainer } from './styles';
 import Link from 'next/link';
+import {items} from './types/items';
 
-const Dropdown: FC<IPropsDropdown> = ({ isOpen, items}) => {
+const Dropdown: FC<IPropsDropdown> = ({ isOpen }) => {
 
   return (
     <DropdownContainer>

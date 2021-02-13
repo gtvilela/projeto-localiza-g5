@@ -35,6 +35,7 @@ export const ImageContainer = styled.div`
   padding: 4px;
   border-radius: 50%;
   display: flex;
+  background: #fff;
 `
 export const Title = styled.h1`
   font-size: 24px;
