@@ -5,7 +5,7 @@ import { ImageUser, HeaderContainer, UserContainer, User, LogoContainer } from '
 import { IPropsHeader } from './types/index';
 import Dropdown from '../Dropdown/Dropdown';
 
-const Header: FC<IPropsHeader> = ({ hidden = true, items}) => {
+const Header: FC<IPropsHeader> = ({ hidden = true}) => {
 
   const [open, setOpen] = useState(false);
   const toggle = (open: boolean) => {setOpen(open)};
@@ -30,6 +30,7 @@ useOutsideAlerter(wrapperRef);
 
   return (
     <HeaderContainer ref={wrapperRef}>
+      <div className="navigation">
       <nav>
         <LogoContainer>
           <Link href="/">
@@ -60,7 +61,8 @@ useOutsideAlerter(wrapperRef);
             </User>
         </UserContainer>
       </nav>
-      <Dropdown isOpen={open} items={items} />
+      <Dropdown isOpen={open}/>
+      </div>
     </HeaderContainer>
   );
 };

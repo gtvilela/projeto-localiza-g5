@@ -1,12 +1,20 @@
 import styled from 'styled-components';
 
 export const DetailsContainer = styled.div`
-  max-width: 1500px;
+  max-width: 1120px;
+  margin: 0 auto;
 
   .header-break {
-    margin: 12px 170px 0 161px;
-    max-width: 1155px;
+    margin: 12px 135px 0 161px;
+    max-width: 1120px;
   }
+
+  @media (max-width: 420px) {
+    .container-around {
+
+    }
+  }
+
 `;
 
 export const HeaderDetails = styled.div`
@@ -41,6 +49,11 @@ export const HeaderDetails = styled.div`
       color: #00984a;
     }
   }
+
+  @media (max-width: 420px) {
+    justify-content: center;
+    margin: 10px auto;
+    }
 `;
 
 export const LabelHeader = styled.span`
@@ -61,6 +74,12 @@ export const ContainerInfoCar = styled.div`
   .imagem {
     margin: 40px 40px 0;
   }
+
+  @media (max-width: 420px) {
+    flex-direction: column;
+    justify-content: center;
+  }
+
 `;
 
 export const ContainerLabels = styled.div`
@@ -69,6 +88,12 @@ export const ContainerLabels = styled.div`
   grid-template-columns: 1fr 1fr;
   margin-top: 40px;
   gap: 8px;
+
+  @media (max-width: 420px) {
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+
 `;
 
 export const Label = styled.div`
@@ -82,6 +107,14 @@ export const Label = styled.div`
   display: flex;
   flex-direction: row;
   gap: 42px;
+
+  @media (max-width: 420px) {
+    width: 300px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+  }
+
 `;
 
 export const TabContainer = styled.div`
@@ -91,5 +124,11 @@ export const TabContainer = styled.div`
 
   .description {
     width: 444px;
+
+    @media (max-width: 420px) {
+     width: 300px;
+   }
   }
+
+
 `;
