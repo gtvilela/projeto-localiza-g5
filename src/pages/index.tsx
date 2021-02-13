@@ -1,12 +1,23 @@
 import React from "react";
 
 import Header from '@components/global/Header/Header';
+import Card from '@components/global/Card';
+
+import { Content, BoxCards } from '@styles/pages/dashboard';
 
 const Dashboard = () => {
   return (
     <>
       <Header hidden={true} />
-     <h1>Dashboard</h1>
+      <Content>
+        <BoxCards>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+        </BoxCards>
+     </Content>
     </>
   );
 }
