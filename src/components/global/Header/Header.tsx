@@ -1,8 +1,12 @@
+import React, { FC, useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import React, { FC, useState, useRef, useEffect } from 'react';
-import { ImageUser, HeaderContainer, UserContainer, User, LogoContainer } from './style';
+import { FiArrowLeft } from 'react-icons/fi'
+
+import { HeaderContainer, Content, HeaderStart, LogoContainer, ButtonBack, HeaderEnd, ImageUser, User } from './style';
+
 import { IPropsHeader } from './types/index';
+
 import Dropdown from '../Dropdown/Dropdown';
 
 const Header: FC<IPropsHeader> = ({ hidden = true}) => {
@@ -30,39 +34,37 @@ useOutsideAlerter(wrapperRef);
 
   return (
     <HeaderContainer ref={wrapperRef}>
-      <div className="navigation">
-      <nav>
-        <LogoContainer>
-          <Link href="/">
-            <a className="logo-link">
+      <Content>
+        <HeaderStart>
+          <Link href="/" passHref>
+            <LogoContainer>
               <Image src="/assets/logo-localiza.svg" width={165} height={32} />
-            </a>
+            </LogoContainer>
           </Link>
-          <div hidden={hidden}>
+          <ButtonBack hidden={hidden}>
             <Link href="/">
-              <a className="icon-vetor">
-                <Image src="/assets/vetor.svg" width={16} height={16} />
-               <span>Voltar</span>
+              <a>
+                <FiArrowLeft />
+                <span>Voltar</span>
               </a>
             </Link>
-          </div>
-        </LogoContainer>
-        <UserContainer>
-            <User
+          </ButtonBack>
+        </HeaderStart>
+        <HeaderEnd>
+          <User
             tabIndex={0}
             role="button"
             onKeyPress={() => toggle(!open)}
             onClick={() => toggle(!open)}
-            >
-              <div className="user-name">Usuário</div>
-              <ImageUser>
-                <Image className="icon-user" src="/assets/user.svg" width={35} height={35} />
-              </ImageUser>
-            </User>
-        </UserContainer>
-      </nav>
+          >
+            <div className="user-name">Usuário</div>
+            <ImageUser>
+              <Image className="icon-user" src="/assets/avatar.svg" width={35} height={35} />
+            </ImageUser>
+          </User>
+        </HeaderEnd>
+      </Content>
       <Dropdown isOpen={open}/>
-      </div>
     </HeaderContainer>
   );
 };

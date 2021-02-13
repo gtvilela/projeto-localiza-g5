@@ -1,10 +1,14 @@
 import React from "react";
-import Details from "./details/[slug]";
 
-export default function Home() {
+import Header from '@components/global/Header/Header';
+
+const Dashboard = () => {
   return (
-    <div>
-      <Details />
-    </div>
+    <>
+      <Header hidden={true} />
+     <h1>Dashboard</h1>
+    </>
   );
 }
+
+export default Dashboard
