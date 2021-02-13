@@ -9,7 +9,7 @@ import {
   ContainerLabels,
   Label,
   TabContainer,
-} from '../../styles/pages/details';
+} from '../../styles/pages/details/details';
 import Tab from '@components/Tab/Tab';
 import Button from '@components/Button';
 
@@ -35,7 +35,7 @@ const Details: FC = () => {
           <div className="imagem">
             <Image src="/assets/car.svg" width={544} height={299} />
           </div>
-          <div>
+          <div className="container-around">
             <ContainerLabels>
               <Label>
                 <Image src="/assets/meter.svg" width={20} height={20} />

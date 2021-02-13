@@ -2,16 +2,20 @@ import styled from 'styled-components';
 import theme from '../../styles/theme';
 
 export const HeaderContainer = styled.header`
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
+  background: ${theme.colors.primary};
 
-  nav {
+  .navigation {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 92px;
-    background: ${theme.colors.primary};
+    flex-direction: column;
+    text-decoration: none;
+    max-width: 1120px;
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 92px;
+    }
   }
 `;
 
@@ -36,7 +40,6 @@ export const LogoContainer = styled.div`
     span {
       margin-left: 5px;
     }
-
   }
 
   @media (max-width: 596px) {
@@ -44,7 +47,6 @@ export const LogoContainer = styled.div`
       display: none;
     }
   }
-
 `;
 
 export const UserContainer = styled.div`
@@ -76,6 +78,6 @@ export const ImageUser = styled.div`
   border-radius: 50%;
 
   .icon-user {
-  border-radius: 50%;
-}
+    border-radius: 50%;
+  }
 `;

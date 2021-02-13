@@ -1,13 +1,10 @@
 import React from "react";
-import {items} from '../components/Dropdown/types/items';
-
-import Header from '@components/Header/Header'
+import Details from "./details/[slug]";
 
 export default function Home() {
   return (
     <div>
-      <Header items={items} hidden={false}/>
-      <div>Teste</div>
+      <Details />
     </div>
   );
 }
