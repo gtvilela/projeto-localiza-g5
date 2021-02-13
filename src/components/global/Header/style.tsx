@@ -4,6 +4,17 @@ import theme from '@styles/theme';
 export const HeaderContainer = styled.header`
   background: ${theme.colors.primary};
   height: 92px;
+
+  .menu {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5%;
+
+    @media(min-width: 1420px) {
+     margin-right: 25%;
+    }
+  }
+
 `;
 
 export const Content = styled.div`

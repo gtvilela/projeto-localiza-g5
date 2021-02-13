@@ -64,8 +64,11 @@ useOutsideAlerter(wrapperRef);
           </User>
         </HeaderEnd>
       </Content>
+      <div className="menu">
       <Dropdown isOpen={open}/>
+      </div>
     </HeaderContainer>
+
   );
 };
 
