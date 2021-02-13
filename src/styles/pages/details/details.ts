@@ -1,28 +1,16 @@
 import styled from 'styled-components';
 
 export const DetailsContainer = styled.div`
+  width: 100%;
   max-width: 1120px;
   margin: 0 auto;
-
-  .header-break {
-    margin: 12px 135px 0 161px;
-    max-width: 1120px;
-  }
-
-  @media (max-width: 420px) {
-    .container-around {
-
-    }
-  }
-
+  padding: 48px 16px 24px;
 `;
 
 export const HeaderDetails = styled.div`
   display: flex;
   flex-direction: row;
   gap: 123px;
-  margin-top: 48px;
-  margin-left: 160px;
 
   .car-specification {
     display: flex;
@@ -68,12 +56,7 @@ export const ContainerInfoCar = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-left: 60px;
-  margin-right: 12%;
-
-  .imagem {
-    margin: 40px 40px 0;
-  }
+  margin-top: 40px;
 
   @media (max-width: 420px) {
     flex-direction: column;
@@ -86,7 +69,6 @@ export const ContainerLabels = styled.div`
   max-width: 390px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-top: 40px;
   gap: 8px;
 
   @media (max-width: 420px) {
