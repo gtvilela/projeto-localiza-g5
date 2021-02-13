@@ -15,7 +15,6 @@ export const InputText = styled.input<IInputContainerProps>`
 export const LabelContainer = styled.div`
   font-weight: bold;
 `
-
 export const InputContainer = styled.div`
     display:flex;
     gap: 16px;

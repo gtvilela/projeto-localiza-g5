@@ -1,4 +1,5 @@
-import React, { FC, InputHTMLAttributes, ReactNode } from 'react';
+import React, { FC, InputHTMLAttributes, ReactNode, useState } from 'react';
+import DatePicker from './Datepicker';
 import { InputContainer, InputText, LabelContainer } from './StyledComponent/InputStyle';
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -12,15 +13,25 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const InputCalendario: FC<IProps> = ({
     background = '#ffffff', color = '#000000', iconStart, iconEnd, label, type, ...rest
-}) => (
-    <label htmlFor="">
-        <LabelContainer>{label}</LabelContainer>
-        <InputContainer>
-            {/* <div>{iconStart}</div> */}
-            <InputText background={background} color={color} {...rest} />
-            {/* <div>{iconEnd}</div> */}
-        </InputContainer>
-    </label>
-);
+}) => {
+    const [open, setOpen] = useState(false);
+    const toggle = (open: boolean) => {setOpen(open)};
+
+    return (
+        <label htmlFor="">
+            <LabelContainer>{label}</LabelContainer>
+            <InputContainer
+            onKeyPress={() => toggle(!open)}
+            onClick={() => toggle(!open)}>
+                {/* <div>{iconStart}</div> */}
+                <InputText background={background} color={color} {...rest} />
+                {/* <div>{iconEnd}</div> */}
+            </InputContainer>
+            {open && (
+                <DatePicker></DatePicker>
+            )}
+        </label>
+    );
+};
 
 export default InputCalendario;
