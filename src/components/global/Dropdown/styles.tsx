@@ -2,12 +2,11 @@ import styled from 'styled-components';
 import theme from '@styles/theme';
 
 export const DropdownContainer = styled.div`
-  position: absolute;
-  margin-top: 92px;
+  position: relative;
   z-index: 999;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
   width: 250px;
-  align-self: flex-end;
+  margin: 0;
 
   ul {
     padding: 0;
