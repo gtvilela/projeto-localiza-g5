@@ -20,11 +20,11 @@ const Details: FC = () => {
       <DetailsContainer>
         <HeaderDetails>
           <div className="car-specification">
-            <LabelHeader>FIAT</LabelHeader>
+            <LabelHeader>Fiat</LabelHeader>
             <span className="model">Uno 1.0</span>
           </div>
           <div className="info-price">
-            <LabelHeader>AO DIA</LabelHeader>
+            <LabelHeader>Ao dia</LabelHeader>
             <span className="price">R$68,18</span>
           </div>
         </HeaderDetails>
