@@ -11,7 +11,7 @@ export const HeaderContainer = styled.header`
     margin-right: 5%;
 
     @media(min-width: 1420px) {
-     margin-right: 25%;
+     margin-right: 20%;
     }
   }
 
