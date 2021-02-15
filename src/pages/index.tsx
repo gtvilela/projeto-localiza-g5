@@ -1,10 +1,9 @@
 import React from "react";
 
-import Header from '@components/Header/Header'
 import { FiUser } from 'react-icons/fi';
-import InputCalendario from "@components/InputCalendario/InputCalendario";
-
 import { Content, BoxCards } from '@styles/pages/dashboard';
+import Header from "@components/global/Header/Header";
+import InputCalendario from "@components/InputCalendario/InputCalendario";
 
 const Dashboard = () => {
   return (
