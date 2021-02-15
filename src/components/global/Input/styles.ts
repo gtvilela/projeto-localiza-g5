@@ -1,75 +1,89 @@
 import styled, { css } from 'styled-components';
 
 interface ContainerProps {
-  isFocused: boolean;
-  isFilled: boolean;
   isErrored: boolean;
+  isFilled: boolean;
+  isFocused: boolean;
 }
 
 export const Container = styled.div<ContainerProps>`
-  background: #fff;
-  border-radius: 4px;
-  width: 100%;
-  border: 2px solid #fff;
-  color: #666360;
-  height: 48px;
-  display: flex;
   align-items: center;
+  background: #fff;
+  border: 2px solid #fff;
+  border-radius: 4px;
+  display: flex;
+  height: 58px;
+  margin-bottom: 48px;
+  position: relative;
+  width: 100%;
 
-  margin-bottom: 8px;
+  label {
+    color: #666360;
+    margin-left: 17px;
+    position: absolute;
+  }
+
+  input {
+    background: transparent;
+    border: 0;
+    color: #000;
+    font-size: 1em;
+    margin-top: 12px;
+    outline: none;
+    padding: 0 16px;
+    width: 100%;
+  }
 
   ${(props) =>
-    props.isErrored &&
+    props.isFocused &&
     css`
-      border-color: #c53030;
+      color: #00984a;
+      border-color: #00984a;
+      outline: none;
+      transition: all 500ms ease;
+
+      svg {
+        color: #00984a;
+      }
+
+      label {
+        font-size: 11px;
+        left: 42px;
+        position: absolute;
+        transform: translateY(-12px);
+        transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+      }
     `}
 
   ${(props) =>
-    props.isFocused
-      ? css`
-          color: #00984a;
-          border-color: #00984a;
-          outline: none;
-          transition: all 500ms ease;
+    !props.isFocused &&
+    css`
+      label {
+        font-size: 1em;
+        left: 42px;
+        transform: translateY(0px);
+        transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+      }
+    `}
 
-          svg {
-            color: #00984a;
-          }
+  ${(props) =>
+    props.isFilled &&
+    css`
+      label {
+        font-size: 11px;
+        left: 42px;
+        transform: translateY(-12px);
+      }
+    `}
 
-          input::-webkit-input-placeholder {
-            -webkit-transition: all 0.3s ease-in-out;
-            transition: all 0.3s ease-in-out;
-          }
-
-          input:valid::-webkit-input-placeholder {
-            font-size: 11px;
-            -webkit-transform: translateY(-8px);
-            transform: translateY(-8px);
-            visibility: visible !important;
-          }
-        `
-      : css`
-          input::-webkit-input-placeholder {
-            -webkit-transition: all 0.3s ease-in-out;
-            transition: all 0.3s ease-in-out;
-          }
-
-          input:valid::-webkit-input-placeholder {
-            font-size: 1em;
-            -webkit-transform: translateY(0px);
-            transform: translateY(0px);
-            visibility: visible !important;
-          }
-        `}
-
-    div {
-    padding: 0 12px;
+  .icon-container {
+    align-items: center;
     border-right: 1px solid #a8a8b3;
+    color: #a8a8b3;
     display: flex;
     height: 60%;
-    align-items: center;
     justify-content: center;
-    color: #a8a8b3;
+    padding: 15px 12px;
 
     ${(props) =>
       props.isFilled &&
@@ -78,16 +92,9 @@ export const Container = styled.div<ContainerProps>`
       `}
   }
 
-  input {
-    width: 100%;
-    background: transparent;
-    border: 0;
-    color: #000;
-    outline: none;
-    padding: 0 16px;
-
-    &::placeholder {
-      color: #666360;
-    }
-  }
+  ${(props) =>
+    props.isErrored &&
+    css`
+      border-color: #c53030;
+    `}
 `;
