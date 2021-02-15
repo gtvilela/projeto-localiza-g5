@@ -50,6 +50,7 @@ export const LabelHeader = styled.span`
   font-size: 12px;
   line-height: 16px;
   color: #a8a8b3;
+  text-transform: uppercase;
 `;
 
 export const ContainerInfoCar = styled.div`

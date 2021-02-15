@@ -12,7 +12,7 @@ const Dropdown: FC<IPropsDropdown> = ({ isOpen }) => {
         <ul className="dd-list">
           {items.map((item) => (
             <li key={item.id}>
-              <Link href={`/${item.value.toLowerCase()}`}>
+              <Link href={`/${item.rota.toLowerCase()}/1`} passHref>
               <a>
                 <span>{item.value}</span>
               </a>

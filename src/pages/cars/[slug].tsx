@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Header from '@components/global/Header/Header';
+import Header from '../../components/global/Header/Header';
 import React, { FC } from 'react';
 import {
   HeaderDetails,
@@ -9,9 +9,9 @@ import {
   ContainerLabels,
   Label,
   TabContainer,
-} from '@styles/pages/details/details';
-import Tab from '@components/global/Tab/Tab';
-import Button from '@components/global/Button';
+} from '../../styles/pages/details/details';
+import Tab from '../../components/global/Tab/Tab';
+import Button from '../../components/global/Button';
 
 const Details: FC = () => {
   return (
@@ -20,11 +20,11 @@ const Details: FC = () => {
       <DetailsContainer>
         <HeaderDetails>
           <div className="car-specification">
-            <LabelHeader>FIAT</LabelHeader>
+            <LabelHeader>Fiat</LabelHeader>
             <span className="model">Uno 1.0</span>
           </div>
           <div className="info-price">
-            <LabelHeader>AO DIA</LabelHeader>
+            <LabelHeader>Ao dia</LabelHeader>
             <span className="price">R$68,18</span>
           </div>
         </HeaderDetails>
