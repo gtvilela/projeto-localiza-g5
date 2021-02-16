@@ -1,7 +1,13 @@
 # Projeto Localiza - Grupo 5 :memo:
 
-(Descrição do projeto)
+Disponibilizar o site para que o cliente visualize os veículos por categorias, realize o cadastro e efetue a locação do veículo.
 
+<ol>
+<li> O site deverá exibir os veículos disponíveis para locação
+Disponibilizar um formulário de simulação de locação com base no veículo selecionado, valor hora do veículo, total de horas. Caso o cliente confirme, validar\realizar o login para a simulação se tornar uma reserva.</li>
+<li>Caso o cpf ainda não esteja na base de dados, realizar o cadastro de cliente informando os dados conforme especificação web services.</li>
+<li>Listar as locações já realizadas pelo cliente por data.</li>
+</ol>
 
 ## Tecnologias :computer:
 

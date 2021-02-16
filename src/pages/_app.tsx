@@ -1,8 +1,17 @@
-import App from 'next/app';
+import React from 'react';
+import GlobalStyle from '@styles/GlobalStyle';
+import { ThemeProvider } from 'styled-components';
+import theme from '@styles/theme';
 
-export default class MyApp extends App {
-  render() {
-    const { Component, pageProps } = this.props;
-    return <Component {...pageProps} />;
-  }
+function MyApp({ Component, pageProps }) {
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+        <GlobalStyle />
+      </ThemeProvider>
+    </>
+  );
 }
+
+export default MyApp;
