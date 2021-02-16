@@ -1,7 +1,7 @@
 
 import { Story, Meta } from '@storybook/react';
-import Dropdown from './Dropdown';
-import { IPropsDropdown } from './types';
+import Dropdown from '../components/global/Dropdown/Dropdown';
+import { IPropsDropdown } from '../components/global/Dropdown/types';
 
 export default {
   title: 'Components/Dropdown',
