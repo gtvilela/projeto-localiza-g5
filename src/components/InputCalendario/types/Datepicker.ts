@@ -1,7 +1,7 @@
 export interface IPropsDatePicker {
-    //isOpen: boolean,
     selectedDate?: string,
-    minDate?: Date,
-    maxDate?: Date
+    minDate?: string,
+    maxDate?: string
     outputDate?: any;
+    // visible: boolean
 }

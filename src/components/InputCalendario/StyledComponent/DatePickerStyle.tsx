@@ -1,29 +1,34 @@
 import styled from 'styled-components';
 
-interface IDatePickerContainerProps {
-
-}
-
 interface IDatePickerButtonContainerProps {
     backGroundColor?: string;
     gridColumnsStart?: number;
     width?: string;  
 }
 
-export const DatePickerContainer = styled.div`
+interface IDatePickerContainerProps {
+    // visible: boolean;
+}
+
+export const DatePickerContainer = styled.div<IDatePickerContainerProps>`
+    background: #F2F2FA;
     position: absolute;
     min-width: 300px;
     border-radius: 5px;
     box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
     border-color: rgba(223,225,229,0);
+    z-index: 100;
+    /* display: ${(props) => props.visible === true ? 'block' : 'none'}; */
 `;
 
 export const DatePickerHeaderContainer = styled.div`
+    background: #F2F2FA;
     position: relative;
     width: 100%;
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
+    color: black;
 `;
 
 export const DatePickerButtonContainer = styled.button<IDatePickerButtonContainerProps>`
@@ -50,6 +55,7 @@ export const SubHeaderDatePickerContainer = styled.div`
     display: grid;
     width: 100%;
     grid-template-columns: repeat(7, auto);
+    color: black;
 `;
 
 export const DatePickerBodyContainer = styled.div`

@@ -29,12 +29,6 @@ const DatePicker: FC<IPropsDatePicker> = ({ selectedDate, outputDate, minDate, m
     }, [selectedDate]);
 
     const getDays = () => {
-        // console.log(selectedDate);
-        // console.log(+selectedDate.toString().substr(3,2));
-        // console.log(+defaultMonth.current);
-        // console.log(+selectedDate.toString().substr(0,2) - 1);
-        
-        
         let days: IDay[];
         days = new Array();
         const dateStart = moment(new Date(defaultYear.current, defaultMonth.current - 1))
@@ -42,20 +36,13 @@ const DatePicker: FC<IPropsDatePicker> = ({ selectedDate, outputDate, minDate, m
             .add(moment(new Date(defaultYear.current, defaultMonth.current - 1))
             .daysInMonth() - 1, 'days')
         for (let i = 0; dateEnd.diff(dateStart, 'days') >= 0; i++) {
-            
-            
             if (+selectedDate.toString().substr(0,2) - 1 === i && +selectedDate.toString().substr(3,2) === +defaultMonth.current) {
-                // console.log('aqui');
-                // console.log(+selectedDate.toString().substr(0,2));
-                
-                
                 days.push({day: dateStart.format('D'), selected: true, disabled: false});
             } else {
                 days.push({day: dateStart.format('D'), selected: false, disabled: false});
             }
             dateStart.add(1, 'days');
         }   
-        // console.log(days);
         
         return days
     }
@@ -76,7 +63,6 @@ const DatePicker: FC<IPropsDatePicker> = ({ selectedDate, outputDate, minDate, m
             outputDate(outDate);
         } else {
             selectedDate += '0' + (defaultMonth.current).toString() + '/' + defaultYear.current.toString();
-            // console.log(selectedDate);
             if (outputDate !== undefined) {
                 outputDate(selectedDate);
             }
@@ -95,15 +81,12 @@ const DatePicker: FC<IPropsDatePicker> = ({ selectedDate, outputDate, minDate, m
     }
 
     const selectingDay = (value: number) => {
-        // console.log(selectedDate);
         let val = value < 10 ? '0' + value.toString() : value.toString();
         selectedDate = val + '/' + selectedDate.substr(3,10);
-        // console.log(selectedDate);
         selectDate(true);
     }
 
     const handleOnClick = (event: React.MouseEvent<HTMLButtonElement>, side: string) => {
-        // const botaoClicado = event.currentTarget.innerText;
         event.currentTarget.blur();
         if (side === 'left') {
             if (defaultMonth.current === 1) {

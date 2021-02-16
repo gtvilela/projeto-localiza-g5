@@ -10,6 +10,7 @@ export const InputText = styled.input<IInputContainerProps>`
     color: #000000;
     padding: 12px 16px;
     border: 1px solid #000000;
+    min-width: 300px;
 `
 
 export const LabelContainer = styled.div`
@@ -20,4 +21,5 @@ export const InputContainer = styled.div`
     display:flex;
     gap: 16px;
     align-items: center;
+    
 `

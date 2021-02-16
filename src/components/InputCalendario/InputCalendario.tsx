@@ -3,13 +3,15 @@ import React, { FC, InputHTMLAttributes, ReactNode, useEffect, useRef, useState 
 import { useForm } from 'react-hook-form';
 import DatePicker from './Datepicker';
 import { InputContainer, InputText, LabelContainer } from './StyledComponent/InputStyle';
+import { FiCalendar } from 'react-icons/fi'
+import Input from '@components/global/Input';
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
     background?: string;
     color?: string;
     iconStart?: ReactNode;
     iconEnd?: ReactNode;
-    label: string;
+    label?: string;
     type: string; 
 }
 
@@ -18,15 +20,15 @@ const InputCalendario: FC<IProps> = ({
 }) => {
     const [open, setOpen] = useState(false);
     const [date, setDate] = useState('');
-    const toggle = (open: boolean) => {setOpen(open)};
     const { register, handleSubmit } = useForm();
-
+    
     const regexp = /^[0-9\b]+$/; // regex que aceita somente números
+    
+    const toggleDatepicker = (open: boolean) => {setOpen(open)};
 
     const outputDate = (outputDate: string) => {
         setDate(outputDate);
-        console.log(date);
-              
+        // toggleDatepicker(false);
     }
 
     const normalizeInputNumber = (event, value) => {
@@ -61,29 +63,29 @@ const InputCalendario: FC<IProps> = ({
     }
 
     return (
-        <label htmlFor="">
-            <LabelContainer>{label}</LabelContainer>
-            <InputContainer
-            // onKeyPress={() => toggle(!open)}
-            onClick={() => toggle(!open)}>
-                {/* <div>{iconStart}</div> */}
-                <InputText 
-                    name={'inputDatepicker'}
+        <div onClick={() => toggleDatepicker(!open)}>
+            {/* <InputContainer onClick={() => toggleDatepicker(!open)}> */}
+                <Input 
+                    onClick={() => toggleDatepicker(!open)}
+                    name="date" label="Data da retirada" icon={FiCalendar} 
                     onChange={(event) => {
                         const {value} = event.target
                         event.target.value = normalizeInputNumber(event, value)
                     }}
                     value={date}
-                    placeholder={'01/01/2021'}
-                    background={background} color={color}
-                    ref={register}
-                    {...rest} />
-                {/* <div>{iconEnd}</div> */}
-            </InputContainer>
+                    background={background} 
+                    color={color}
+                    autoComplete={'off'}
+                    maxLength={10}
+                    // ref={register}
+                    {...rest}
+                />
+            {/* </InputContainer> */}
             {open && (
                 <DatePicker selectedDate={date} outputDate={e => outputDate(e)}></DatePicker>
             )}
-        </label>
+            {/* <DatePicker visible={open} selectedDate={date} outputDate={e => outputDate(e)}></DatePicker> */}
+        </div>
     );
 };
 
