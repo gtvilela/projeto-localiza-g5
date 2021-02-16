@@ -10,6 +10,7 @@ export const CardContainer = styled.a`
   cursor: pointer;
   transition: .3s;
   text-decoration: none;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 
   display: flex;
   align-items: center;
