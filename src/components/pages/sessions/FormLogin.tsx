@@ -17,11 +17,13 @@ const FormPassword: FC = () => {
     <Form ref={formRef} onSubmit={handleSubmitForm}>
       <Input
         name="email"
+        label="E-mail"
         icon={FiMail}
       />
       <Input
         name="password"
         icon={FiLock}
+        label="Senha"
         type="password"
       />
       <Button>Entrar</Button>

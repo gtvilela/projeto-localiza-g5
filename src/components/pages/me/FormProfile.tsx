@@ -17,14 +17,17 @@ const FormProfile: FC = () => {
     <Form ref={formRef} onSubmit={handleSubmitForm}>
       <Input
         name="name"
+        label="Nome"
         icon={FiUser}
       />
       <Input
         name="email"
+        label="E-mail"
         icon={FiMail}
       />
       <Input
         name="cpf"
+        label="Cpf"
         icon={FiCreditCard}
       />
       <Button>Salvar alterações</Button>

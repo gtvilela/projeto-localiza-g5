@@ -2,11 +2,13 @@ import React, { ButtonHTMLAttributes, FC } from 'react';
 
 import { ButtonContainer } from './styles';
 
-type IButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  color?: 'green' | 'yellow'
+}
 
-const Button: FC<IButtonProps> = ({ type = 'button', children, ...rest }) => {
+const Button: FC<IButtonProps> = ({ type = 'button', color, children, ...rest }) => {
   return (
-    <ButtonContainer type={type} {...rest}>
+    <ButtonContainer type={type} color={color} {...rest}>
       {children}
     </ButtonContainer>
   );

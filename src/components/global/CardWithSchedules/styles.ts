@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
+import theme from '@styles/theme'
+
 export const CardContainer = styled.div`
  & + div {
     margin-top: 16px;
   }
 `
 export const CardContent = styled.div`
-  background: #fff;
+  background: ${theme.colors.white};
   border-radius: 4px;
   padding: 24px 48px;
 
@@ -34,12 +36,12 @@ export const CardDescription = styled.div`
 
 
     span {
-      color: #A8A8B3;
+      color: ${theme.colors.textLighter};
       text-transform: uppercase;
     }
 
     strong {
-      color: #3D3D4D;
+      color: ${theme.colors.text};
       font-size: 24px;
       line-height: 32px;
       font-weight: 600;
@@ -54,13 +56,13 @@ export const CardDescription = styled.div`
     }
 
     strong {
-      color: #00984A;
+      color: ${theme.colors.primary};
     }
   }
 `
 
 export const CardFooter = styled.div`
-  background: #fff;
+  background: ${theme.colors.white};
   border-radius: 4px;
   margin-top: 4px;
   display: flex;
@@ -73,7 +75,7 @@ export const CardFooter = styled.div`
   }
 
   span {
-    color: #A8A8B3;
+    color: ${theme.colors.textLighter};
     text-transform: uppercase;
     font-size: 12px;
     line-height: 16px;
@@ -90,7 +92,7 @@ export const CardFooter = styled.div`
 
     strong {
       line-height: 24px;
-      color: #3D3D4D;
+      color: ${theme.colors.text};
     }
 
     svg {

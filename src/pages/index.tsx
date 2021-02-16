@@ -1,4 +1,5 @@
 import React from "react";
+import { FiCalendar } from 'react-icons/fi'
 
 import { FiUser } from 'react-icons/fi';
 import { Content, BoxCards } from '@styles/pages/dashboard';

@@ -18,15 +18,18 @@ const FormPassword: FC = () => {
       <Input
         name="current_password"
         icon={FiLock}
+        label="Senha atual"
         type="password"
         />
       <Input
         name="password"
+        label="Nova senha"
         icon={FiLock}
         type="password"
       />
       <Input
         name="confirmation_password"
+        label="Confirmação da senha"
         icon={FiLock}
         type="password"
       />

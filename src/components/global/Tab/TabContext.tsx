@@ -36,7 +36,7 @@ const useTab = (): ITabContextData => {
   const context = useContext(TabContext);
 
   if (!context) {
-    throw new Error('useAuth must be used within an TabProvider');
+    throw new Error('useTab must be used within an TabProvider');
   }
 
   return context;
