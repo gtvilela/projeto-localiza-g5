@@ -103,6 +103,10 @@ export const User = styled.a`
     line-height: 26px;
     color: ${theme.colors.white};
     margin-right: 10px;
+
+    @media (max-width: 425px) {
+      display: none;
+    }
   }
 `;
 
