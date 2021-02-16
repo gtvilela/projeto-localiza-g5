@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import theme from '@styles/theme'
+
 interface ContainerProps {
   isErrored: boolean;
   isFilled: boolean;
@@ -8,17 +10,17 @@ interface ContainerProps {
 
 export const Container = styled.div<ContainerProps>`
   align-items: center;
-  background: #fff;
-  border: 2px solid #fff;
+  background: ${theme.colors.white};
+  border: 2px solid ${theme.colors.white};
   border-radius: 4px;
   display: flex;
   height: 58px;
-  margin-bottom: 48px;
+  margin-bottom: 8px;
   position: relative;
   width: 100%;
 
   label {
-    color: #666360;
+    color: ${theme.colors.textLighter};
     margin-left: 17px;
     position: absolute;
   }
@@ -26,7 +28,7 @@ export const Container = styled.div<ContainerProps>`
   input {
     background: transparent;
     border: 0;
-    color: #000;
+    color: ${theme.colors.text};
     font-size: 1em;
     margin-top: 12px;
     outline: none;
@@ -37,13 +39,13 @@ export const Container = styled.div<ContainerProps>`
   ${(props) =>
     props.isFocused &&
     css`
-      color: #00984a;
-      border-color: #00984a;
+      color: ${theme.colors.primary};
+      border-color: ${theme.colors.primary};
       outline: none;
       transition: all 500ms ease;
 
       svg {
-        color: #00984a;
+        color: ${theme.colors.primary};
       }
 
       label {
@@ -78,8 +80,8 @@ export const Container = styled.div<ContainerProps>`
 
   .icon-container {
     align-items: center;
-    border-right: 1px solid #a8a8b3;
-    color: #a8a8b3;
+    border-right: 1px solid ${theme.colors.textLighter};
+    color: ${theme.colors.textLighter};
     display: flex;
     height: 60%;
     justify-content: center;
@@ -88,13 +90,13 @@ export const Container = styled.div<ContainerProps>`
     ${(props) =>
       props.isFilled &&
       css`
-        color: #00984a;
+        color: ${theme.colors.primary};
       `}
   }
 
   ${(props) =>
     props.isErrored &&
     css`
-      border-color: #c53030;
+      border-color: ${theme.colors.error};
     `}
 `;

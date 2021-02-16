@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import theme from '@styles/theme'
+
 export default createGlobalStyle`
    * {
         margin: 0;
@@ -8,8 +10,8 @@ export default createGlobalStyle`
         outline: 0;
     }
     body {
-        background: #F2F2FA;
-        color: #3D3D4D;
+        background: ${theme.colors.backgroundApp};
+        color: ${theme.colors.text};
         -webkit-font-smoothing: antialiased;
     }
     body, input, button {
