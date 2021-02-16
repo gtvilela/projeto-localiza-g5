@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import theme from '@styles/theme'
+
 export const DetailsContainer = styled.div`
   width: 100%;
   max-width: 1120px;
@@ -20,7 +22,7 @@ export const HeaderDetails = styled.div`
       font-weight: 500;
       font-style: normal;
       font-size: 24px;
-      color: #3d3d4d;
+      color: ${theme.colors.text};
       line-height: 32px;
     }
   }
@@ -34,7 +36,7 @@ export const HeaderDetails = styled.div`
       font-style: normal;
       font-size: 24px;
       line-height: 32px;
-      color: #00984a;
+      color: ${theme.colors.primary};
     }
   }
 
@@ -49,7 +51,7 @@ export const LabelHeader = styled.span`
   font-style: normal;
   font-size: 12px;
   line-height: 16px;
-  color: #a8a8b3;
+  color: ${theme.colors.textLighter};
   text-transform: uppercase;
 `;
 
@@ -83,7 +85,7 @@ export const Label = styled.div`
   width: 219.05px;
   height: 64.31px;
   padding: 20px;
-  background: #ffffff;
+  background: ${theme.colors.white};
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.08);
   border-radius: 4px;
   text-align: center;

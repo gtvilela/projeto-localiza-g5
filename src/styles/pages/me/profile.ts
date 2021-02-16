@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import theme from '@styles/theme'
+
 export const Content = styled.div`
   width: 100%;
   max-width: 1120px;
@@ -31,17 +33,17 @@ export const BoxProfile = styled.div`
 
 export const ImageContainer = styled.div`
   margin-bottom: 48px;
-  border: 4px solid #00984A;
+  border: 4px solid ${theme.colors.primary};
   padding: 4px;
   border-radius: 50%;
   display: flex;
-  background: #fff;
+  background: ${theme.colors.white};
 `
 export const Title = styled.h1`
   font-size: 24px;
   margin-bottom: 32px;
   font-weight: 500;
-  color: #3D3D4D;
+  color: ${theme.colors.text};
 `
 
 export const BoxSchedules = styled.div`

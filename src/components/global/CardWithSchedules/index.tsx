@@ -2,6 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import { FiArrowRight } from 'react-icons/fi';
 
+import theme from '@styles/theme'
+
 import { CardContainer, CardContent, CardDescription, CardFooter } from './styles';
 
 const CardWithSchedules = () => {
@@ -28,7 +30,7 @@ const CardWithSchedules = () => {
           <span>Periodo do aluguel</span>
           <div>
             <strong>18 Jul 2021</strong>
-            <FiArrowRight color="#A8A8B3" size={16} />
+            <FiArrowRight color={theme.colors.textLighter} size={16} />
             <strong>20 Jul 2021</strong>
           </div>
         </CardFooter>

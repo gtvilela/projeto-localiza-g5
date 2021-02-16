@@ -3,10 +3,12 @@ const theme = {
     white: '#fff',
     green: '#f00',
     primary: '#00984A',
+    primaryDark: '#004A34',
     secondary: '#D3D800',
-    backgroundApp: '#E5E5E5',
-    placeholder: '#A8A8B3',
-    text: '#A8A8B3'
+    backgroundApp: '#F2F2FA',
+    text: '#3D3D4D',
+    textLighter: '#A8A8B3',
+    error: '#c53030'
   }
 }
 

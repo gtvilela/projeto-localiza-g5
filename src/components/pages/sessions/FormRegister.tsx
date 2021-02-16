@@ -17,22 +17,27 @@ const FormProfile: FC = () => {
     <Form ref={formRef} onSubmit={handleSubmitForm}>
       <Input
         name="name"
+        label="Nome"
         icon={FiUser}
       />
       <Input
         name="email"
+        label="E-mail"
         icon={FiMail}
       />
       <Input
         name="cpf"
+        label="Cpf"
         icon={FiMail}
       />
       <Input
         name="password"
+        label="Senha"
         icon={FiLock}
       />
       <Input
         name="confirmation_password"
+        label="Confirmação da senha"
         icon={FiLock}
       />
       <Button>Cadastrar</Button>

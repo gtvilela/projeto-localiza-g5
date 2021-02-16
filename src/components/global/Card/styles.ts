@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 
+import theme from '@styles/theme'
+
 export const CardContainer = styled.a`
-  background: #fff;
+  background: ${theme.colors.white};
   border-radius: 4px;
   padding: 24px 48px;
   border: 2px solid transparent;
   cursor: pointer;
   transition: .3s;
   text-decoration: none;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 
   display: flex;
   align-items: center;
@@ -17,7 +20,7 @@ export const CardContainer = styled.a`
   width: 31.3%;
 
   &:hover {
-    border-color: #00984A;
+    border-color: ${theme.colors.primary};
     transform: translateY(-8px);
   }
 
@@ -39,12 +42,12 @@ export const CardDescription = styled.div`
     flex-direction: column;
 
     span {
-      color: #A8A8B3;
+      color: ${theme.colors.textLighter};
       text-transform: uppercase;
     }
 
     strong {
-      color: #3D3D4D;
+      color: ${theme.colors.text};
       font-size: 24px;
       line-height: 32px;
       font-weight: 600;
@@ -55,7 +58,7 @@ export const CardDescription = styled.div`
     margin-left: 48px;
 
     strong {
-      color: #00984A;
+      color: ${theme.colors.primary};
     }
   }
 `

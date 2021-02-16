@@ -51,7 +51,7 @@ export const ButtonBack = styled.div`
 
    a {
      text-decoration: none;
-     color: #fff;
+     color: ${theme.colors.white};
      display: flex;
      align-items: center;
      transition: .3s;
@@ -75,7 +75,7 @@ export const ButtonBack = styled.div`
        &::after {
        content: '';
         width: 100%;
-        background: #fff;
+        background: ${theme.colors.white};
       }
      }
 
@@ -101,8 +101,12 @@ export const User = styled.a`
     font-weight: 500;
     font-size: 16px;
     line-height: 26px;
-    color: #fff;
+    color: ${theme.colors.white};
     margin-right: 10px;
+
+    @media (max-width: 425px) {
+      display: none;
+    }
   }
 `;
 
@@ -110,7 +114,7 @@ export const ImageUser = styled.div`
   width: 40px;
   height: 40px;
   background: ${theme.colors.primary};
-  border: 2px solid #fff;
+  border: 2px solid ${theme.colors.white};
   padding: 2px;
   border-radius: 50%;
 
