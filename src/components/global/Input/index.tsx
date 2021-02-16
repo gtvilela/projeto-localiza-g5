@@ -4,7 +4,7 @@ import { useField } from '@unform/core';
 import { IPropsInput } from './types/index';
 import { Container } from './styles';
 
-const Input: React.FC<IPropsInput> = ({ name, containerStyle = {}, icon: Icon, ...rest }) => {
+const Input: React.FC<IPropsInput> = ({ name, containerStyle = {}, label, icon: Icon, ...rest }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
@@ -31,10 +31,11 @@ const Input: React.FC<IPropsInput> = ({ name, containerStyle = {}, icon: Icon, .
   return (
     <Container style={containerStyle} isErrored={Boolean(error)} isFilled={isFilled} isFocused={isFocused}>
       {Icon && (
-        <div>
+        <div className="icon-container">
           <Icon size={18} />
         </div>
       )}
+      <label htmlFor={name}>{label}</label>
       <input onFocus={handleInputFocus} onBlur={handleInputBlur} defaultValue={defaultValue} ref={inputRef} {...rest} />
     </Container>
   );
