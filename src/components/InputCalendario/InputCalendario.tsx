@@ -21,37 +21,43 @@ const InputCalendario: FC<IProps> = ({
     const toggle = (open: boolean) => {setOpen(open)};
     const { register, handleSubmit } = useForm();
 
-    const regexp = /^[0-9\b]+$/;
+    const regexp = /^[0-9\b]+$/; // regex que aceita somente números
 
-    const normalizeCardNumber = (event, value) => {
+    const outputDate = (outputDate: string) => {
+        setDate(outputDate);
+        console.log(date);
+              
+    }
+
+    const normalizeInputNumber = (event, value) => {
+        
         let val = String(value);
 
         if (value === '' || regexp.test(val) || val.charAt(2) === '/' || val.charAt(5) === '/') {
             if (event.nativeEvent.inputType !== 'deleteContentBackward') {
+                if (val.length == 2 && +val.substr(0,2) > 31) {
+                    val = '';
+                } else if (val.length == 5 && +val.substr(3,2) > 12) {
+                    val = '';
+                }
                 if(val.length == 2 || val.length == 5){
                     val += '/';
                 }
             }
-    
-            if (val.length >= 10) {
+            
+            if (val.length >= 10 && (!(+val.substr(6,4) > 1902) || !(+val.substr(6,4) < 2050))) {
+                setDate('');
+                return '';
+            } else if (val.length >= 10 && moment(val, 'DD-MM-YYYY').isValid()) {
                 setDate(val);
                 return val.substr(0, 10);
             }
-
+            setDate(val);
             return val;
         } else {
+            setDate('');
             return '';
         }
-    }
-
-    const validateInput = async (value) => {
-        console.log(value);
-        
-        if (date.length >= 10) {
-            console.log(moment(date).isValid());
-             return false;
-        }
-        return false;
     }
 
     return (
@@ -65,16 +71,17 @@ const InputCalendario: FC<IProps> = ({
                     name={'inputDatepicker'}
                     onChange={(event) => {
                         const {value} = event.target
-                        event.target.value = normalizeCardNumber(event, value)
+                        event.target.value = normalizeInputNumber(event, value)
                     }}
+                    value={date}
                     placeholder={'01/01/2021'}
                     background={background} color={color}
-                    ref={register({ validate: validateInput })}
+                    ref={register}
                     {...rest} />
                 {/* <div>{iconEnd}</div> */}
             </InputContainer>
             {open && (
-                <DatePicker selectedDate={date}></DatePicker>
+                <DatePicker selectedDate={date} outputDate={e => outputDate(e)}></DatePicker>
             )}
         </label>
     );

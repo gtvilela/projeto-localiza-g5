@@ -5,5 +5,6 @@ export interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     width?: string;
     gridColumnsStart?: number;
     selectedDay?: boolean;
-    hover: boolean;
+    selected: boolean;
+    selectingDay?: any;
 }

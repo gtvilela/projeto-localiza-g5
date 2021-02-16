@@ -56,6 +56,5 @@ export const DatePickerBodyContainer = styled.div`
     display: grid;
     width: 100%;
     grid-template-columns: repeat(7, auto);
-    /* grid-template-rows: 50px 50px 50px 50px 50px 50px; */
     grid-template-rows: repeat(6, 50px);
 `;

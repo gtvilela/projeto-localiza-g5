@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { DatePickerButtonContainer } from './StyledComponent/DatePickerStyle';
 import { IProps } from './types/DatePickerButton';
 
@@ -10,17 +10,33 @@ const DatePickerButton: FC<IProps> = ({
     value,
     gridColumnsStart,
     selectedDay,
-    hover,
+    selected,
+    selectingDay,
     ...rest
 }) => {
     const [backGround, setBackGround] = useState('');
 
-    onClick = () => {
-        if (hover)
+    useEffect(() => {
+        if (selectedDay) {
+            setBackGround('#00984a');
+        } else {
+            setBackGround('');
+        }        
+    }, [selectedDay]);
+
+    const handleOnClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+        if (selectedDay !== undefined) {
+            selectingDay(value);
+        }
+        if (onClick !== undefined){
+            onClick(event);            
+        } 
+        if (selected) {
             backGround === '' ? setBackGround('#00984a') : setBackGround('');
+        }
     }
     return (
-        <DatePickerButtonContainer type={type} onClick={onClick} width={width} backGroundColor={backGround}
+        <DatePickerButtonContainer type={type} onClick={handleOnClick} width={width} backGroundColor={backGround}
             value={value} gridColumnsStart={gridColumnsStart}>{icon}{value}</DatePickerButtonContainer>
     )
 };

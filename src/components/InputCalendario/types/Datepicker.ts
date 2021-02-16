@@ -3,4 +3,5 @@ export interface IPropsDatePicker {
     selectedDate?: string,
     minDate?: Date,
     maxDate?: Date
+    outputDate?: any;
 }
