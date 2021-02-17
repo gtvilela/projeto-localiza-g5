@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { FormProps  } from '@unform/core';
 import { Form } from '@unform/web';
 
 import theme from '@styles/theme'
@@ -27,19 +28,20 @@ export const SectionContainer = styled.div`
     flex-direction: column-reverse;
   }
 
-`;
-export const TitleSection = styled.h1`
-  @media (max-width: 425px) {
-    display: none;
-  }
-`;
+    h1 {
+      @media (max-width: 425px) {
+      display: none;
+    }
 
-export const FormCustom = styled(Form)`
-  max-width: 348px;
+    form {
+      max-width: 348px;
 
-  @media (max-width: 425px) {
-    max-width: 100%;
+      @media (max-width: 425px) {
+        max-width: 100%;
+      }
+    }
   }
+
 `;
 
 export const Content = styled.div`

@@ -1,26 +1,29 @@
-import React from "react";
-import Header from "@components/global/Header/Header";
-import InputCalendario from "@components/InputCalendario/InputCalendario";
+import React, { FC, useRef } from "react";
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
+import { FiCalendar } from 'react-icons/fi'
 
 import Button from '@components/global/Button'
 import Card from '@components/global/Card';
 
-import { Section, SectionContainer, TitleSection, FormCustom, Content, HeaderPag, BoxCards } from '@styles/pages/dashboard';
+import { Section, SectionContainer, Content, HeaderPag, BoxCards } from '@styles/pages/dashboard';
 
-const Dashboard = () => {
+const Dashboard: FC = () => {
+  const formRef = useRef<FormHandles>();
+
   return (
     <>
       <Header hidden={true} />
       <Section>
         <SectionContainer>
-          <TitleSection>
+          <h1>
             Oio
-          </TitleSection>
-          <FormCustom>
-            <InputCalendario background="#ffffff" color="#000000" type="text" />
-            <InputCalendario background="#ffffff" color="#000000" type="text" />
+          </h1>
+          <Form ref={formRef} onSubmit={() => console.log('oi')}>
+            <Input name="date" label="Data e hora da retirada" icon={FiCalendar} />
+            <Input name="datee" label="Data e hora da entrega" icon={FiCalendar} />
             <Button color="yellow">Reservar agora</Button>
-          </FormCustom>
+          </Form>
         </SectionContainer>
       </Section>
       <Content>
