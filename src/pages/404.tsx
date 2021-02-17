@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Header from '@components/global/Header/Header';
+import Header from '../components/global/Header';
 
-import { Content} from '@styles/pages/404';
+import { Content} from '../styles/pages/404';
 
 const NotFound = () => {
   return (

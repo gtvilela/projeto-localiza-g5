@@ -3,8 +3,8 @@ import { SubmitHandler, FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { FiUser, FiMail, FiLock } from 'react-icons/fi';
 
-import Input from '@components/global/Input';
-import Button from '@components/global/Button';
+import Input from '../../global/Input';
+import Button from '../../global/Button';
 
 const FormProfile: FC = () => {
   const formRef = useRef<FormHandles>(null);

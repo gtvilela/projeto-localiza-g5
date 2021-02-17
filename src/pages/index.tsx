@@ -3,12 +3,12 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { FiCalendar } from 'react-icons/fi'
 
-import Header from '@components/global/Header/Header';
-import Input from '@components/global/Input'
-import Button from '@components/global/Button'
-import Card from '@components/global/Card';
+import Header from '../components/global/Header';
+import Input from '../components/global/Input'
+import Button from '../components/global/Button'
+import Card from '../components/global/Card';
 
-import { Section, SectionContainer, Content, HeaderPag, BoxCards } from '@styles/pages/dashboard';
+import { Section, SectionContainer, Content, HeaderPag, BoxCards } from '../styles/pages/dashboard';
 
 const Dashboard: FC = () => {
   const formRef = useRef<FormHandles>();

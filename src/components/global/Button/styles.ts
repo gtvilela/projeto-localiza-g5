@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { shade } from 'polished';
 
-import theme from '@styles/theme';
+import theme from '../../../styles/theme';
 
 interface IButtonProps  {
   color?: 'green' | 'yellow'

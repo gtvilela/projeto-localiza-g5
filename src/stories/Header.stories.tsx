@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import Header from '../components/global/Header/Header';
+import Header from '../components/global/Header';
 import { IPropsHeader } from '../components/global/Header/types';
 
 export default {
