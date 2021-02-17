@@ -4,8 +4,8 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { FiLock, FiUser } from 'react-icons/fi';
 
-import Input from '../components/Input';
-import { IPropsInput } from '../components/Input/types';
+import Input from '../components/global/Input';
+import { IPropsInput } from '../components/global/Input/types';
 
 const controls = {
   icon: {

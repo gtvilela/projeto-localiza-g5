@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 --no-dll -s ./public",
     "build-storybook": "build-storybook",
     "test": "jest --watch",
     "coverage": "jest --coverage"
