@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
 
-import Tab from '../components/global/Tab/Tab';
+import { Tab } from '../components/global/index'
+
 import FormLogin from '../components/pages/sessions/FormLogin';
 import FormRegister from '../components/pages/sessions/FormRegister';
 

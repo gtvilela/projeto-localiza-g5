@@ -7,7 +7,7 @@ import { HeaderContainer, Content, HeaderStart, LogoContainer, ButtonBack, Heade
 
 import { IPropsHeader } from './types/index';
 
-import Dropdown from '../Dropdown/Dropdown';
+import Dropdown from '../Dropdown';
 
 const Header: FC<IPropsHeader> = ({ hidden = true}) => {
 

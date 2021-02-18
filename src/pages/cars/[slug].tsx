@@ -9,8 +9,8 @@ import {
   ContainerLabels,
   Label,
   TabContainer,
-} from '../../styles/pages/details/details';
-import Tab from '../../components/global/Tab/Tab';
+} from '../../styles/pages/cars/details';
+import Tab from '../../components/global/Tab';
 import Button from '../../components/global/Button';
 
 const Details: FC = () => {
