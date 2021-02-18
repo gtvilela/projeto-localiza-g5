@@ -36,7 +36,14 @@ const Input: React.FC<IPropsInput> = ({ name, containerStyle = {}, label, icon: 
         </div>
       )}
       <label htmlFor={name}>{label}</label>
-      <input id={name} onFocus={handleInputFocus} onBlur={handleInputBlur} defaultValue={defaultValue} ref={inputRef} {...rest} />
+      <input
+        id={name}
+        onFocus={handleInputFocus}
+        onBlur={handleInputBlur}
+        defaultValue={defaultValue}
+        ref={inputRef}
+        {...rest}
+      />
     </Container>
   );
 };
