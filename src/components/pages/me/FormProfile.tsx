@@ -2,15 +2,8 @@ import React, { FC, useRef, useCallback } from 'react';
 import { SubmitHandler, FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { FiUser, FiMail, FiCreditCard } from 'react-icons/fi';
-
-<<<<<<< HEAD
 import Input from '../../../components/global/Input';
 import Button from '../../../components/global/Button';
-=======
-import Input from '../../global/Input';
-import Button from '../../global/Button';
->>>>>>> 6c6db420293032584449b04d4230d674887c792e
-
 const FormProfile: FC = () => {
   const formRef = useRef<FormHandles>(null);
 

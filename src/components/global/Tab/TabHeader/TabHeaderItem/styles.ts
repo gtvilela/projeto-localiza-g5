@@ -1,10 +1,5 @@
 import styled from 'styled-components';
-
-<<<<<<< HEAD
-import theme from '../../../../../styles/theme'
-=======
 import theme from '../../../../../styles/theme';
->>>>>>> 6c6db420293032584449b04d4230d674887c792e
 
 interface IPropsTabHeaderItemContainer {
   active: boolean;
