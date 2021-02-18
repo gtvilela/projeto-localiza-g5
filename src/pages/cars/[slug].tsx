@@ -16,7 +16,7 @@ import MeterSvg from '../../../public/images-components/MeterSvg';
 import TransmissionSvg from '../../../public/images-components/TransmissionSvg';
 import GroupSvg from '../../../public/images-components/GroupSvg';
 import HorsepowerSvg from '../../../public/images-components/HorsepowerSvg';
-import ZeroToHundredSvg from '../../../public/images-components/ZeroToHundredSvg';
+import LuggageSvg from '../../../public/images-components/LuggageSvg';
 import Link from 'next/link';
 
 enum Combustivel {
@@ -28,19 +28,20 @@ enum Combustivel {
 const Details: FC = () => {
  const [veiculo, setVeiculo] = useState({
     modelo: {
-      nome: 'initial'
+      nome: ''
     },
     marca: {
-      nome: 'Initial'
+      nome: ''
     },
-    url: 'teste',
-    velocidadeMaxima: 'teste',
-    valorHora: 1,
-    combustivel: 1,
-    cambio: 'teste',
-    ocupantes: 5,
+    url: '',
+    velocidadeMaxima: '',
+    limitePorMalas: '',
+    valorHora: 0,
+    combustivel: 0,
+    cambio: '',
+    ocupantes: 0,
     potencia: 0,
-    descricao: 'teste'
+    descricao: ''
  })
   const getQueryStringParams = query => {
     return query
@@ -91,8 +92,8 @@ const Details: FC = () => {
                 <div>{veiculo.velocidadeMaxima}km/h</div>
               </Label>
               <Label>
-                <ZeroToHundredSvg width={20} height={20} />
-                <div>6.8s</div>
+                <LuggageSvg width={20} height={20} />
+                <div>{veiculo.limitePorMalas}L</div>
               </Label>
               <Label>
                 <FuelSvg width={20} height={20} />
