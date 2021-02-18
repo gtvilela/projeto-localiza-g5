@@ -10,8 +10,16 @@ import {
   Label,
   TabContainer,
 } from '../../styles/pages/cars/details';
+
 import Tab from '../../components/global/Tab';
 import Button from '../../components/global/Button';
+import FuelSvg from '../../../public/images-components/FuelSvg';
+import MeterSvg from '../../../public/images-components/MeterSvg';
+import CarSvg from '../../../public/images-components/Car';
+import TransmissionSvg from '../../../public/images-components/TransmissionSvg';
+import GroupSvg from '../../../public/images-components/GroupSvg';
+import HorsepowerSvg from '../../../public/images-components/HorsepowerSvg';
+import ZeroToHundredSvg from '../../../public/images-components/ZeroToHundredSvg';
 
 const Details: FC = () => {
   return (
@@ -33,32 +41,32 @@ const Details: FC = () => {
 
         <ContainerInfoCar>
           <div className="imagem">
-            <Image src="/assets/car.svg" width={544} height={299} />
+            <CarSvg width={544} height={299} />
           </div>
           <div className="container-around">
             <ContainerLabels>
               <Label>
-                <Image src="/assets/meter.svg" width={20} height={20} />
+                <MeterSvg width={20} height={20} />
                 <div>270km/h</div> {/* propriedade km do objeto carro */}
               </Label>
               <Label>
-                <Image src="/assets/fuel.svg" width={20} height={20} />
+                <ZeroToHundredSvg width={20} height={20} />
                 <div>6.8s</div> {/* propriedade 0-100 do objeto carro */}
               </Label>
               <Label>
-                <Image src="/assets/fuel.svg" width={20} height={20} />
+                <FuelSvg width={20} height={20} />
                 <div>Gasolina</div> {/* propriedade combustível do objeto carro */}
               </Label>
               <Label>
-                <Image src="/assets/transmission.svg" width={20} height={20} />
+                <TransmissionSvg width={20} height={20} />
                 <div>Auto</div> {/* propriedade transmissão do objeto carro */}
               </Label>
               <Label>
-                <Image src="/assets/group.svg" width={20} height={20} />
+                <GroupSvg width={20} height={20} />
                 <div>5 pessoas</div> {/* propriedade qtdPessoa do objeto carro */}
               </Label>
               <Label>
-                <Image src="/assets/horsepower.svg" width={20} height={20} />
+                <HorsepowerSvg width={20} height={20} />
                 <div>280HP</div> {/* propriedade hp do objeto carro */}
               </Label>
             </ContainerLabels>

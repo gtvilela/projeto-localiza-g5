@@ -4,6 +4,7 @@ import theme from '../../../styles/theme';
 export const HeaderContainer = styled.header`
   background: ${theme.colors.primary};
   height: 92px;
+  min-width: 100vw;
 
   .menu {
     display: flex;
