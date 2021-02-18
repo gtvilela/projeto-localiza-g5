@@ -55,7 +55,7 @@ export const CardDescription = styled.div`
   }
 
   div:last-child {
-    margin-left: 48px;
+    margin-left: 40px;
 
     strong {
       color: ${theme.colors.primary};

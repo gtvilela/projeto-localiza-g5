@@ -1,4 +1,4 @@
-import React, { FC, useRef, useEffect } from "react";
+import React, { FC, useRef, useEffect, useState } from "react";
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { FiCalendar } from 'react-icons/fi'
@@ -9,12 +9,35 @@ import Button from '../components/global/Button'
 import Card from '../components/global/Card';
 
 import { Section, SectionContainer, Content, HeaderPag, BoxCards } from '../styles/pages/dashboard';
-import { getAllVeiculos } from "../../public/api/veiculos/veiculo";
+
+import api from '../services/api';
+import { StringifyOptions } from "querystring";
+
+interface IProps {
+  id: number;
+  valorHora: number;
+  url: string;
+  marca: {
+    nome: string;
+  }
+  modelo: {
+    nome: string;
+  }
+}
 
 const Dashboard: FC = () => {
   const formRef = useRef<FormHandles>();
+  const [veiculos, setVeiculos] = useState<IProps[]>([]);
 
-getAllVeiculos().then(res => console.log(res));
+  useEffect(() => {
+    async function getVeiculos(): Promise<void> {
+      const response = await api.get('/Veiculo/buscarTodos');
+      setVeiculos(response.data)
+    }
+
+    getVeiculos()
+  }, [])
+
 
   return (
     <>
@@ -37,11 +60,9 @@ getAllVeiculos().then(res => console.log(res));
           <span>Total 6 carros</span>
         </HeaderPag>
         <BoxCards>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {veiculos.map((veiculo) => (
+            <Card key={veiculo.id} veiculo={veiculo} />
+          ))}
         </BoxCards>
      </Content>
     </>
