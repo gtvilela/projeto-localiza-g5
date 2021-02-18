@@ -7,7 +7,12 @@ import { FiLock, FiUser } from 'react-icons/fi';
 import Input from '../components/global/Input';
 import { IPropsInput } from '../components/global/Input/types';
 
-const controls = {
+const argTypes = {
+  containerStyle: {
+    table: {
+      disable: true,
+    },
+  },
   icon: {
     table: {
       disable: true,
@@ -23,17 +28,12 @@ const controls = {
       disable: true,
     },
   },
-  containerStyle: {
-    table: {
-      disable: true,
-    },
-  },
 };
 
 export default {
-  title: 'Components/Input',
+  argTypes,
   component: Input,
-  argTypes: controls,
+  title: 'Components/Input',
 } as Meta;
 
 const Template: Story<IPropsInput> = (args: IPropsInput) => {
@@ -51,7 +51,7 @@ Text.args = {
   icon: FiUser,
   type: 'text',
   name: 'user',
-  placeholder: 'Type username',
+  label: 'Username',
 };
 
 export const Password = Template.bind({});
@@ -59,5 +59,5 @@ Password.args = {
   icon: FiLock,
   type: 'password',
   name: 'password',
-  placeholder: 'Type password',
+  label: 'Password',
 };
