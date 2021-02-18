@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { FiArrowRight } from 'react-icons/fi';
 
-import theme from '@styles/theme'
+import theme from '../../../styles/theme'
 
 import { CardContainer, CardContent, CardDescription, CardFooter } from './styles';
 
