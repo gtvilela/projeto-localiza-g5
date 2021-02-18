@@ -1,12 +1,7 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
-<<<<<<< HEAD
 
 import {Header, Tab } from '../../components/global/';
-=======
-import Header from '../../components/global/Header';
-import Tab from '../../components/global/Tab/Tab';
->>>>>>> 99e8592ec481a846de20b2792f1fe7a526e325a2
 
 import FormProfile from '../../components/pages/me/FormProfile';
 import FormPassword from '../../components/pages/me/FormPassword';
