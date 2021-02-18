@@ -7,7 +7,7 @@
   {
     id: 2,
     value: 'Agendamentos',
-    rota: 'me'
+    rota: 'schedules'
   },
   {
     id: 3,
