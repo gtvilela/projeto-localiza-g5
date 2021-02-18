@@ -2,6 +2,10 @@ import styled, { css } from 'styled-components';
 
 import theme from '../../../styles/theme';
 
+interface ILinkCustomProps {
+  active: boolean;
+}
+
 export const HeaderPagesContainer = styled.div`
   display: flex;
   align-items: center;
@@ -37,7 +41,7 @@ export const HeaderPagesContainer = styled.div`
   }
 `;
 
-export const LinkCustom = styled.a`
+export const LinkCustom = styled.a<ILinkCustomProps>`
   color: ${({ active }) => active ? theme.colors.text : theme.colors.textLighter};
   text-decoration: none;
   position: relative;
