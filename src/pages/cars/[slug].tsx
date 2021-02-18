@@ -81,7 +81,7 @@ const Details: FC = () => {
 
         <ContainerInfoCar>
           <div className="imagem">
-            <img src={veiculo.url} width={544} height={299} />
+            <img src={veiculo.url} />
           </div>
           <div className="container-around">
             <ContainerLabels>
