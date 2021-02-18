@@ -1,5 +1,5 @@
 import Header from '../../components/global/Header';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import {
   HeaderDetails,
   DetailsContainer,
@@ -17,21 +17,25 @@ import TransmissionSvg from '../../../public/images-components/TransmissionSvg';
 import GroupSvg from '../../../public/images-components/GroupSvg';
 import HorsepowerSvg from '../../../public/images-components/HorsepowerSvg';
 import LuggageSvg from '../../../public/images-components/LuggageSvg';
-import Link from 'next/link';
+import { Form } from '@unform/web';
+import Input from '@components/global/Input';
+import { FiCalendar } from 'react-icons/fi';
+import { FormHandles } from '@unform/core';
 
 enum Combustivel {
   'Gasolina' = 1,
   'Álcool' = 2,
-  'Diesel' = 3
+  'Diesel' = 3,
 }
 
 const Details: FC = () => {
- const [veiculo, setVeiculo] = useState({
+  const formRef = useRef<FormHandles>();
+  const [veiculo, setVeiculo] = useState({
     modelo: {
-      nome: ''
+      nome: '',
     },
     marca: {
-      nome: ''
+      nome: '',
     },
     url: '',
     velocidadeMaxima: '',
@@ -41,28 +45,23 @@ const Details: FC = () => {
     cambio: '',
     ocupantes: 0,
     potencia: 0,
-    descricao: ''
- })
-  const getQueryStringParams = query => {
+    descricao: '',
+  });
+  const getQueryStringParams = (query) => {
     return query
-        ? (/^[?#]/.test(query) ? query.slice(1) : query)
-            .split('&')
-            .reduce((params, param) => {
-                    let [key, value] = param.split('=');
-                    params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
-                    return params;
-                }, {}
-            )
-        : {}
+      ? (/^[?#]/.test(query) ? query.slice(1) : query).split('&').reduce((params, param) => {
+          let [key, value] = param.split('=');
+          params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
+          return params;
+        }, {})
+      : {};
   };
-
 
   useEffect(() => {
     const { data } = getQueryStringParams(window.location.search);
-    console.log(JSON.parse(data))
-    setVeiculo(JSON.parse(data))
+    console.log(JSON.parse(data));
+    setVeiculo(JSON.parse(data));
   }, []);
-
 
   return (
     <>
@@ -119,21 +118,21 @@ const Details: FC = () => {
                   <Tab.HeaderItem eventKey={1}>Período</Tab.HeaderItem>
                 </Tab.Header>
                 <Tab.Content eventKey={0}>
-                  <div>
-                 {veiculo.descricao}
-                  </div>
-
+                  <div>{veiculo.descricao}</div>
                 </Tab.Content>
                 <Tab.Content eventKey={1}>
-                  <div className="description">Teste 2</div>
+                <div style={{width: '450px'}}>
+                  <Form ref={formRef} onSubmit={() => console.log('oi')}>
+                    <Input name="retirada" label="Data e hora da retirada" icon={FiCalendar} />
+                    <Input name="entrega" label="Data e hora da entrega" icon={FiCalendar} />
+                    <Button fullwidth type="submit">
+                      Reservar agora
+                    </Button>
+                  </Form>
+                  </div>
                 </Tab.Content>
               </Tab>
             </TabContainer>
-            <Button>
-              <Link href="/">
-                Escolher o período do aluguel
-              </Link>
-            </Button>
           </div>
         </ContainerInfoCar>
       </DetailsContainer>
