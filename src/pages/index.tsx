@@ -24,7 +24,7 @@ const Dashboard: FC = () => {
           <Form ref={formRef} onSubmit={() => console.log('oi')}>
             <Input name="date" label="Data e hora da retirada" icon={FiCalendar} />
             <Input name="datee" label="Data e hora da entrega" icon={FiCalendar} />
-            <Button color="yellow">Reservar agora</Button>
+            <Button fullwidth color="yellow">Reservar agora</Button>
           </Form>
         </SectionContainer>
       </Section>
