@@ -33,7 +33,7 @@ const FormPassword: FC = () => {
         icon={FiLock}
         type="password"
       />
-      <Button>Confirmar</Button>
+      <Button fullwidth>Confirmar</Button>
     </Form>
   )
 }

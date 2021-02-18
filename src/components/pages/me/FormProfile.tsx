@@ -30,7 +30,7 @@ const FormProfile: FC = () => {
         label="Cpf"
         icon={FiCreditCard}
       />
-      <Button>Salvar alterações</Button>
+      <Button fullwidth>Salvar alterações</Button>
     </Form>
   )
 }
