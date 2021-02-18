@@ -20,7 +20,7 @@ interface IProps {
 
 const Card: FC<IProps> = ({ veiculo }) => {
   return (
-    <Link href="/cars/1" passHref>
+    <Link href={{ pathname: `cars/${veiculo.id}`, query: { data: JSON.stringify(veiculo) } }}>
       <CardContainer>
         <Image
           src={veiculo.url}

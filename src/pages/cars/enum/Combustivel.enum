@@ -1,0 +1,7 @@
+enum Combustivel {
+  'Gasolina' = 1,
+  'Álcool' = 2,
+  'Diesel' = 3
+}
+
+export default Combustivel;

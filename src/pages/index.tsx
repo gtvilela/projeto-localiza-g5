@@ -11,7 +11,6 @@ import Card from '../components/global/Card';
 import { Section, SectionContainer, Content, HeaderPag, BoxCards } from '../styles/pages/dashboard';
 
 import api from '../services/api';
-import { StringifyOptions } from "querystring";
 
 interface IProps {
   id: number;
@@ -62,7 +61,7 @@ const Dashboard: FC = () => {
         <BoxCards>
           {veiculos.map((veiculo) => (
             <Card key={veiculo.id} veiculo={veiculo} />
-          ))}
+            ))}
         </BoxCards>
      </Content>
     </>

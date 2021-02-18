@@ -1,6 +1,5 @@
-import Image from 'next/image';
 import Header from '../../components/global/Header';
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import {
   HeaderDetails,
   DetailsContainer,
@@ -10,30 +9,71 @@ import {
   Label,
   TabContainer,
 } from '../../styles/pages/cars/details';
-
 import Tab from '../../components/global/Tab';
 import Button from '../../components/global/Button';
 import FuelSvg from '../../../public/images-components/FuelSvg';
 import MeterSvg from '../../../public/images-components/MeterSvg';
-import CarSvg from '../../../public/images-components/Car';
 import TransmissionSvg from '../../../public/images-components/TransmissionSvg';
 import GroupSvg from '../../../public/images-components/GroupSvg';
 import HorsepowerSvg from '../../../public/images-components/HorsepowerSvg';
 import ZeroToHundredSvg from '../../../public/images-components/ZeroToHundredSvg';
 
+enum Combustivel {
+  'Gasolina' = 1,
+  'Álcool' = 2,
+  'Diesel' = 3
+}
+
 const Details: FC = () => {
+ const [veiculo, setVeiculo] = useState({
+    modelo: {
+      nome: 'initial'
+    },
+    marca: {
+      nome: 'Initial'
+    },
+    url: 'teste',
+    velocidadeMaxima: 'teste',
+    valorHora: 1,
+    combustivel: 1,
+    cambio: 'teste',
+    ocupantes: 5,
+    potencia: 0,
+    descricao: 'teste'
+ })
+  const getQueryStringParams = query => {
+    return query
+        ? (/^[?#]/.test(query) ? query.slice(1) : query)
+            .split('&')
+            .reduce((params, param) => {
+                    let [key, value] = param.split('=');
+                    params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
+                    return params;
+                }, {}
+            )
+        : {}
+  };
+
+
+  useEffect(() => {
+    const { data } = getQueryStringParams(window.location.search);
+    console.log(JSON.parse(data))
+    setVeiculo(JSON.parse(data))
+  }, []);
+
+
   return (
     <>
       <Header hidden={false} />
       <DetailsContainer>
         <HeaderDetails>
           <div className="car-specification">
-            <LabelHeader>Fiat</LabelHeader>
-            <span className="model">Uno 1.0</span>
+            <LabelHeader>{veiculo.marca.nome}</LabelHeader>
+            <span className="model">{veiculo.modelo.nome}</span>
           </div>
           <div className="info-price">
             <LabelHeader>Ao dia</LabelHeader>
-            <span className="price">R$68,18</span>
+            <span className="price">R${veiculo.valorHora * 24}</span>
           </div>
         </HeaderDetails>
 
@@ -41,33 +81,33 @@ const Details: FC = () => {
 
         <ContainerInfoCar>
           <div className="imagem">
-            <CarSvg width={544} height={299} />
+            <img src={veiculo.url} width={544} height={299} />
           </div>
           <div className="container-around">
             <ContainerLabels>
               <Label>
                 <MeterSvg width={20} height={20} />
-                <div>270km/h</div> {/* propriedade km do objeto carro */}
+                <div>{veiculo.velocidadeMaxima}km/h</div>
               </Label>
               <Label>
                 <ZeroToHundredSvg width={20} height={20} />
-                <div>6.8s</div> {/* propriedade 0-100 do objeto carro */}
+                <div>6.8s</div>
               </Label>
               <Label>
                 <FuelSvg width={20} height={20} />
-                <div>Gasolina</div> {/* propriedade combustível do objeto carro */}
+                <div>{Combustivel[veiculo.combustivel]}</div>
               </Label>
               <Label>
                 <TransmissionSvg width={20} height={20} />
-                <div>Auto</div> {/* propriedade transmissão do objeto carro */}
+                <div>{veiculo.cambio}</div>
               </Label>
               <Label>
                 <GroupSvg width={20} height={20} />
-                <div>5 pessoas</div> {/* propriedade qtdPessoa do objeto carro */}
+                <div>{veiculo.ocupantes} pessoas</div>
               </Label>
               <Label>
                 <HorsepowerSvg width={20} height={20} />
-                <div>280HP</div> {/* propriedade hp do objeto carro */}
+                <div>{veiculo.potencia}HP</div>
               </Label>
             </ContainerLabels>
             <TabContainer>
@@ -77,9 +117,8 @@ const Details: FC = () => {
                   <Tab.HeaderItem eventKey={1}>Período</Tab.HeaderItem>
                 </Tab.Header>
                 <Tab.Content eventKey={0}>
-                  <div className="description">
-                  O Fiat Uno chama a atenção. Além de um novo design frontal, mais moderno e cheio de personalidade, o
-                  Uno conta com novos parachoques e grade dianteira, que ressaltam ainda mais os contornos do modelo.
+                  <div>
+                 {veiculo.descricao}
                   </div>
 
                 </Tab.Content>
