@@ -1,10 +1,8 @@
 import moment from 'moment';
 import React, { FC, InputHTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import DatePicker from './Datepicker';
-import { InputContainer, InputText, LabelContainer } from './StyledComponent/InputStyle';
 import { FiCalendar } from 'react-icons/fi'
-import Input from '@components/global/Input';
+import InputDatepicker from './InputDatepicker';
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
     background?: string;
@@ -15,12 +13,12 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
     type: string; 
 }
 
-const InputCalendario: FC<IProps> = ({
+const DatePickerForm: FC<IProps> = ({
     background = '#ffffff', color = '#000000', iconStart, iconEnd, label, type, ...rest
 }) => {
     const [open, setOpen] = useState(false);
     const [date, setDate] = useState('');
-    const { register, handleSubmit } = useForm();
+    const inputRef = useRef<HTMLInputElement>(null);
     
     const regexp = /^[0-9\b]+$/; // regex que aceita somente números
     
@@ -28,7 +26,7 @@ const InputCalendario: FC<IProps> = ({
 
     const outputDate = (outputDate: string) => {
         setDate(outputDate);
-        // toggleDatepicker(false);
+        inputRef.current.focus();
     }
 
     const normalizeInputNumber = (event, value) => {
@@ -64,29 +62,26 @@ const InputCalendario: FC<IProps> = ({
 
     return (
         <div onClick={() => toggleDatepicker(!open)}>
-            {/* <InputContainer onClick={() => toggleDatepicker(!open)}> */}
-                <Input 
-                    onClick={() => toggleDatepicker(!open)}
-                    name="date" label="Data da retirada" icon={FiCalendar} 
-                    onChange={(event) => {
-                        const {value} = event.target
-                        event.target.value = normalizeInputNumber(event, value)
-                    }}
-                    value={date}
-                    background={background} 
-                    color={color}
-                    autoComplete={'off'}
-                    maxLength={10}
-                    // ref={register}
-                    {...rest}
-                />
-            {/* </InputContainer> */}
+            <InputDatepicker
+                
+                name="date" label="Data da retirada" icon={FiCalendar} 
+                onChange={(event) => {
+                    const {value} = event.target
+                    event.target.value = normalizeInputNumber(event, value)
+                }}
+                value={date}
+                background={background} 
+                color={color}
+                autoComplete={'off'}
+                maxLength={10}
+                ref={inputRef}
+                {...rest}
+            />
             {open && (
                 <DatePicker selectedDate={date} outputDate={e => outputDate(e)}></DatePicker>
             )}
-            {/* <DatePicker visible={open} selectedDate={date} outputDate={e => outputDate(e)}></DatePicker> */}
         </div>
     );
 };
 
-export default InputCalendario;
+export default DatePickerForm;

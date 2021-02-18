@@ -26,6 +26,7 @@ export const DatePickerHeaderContainer = styled.div`
     position: relative;
     width: 100%;
     display: inline-flex;
+    border-radius: 5px;
     justify-content: space-between;
     align-items: center;
     color: black;

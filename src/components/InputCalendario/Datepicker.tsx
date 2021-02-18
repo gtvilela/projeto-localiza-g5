@@ -87,7 +87,7 @@ const DatePicker: FC<IPropsDatePicker> = ({ selectedDate, outputDate, minDate, m
     }
 
     const handleOnClick = (event: React.MouseEvent<HTMLButtonElement>, side: string) => {
-        event.currentTarget.blur();
+        // event.currentTarget.blur();
         if (side === 'left') {
             if (defaultMonth.current === 1) {
                 defaultMonth.current = 12;
