@@ -1,7 +1,11 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
 
+<<<<<<< HEAD
 import Header from '../../components/global/Header/Header';
+=======
+import Header from '../../components/global/Header';
+>>>>>>> 6c6db420293032584449b04d4230d674887c792e
 import Tab from '../../components/global/Tab/Tab';
 
 import FormProfile from '../../components/pages/me/FormProfile';

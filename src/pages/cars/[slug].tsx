@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Header from '../../components/global/Header/Header';
+import Header from '../../components/global/Header';
 import React, { FC } from 'react';
 import {
   HeaderDetails,
