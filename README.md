@@ -9,15 +9,15 @@
 
 <p align="center">
   <kbd>
-    <img width="240" style="border-radius: 5px" height="450" src="./public/assets/rent-a-car.jpeg" alt="Intro">
+    <img width="220" style="border-radius: 5px" height="450" src="./public/assets/rent-a-car.jpeg" alt="Intro">
   </kbd>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <kbd>
-    <img width="240" style="border-radius: 5px" height="450" src="./public/assets/profile.jpeg" alt="Register adopt">
+    <img width="220" style="border-radius: 5px" height="450" src="./public/assets/profile.jpeg" alt="Register adopt">
   </kbd>
   &nbsp;&nbsp;&nbsp;&nbsp;
   <kbd>
-    <img width="240" style="border-radius: 5px" height="450" src="./public/assets/schedules.jpeg" alt="Chat">
+    <img width="220" style="border-radius: 5px" height="450" src="./public/assets/schedules.jpeg" alt="Chat">
   </kbd>
 </p>
 
