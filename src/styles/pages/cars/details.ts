@@ -41,7 +41,7 @@ export const HeaderDetails = styled.div`
     }
   }
 
-  @media(max-width: 452px) {
+  @media (max-width: 452px) {
     justify-content: center;
     div {
       align-items: center;
@@ -63,9 +63,13 @@ export const ContainerInfoCar = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin-top: 40px;
-    button {
-      margin: 0 auto;
+  button {
+    margin: 0 auto;
+    a {
+      text-decoration: none;
+      color: #fff;
     }
+  }
 
   @media (max-width: 452px) {
     flex-direction: column;
@@ -77,7 +81,6 @@ export const ContainerInfoCar = styled.div`
         margin-bottom: 20px;
       }
     }
-
   }
 `;
 

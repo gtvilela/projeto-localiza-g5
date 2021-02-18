@@ -17,6 +17,7 @@ import TransmissionSvg from '../../../public/images-components/TransmissionSvg';
 import GroupSvg from '../../../public/images-components/GroupSvg';
 import HorsepowerSvg from '../../../public/images-components/HorsepowerSvg';
 import ZeroToHundredSvg from '../../../public/images-components/ZeroToHundredSvg';
+import Link from 'next/link';
 
 enum Combustivel {
   'Gasolina' = 1,
@@ -127,7 +128,11 @@ const Details: FC = () => {
                 </Tab.Content>
               </Tab>
             </TabContainer>
-            <Button>Escolher o período do aluguel</Button>
+            <Button>
+              <Link href="/">
+                Escolher o período do aluguel
+              </Link>
+            </Button>
           </div>
         </ContainerInfoCar>
       </DetailsContainer>
