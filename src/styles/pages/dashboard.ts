@@ -1,8 +1,6 @@
 import styled from 'styled-components';
-import { FormProps  } from '@unform/core';
-import { Form } from '@unform/web';
 
-import theme from '@styles/theme'
+import theme from '../../styles/theme'
 
 export const Section = styled.div`
   min-height: 264px;

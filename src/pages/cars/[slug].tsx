@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Header from '../../components/global/Header/Header';
+import Header from '../../components/global/Header';
 import React, { FC } from 'react';
 import {
   HeaderDetails,
@@ -9,7 +9,7 @@ import {
   ContainerLabels,
   Label,
   TabContainer,
-} from '../../styles/pages/details/details';
+} from '../../styles/pages/cars/details';
 import Tab from '../../components/global/Tab/Tab';
 import Button from '../../components/global/Button';
 import FuelSvg from '../../../public/images-components/FuelSvg';
