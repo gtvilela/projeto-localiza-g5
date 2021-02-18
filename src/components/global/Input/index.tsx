@@ -29,14 +29,27 @@ const Input: React.FC<IPropsInput> = ({ name, containerStyle = {}, label, icon: 
   }, [fieldName, registerField]);
 
   return (
-    <Container style={containerStyle} isErrored={Boolean(error)} isFilled={isFilled} isFocused={isFocused}>
+    <Container
+      data-testid="input-container"
+      style={containerStyle}
+      isErrored={Boolean(error)}
+      isFilled={isFilled}
+      isFocused={isFocused}
+    >
       {Icon && (
         <div className="icon-container">
           <Icon size={18} />
         </div>
       )}
       <label htmlFor={name}>{label}</label>
-      <input id={name} onFocus={handleInputFocus} onBlur={handleInputBlur} defaultValue={defaultValue} ref={inputRef} {...rest} />
+      <input
+        id={name}
+        onFocus={handleInputFocus}
+        onBlur={handleInputBlur}
+        defaultValue={defaultValue}
+        ref={inputRef}
+        {...rest}
+      />
     </Container>
   );
 };
