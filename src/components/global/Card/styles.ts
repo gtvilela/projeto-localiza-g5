@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import theme from '@styles/theme'
+import theme from '../../../styles/theme'
 
 export const CardContainer = styled.a`
   background: ${theme.colors.white};
@@ -55,7 +55,7 @@ export const CardDescription = styled.div`
   }
 
   div:last-child {
-    margin-left: 48px;
+    margin-left: 40px;
 
     strong {
       color: ${theme.colors.primary};

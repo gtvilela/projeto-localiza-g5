@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import theme from '@styles/theme'
+import theme from '../../../styles/theme'
 
 interface ContainerProps {
   isErrored: boolean;

@@ -3,8 +3,8 @@ import { SubmitHandler, FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { FiMail, FiLock } from 'react-icons/fi';
 
-import Input from '@components/global/Input';
-import Button from '@components/global/Button';
+import Input from '../../global/Input';
+import Button from '../../global/Button';
 
 const FormPassword: FC = () => {
   const formRef = useRef<FormHandles>(null);
@@ -26,7 +26,7 @@ const FormPassword: FC = () => {
         label="Senha"
         type="password"
       />
-      <Button>Entrar</Button>
+      <Button fullwidth>Entrar</Button>
     </Form>
   )
 }
