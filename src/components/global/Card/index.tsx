@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { CardContainer, CardDescription } from './styles';
 
-interface IProps {
+export interface IProps {
   veiculo: {
     id: number;
     valorHora: number;
@@ -20,7 +20,7 @@ interface IProps {
 
 const Card: FC<IProps> = ({ veiculo }) => {
   return (
-    <Link href="/cars/1" passHref>
+    <Link href={{ pathname: `cars/${veiculo.id}`, query: { data: JSON.stringify(veiculo) } }}>
       <CardContainer>
         <Image
           src={veiculo.url}

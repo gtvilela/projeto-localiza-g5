@@ -107,13 +107,5 @@ export const TabContainer = styled.div`
   margin-top: 24px;
   padding: 0;
 
-  .description {
-    width: 444px;
-
-    @media (max-width: 420px) {
-     width: 300px;
-   }
-  }
-
 
 `;
