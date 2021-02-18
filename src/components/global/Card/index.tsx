@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { CardContainer, CardDescription } from './styles';
 
-interface IProps {
+export interface IProps {
   veiculo: {
     id: number;
     valorHora: number;
