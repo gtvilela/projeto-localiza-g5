@@ -10,7 +10,8 @@ import {
   Label,
   TabContainer,
 } from '../../styles/pages/cars/details';
-import Tab from '../../components/global/Tab/Tab';
+
+import Tab from '../../components/global/Tab';
 import Button from '../../components/global/Button';
 import FuelSvg from '../../../public/images-components/FuelSvg';
 import MeterSvg from '../../../public/images-components/MeterSvg';

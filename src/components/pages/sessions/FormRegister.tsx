@@ -40,7 +40,7 @@ const FormProfile: FC = () => {
         label="Confirmação da senha"
         icon={FiLock}
       />
-      <Button>Cadastrar</Button>
+      <Button fullwidth>Cadastrar</Button>
     </Form>
   )
 }

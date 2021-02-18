@@ -26,7 +26,7 @@ const FormPassword: FC = () => {
         label="Senha"
         type="password"
       />
-      <Button>Entrar</Button>
+      <Button fullwidth>Entrar</Button>
     </Form>
   )
 }

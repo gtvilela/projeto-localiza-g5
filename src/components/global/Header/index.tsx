@@ -7,7 +7,7 @@ import { HeaderContainer, Content, HeaderStart, LogoContainer, ButtonBack, Heade
 
 import { IPropsHeader } from './types/index';
 
-import Dropdown from '../Dropdown/Dropdown';
+import Dropdown from '../Dropdown';
 import LogoLocalizaComponent from '../../../../public/images-components/LogoLocalizaSvg';
 import Avatar from '../../../../public/images-components/AvatarSvg';
 

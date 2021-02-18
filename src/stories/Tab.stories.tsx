@@ -1,6 +1,6 @@
 
 import { Story, Meta } from '@storybook/react';
-import Tab from '../components/global/Tab/Tab';
+import Tab from '../components/global/Tab';
 
 export default {
   title: 'Components/Tab',
