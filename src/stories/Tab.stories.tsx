@@ -1,4 +1,3 @@
-
 import { Story, Meta } from '@storybook/react';
 import Tab from '../components/global/Tab';
 
@@ -7,20 +6,24 @@ export default {
   component: Tab,
 } as Meta;
 
-const Template: Story = (args) => {return <Tab {...args}>
+const Template: Story = (args) => {
+  return (
+    <Tab {...args}>
+      <Tab.Header>
+        <Tab.HeaderItem eventKey={0}>Tab 1</Tab.HeaderItem>
+        <Tab.HeaderItem eventKey={1}>Tab 2</Tab.HeaderItem>
+      </Tab.Header>
 
-  <Tab.Header>
-    <Tab.HeaderItem eventKey={0}>Header Tab 1</Tab.HeaderItem>
-    <Tab.HeaderItem eventKey={1}>Header Tab 2</Tab.HeaderItem>
-  </Tab.Header>
-  <Tab.Content eventKey={0}>
-     Teste tab 1
-  </Tab.Content>
-  <Tab.Content eventKey={1}>
-    Teste tab 2
-  </Tab.Content>
-</Tab>;};
+      <Tab.Content eventKey={0}>I'm the first content</Tab.Content>
 
-export const TabDefault = Template.bind({});
-TabDefault.args = {
+      <Tab.Content eventKey={1}>Changing tabs, right?</Tab.Content>
+    </Tab>
+  );
+};
+
+export const Default = Template.bind({});
+Default.args = {};
+
+Default.parameters = {
+  controls: { hideNoControlsWarning: true },
 };

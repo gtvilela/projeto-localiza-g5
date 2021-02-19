@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 
 import TabHeader from './TabHeader/TabHeader';
 import TabHeaderItem from './TabHeader/TabHeaderItem/TabHeaderItem';

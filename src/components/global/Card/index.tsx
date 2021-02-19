@@ -2,31 +2,14 @@ import React, { FC } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
+import { IPropsCard } from './types/index';
 import { CardContainer, CardDescription } from './styles';
 
-export interface IProps {
-  veiculo: {
-    id: number;
-    valorHora: number;
-    url: string;
-    marca: {
-      nome: string;
-    }
-    modelo: {
-      nome: string;
-    }
-  }
-}
-
-const Card: FC<IProps> = ({ veiculo }) => {
+const Card: FC<IPropsCard> = ({ veiculo }) => {
   return (
     <Link href={{ pathname: `cars/${veiculo.id}`, query: { data: JSON.stringify(veiculo) } }}>
       <CardContainer>
-        <Image
-          src={veiculo.url}
-          width={248}
-          height={136}
-        />
+        <Image src={veiculo.url} width={248} height={136} />
         <CardDescription>
           <div>
             <span>{veiculo.marca.nome}</span>
@@ -39,7 +22,7 @@ const Card: FC<IProps> = ({ veiculo }) => {
         </CardDescription>
       </CardContainer>
     </Link>
-  )
-}
+  );
+};
 
 export default Card;
