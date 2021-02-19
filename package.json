@@ -12,6 +12,7 @@
     "coverage": "jest --coverage"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
     "@storybook/addon-centered": "^5.3.21",
     "@storybook/addon-info": "^5.3.21",
     "@unform/core": "^2.1.5",
