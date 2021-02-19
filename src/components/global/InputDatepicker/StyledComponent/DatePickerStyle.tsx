@@ -6,11 +6,7 @@ interface IDatePickerButtonContainerProps {
     width?: string;  
 }
 
-interface IDatePickerContainerProps {
-    // visible: boolean;
-}
-
-export const DatePickerContainer = styled.div<IDatePickerContainerProps>`
+export const DatePickerContainer = styled.div`
     background: #F2F2FA;
     position: absolute;
     min-width: 300px;
@@ -18,7 +14,6 @@ export const DatePickerContainer = styled.div<IDatePickerContainerProps>`
     box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
     border-color: rgba(223,225,229,0);
     z-index: 100;
-    /* display: ${(props) => props.visible === true ? 'block' : 'none'}; */
 `;
 
 export const DatePickerHeaderContainer = styled.div`

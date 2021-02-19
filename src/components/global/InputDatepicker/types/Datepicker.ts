@@ -3,5 +3,4 @@ export interface IPropsDatePicker {
     minDate?: string,
     maxDate?: string
     outputDate?: any;
-    // visible: boolean
 }

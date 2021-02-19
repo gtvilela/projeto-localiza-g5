@@ -1,4 +1,4 @@
-import React, { FC, forwardRef, PropsWithChildren, useEffect, useRef, useState } from 'react';
+import React, { forwardRef, PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { DatePickerBodyContainer, DatePickerContainer, DatePickerHeaderContainer, SubHeaderDatePickerContainer } from './StyledComponent/DatePickerStyle';
 import { IPropsDatePicker } from './types/Datepicker';
 import moment from 'moment';

@@ -1,17 +1,9 @@
 import moment from 'moment';
-import React, { FC, InputHTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import DatePicker from './Datepicker';
 import { FiCalendar } from 'react-icons/fi'
 import InputDatepicker from './InputDatepicker';
-
-interface IProps extends InputHTMLAttributes<HTMLInputElement> {
-    background?: string;
-    color?: string;
-    iconStart?: ReactNode;
-    iconEnd?: ReactNode;
-    label?: string;
-    type: string; 
-}
+import { IProps } from './types/DatePickerForm';
 
 const DatePickerForm: FC<IProps> = ({
     background = '#ffffff', color = '#000000', iconStart, iconEnd, label, type, ...rest
@@ -79,12 +71,7 @@ const DatePickerForm: FC<IProps> = ({
             <div onClick={() => toggleDatepicker(!open)}>
                 <InputDatepicker                
                     name="date" label="Data da retirada" icon={FiCalendar} 
-                    // onChange={(event) => {
-                    //     const {value} = event.target;
-                    //     event.target.value = normalizeInputNumber(event, value);
-                    // }}
                     onChange={(event) => normalizeInputNumber(event)}
-                    // value={date}
                     background={background} 
                     color={color}
                     autoComplete={'off'}

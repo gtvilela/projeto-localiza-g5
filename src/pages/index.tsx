@@ -2,16 +2,14 @@ import React, { FC, useRef, useEffect, useState } from "react";
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 
-import DatePickerForm from "@components/InputCalendario/DatePickerForm";
 import Header from '../components/global/Header';
-import Input from '../components/global/Input'
 import Button from '../components/global/Button'
 import Card from '../components/global/Card';
 
 import { Section, SectionContainer, Content, HeaderPag, BoxCards } from '../styles/pages/dashboard';
 
 import api from '../services/api';
-import { FiCalendar } from "react-icons/fi";
+import DatePickerForm from "@components/global/InputDatepicker/DatePickerForm";
 
 interface IProps {
   id: number;
