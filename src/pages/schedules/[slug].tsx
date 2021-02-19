@@ -8,12 +8,12 @@ const Schedules: FC = () => {
       <Header hidden={false} />
 
       <ContainerSchedules>
-      <h1>Seus agendamentos</h1>
-      <ContainerCards>
-        <CardWithSchedules />
-        <CardWithSchedules />
-        <CardWithSchedules />
-        <CardWithSchedules />
+        <h1>Seus agendamentos</h1>
+        <ContainerCards>
+          <CardWithSchedules />
+          <CardWithSchedules />
+          <CardWithSchedules />
+          <CardWithSchedules />
         </ContainerCards>
       </ContainerSchedules>
     </>
