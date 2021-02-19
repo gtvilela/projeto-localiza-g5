@@ -5,7 +5,7 @@ import { IPropsInput } from './types/InputDatepicker';
 import { Container } from './StyledComponent/InputDatepicker';
 
 const InputDatepicker: React.ForwardRefRenderFunction<HTMLInputElement, PropsWithChildren<IPropsInput>> = (props, ref) => {
-  const { onChange, name, containerStyle = {}, label, icon: Icon, ...rest } = props;
+  const { name, containerStyle = {}, label, icon: Icon, ...rest } = props;
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
   const { fieldName, defaultValue, error, registerField } = useField(name);

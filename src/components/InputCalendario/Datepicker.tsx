@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, forwardRef, PropsWithChildren, useEffect, useRef, useState } from 'react';
 import { DatePickerBodyContainer, DatePickerContainer, DatePickerHeaderContainer, SubHeaderDatePickerContainer } from './StyledComponent/DatePickerStyle';
 import { IPropsDatePicker } from './types/Datepicker';
 import moment from 'moment';
@@ -6,7 +6,8 @@ import { RiArrowDropLeftLine, RiArrowDropRightLine } from 'react-icons/ri';
 import DatePickerButton from './DatePickerButton';
 import { IDay } from './types/Day';
 
-const DatePicker: FC<IPropsDatePicker> = ({ selectedDate, outputDate, minDate, maxDate }) => {
+const DatePicker: React.ForwardRefRenderFunction<HTMLDivElement, PropsWithChildren<IPropsDatePicker>> = (props, ref) => {
+    let { selectedDate, outputDate, minDate, maxDate } = props;
 
     let defaultDay = useRef(+moment().format('DD'));
     let defaultMonth = useRef(+moment().format('MM'));
@@ -118,7 +119,7 @@ const DatePicker: FC<IPropsDatePicker> = ({ selectedDate, outputDate, minDate, m
 
     return (
         <>
-            <DatePickerContainer>
+            <DatePickerContainer ref={ref}>
                 <DatePickerHeaderContainer>
                     <DatePickerButton width={'20%'} onClick={x => handleOnClick(x, 'left')} icon={<RiArrowDropLeftLine size={30} />} selected={false}/>
                     <label htmlFor="">{monthName} &nbsp; {yearName}</label>
@@ -150,4 +151,4 @@ const DatePicker: FC<IPropsDatePicker> = ({ selectedDate, outputDate, minDate, m
     );
 };
 
-export default DatePicker;
+export default forwardRef(DatePicker);

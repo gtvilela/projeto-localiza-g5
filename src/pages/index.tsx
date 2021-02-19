@@ -11,6 +11,7 @@ import Card from '../components/global/Card';
 import { Section, SectionContainer, Content, HeaderPag, BoxCards } from '../styles/pages/dashboard';
 
 import api from '../services/api';
+import { FiCalendar } from "react-icons/fi";
 
 interface IProps {
   id: number;
@@ -51,9 +52,6 @@ const Dashboard: FC = () => {
           <Form ref={formRef} onSubmit={() => console.log('oi')}>
             <DatePickerForm background="#ffffff" color="#000000" type="text" />
             <DatePickerForm background="#ffffff" color="#000000" type="text" />
-            <Button color="yellow">Reservar agora</Button>
-            <Input name="date" label="Data e hora da retirada" icon={FiCalendar} />
-            <Input name="datee" label="Data e hora da entrega" icon={FiCalendar} />
             <Button fullwidth color="yellow">Reservar agora</Button>
           </Form>
         </SectionContainer>
