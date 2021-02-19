@@ -46,7 +46,6 @@ const Dashboard: FC = () => {
   const handleClose = (value) => {
     setOpen(false);
     setValue(value);
-    console.log(value)
   };
 
   const handleCancel = () => {
@@ -59,12 +58,11 @@ const Dashboard: FC = () => {
   }, [value]);
 
   function justFiltereds(value) {
-    value.map((i: string) => {
-      const teste = veiculos.filter(({ categoria, ano }) => {
-        return categoria.nome === i || ano.toString() === i;
-      });
-      setfilteredVeiculos(teste);
+    console.log(value)
+    const filtrados = veiculos.filter((veiculo) => {
+    return value.indexOf(veiculo.ano) !== -1 || value.indexOf(veiculo.categoria.nome) !== -1
     });
+    setfilteredVeiculos(filtrados);
   }
   useEffect(() => {
     async function getVeiculos(): Promise<void> {

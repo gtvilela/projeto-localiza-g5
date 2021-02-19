@@ -51,6 +51,11 @@ const DialogFilter: FC<IPropsDialog> = (props) => {
     onClose(checkeds);
   };
 
+  const handleOK = () => {
+    onClose(checkeds);
+    setCheckeds([]);
+  }
+
   const handleChangeCategories = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCheckeds([...checkeds, event.target.name]);
   };
@@ -95,7 +100,7 @@ const DialogFilter: FC<IPropsDialog> = (props) => {
           <Button color="yellow" onClick={() => onCancel()}>
             Cancelar
           </Button>
-          <Button onClick={() => onClose(checkeds)}>OK</Button>
+          <Button onClick={handleOK}>OK</Button>
         </div>
         </FormGroup>
       </DialogContainer>
