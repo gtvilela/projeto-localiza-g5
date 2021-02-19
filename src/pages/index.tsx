@@ -29,7 +29,7 @@ interface IProps {
     id: number;
     nome: string;
   };
-  ano: number;
+  ano: string;
 }
 
 const Dashboard: FC = () => {
@@ -58,9 +58,13 @@ const Dashboard: FC = () => {
   }, [value]);
 
   function justFiltereds(value) {
-    console.log(value)
+    console.log(value);
     const filtrados = veiculos.filter((veiculo) => {
-    return value.indexOf(veiculo.ano) !== -1 || value.indexOf(veiculo.categoria.nome) !== -1
+      return (
+        value.indexOf(veiculo.ano) !== -1 ||
+        value.indexOf(veiculo.categoria.nome) !== -1 ||
+        value.indexOf(veiculo.marca.nome) !== -1
+      );
     });
     setfilteredVeiculos(filtrados);
   }
@@ -83,7 +87,6 @@ const Dashboard: FC = () => {
             Aluguel de Carros com a maior frota do Brasil!
             <br />
             Faça sua simulação!
-
           </h1>
           <Form ref={formRef} onSubmit={() => console.log('oi')}>
             <Input name="date" label="Data e hora da retirada" icon={FiCalendar} />

@@ -1,8 +1,17 @@
 import { Button } from '@components/global';
-import { Checkbox, CheckboxProps, Dialog, DialogTitle, FormControlLabel, FormGroup, withStyles } from '@material-ui/core';
+import {
+  Checkbox,
+  CheckboxProps,
+  Dialog,
+  DialogTitle,
+  FormControlLabel,
+  FormGroup,
+  withStyles,
+} from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
 import React, { FC, useEffect, useState } from 'react';
 import api from 'services/api';
+import { SymbolLogo } from '../../../public/images-components/IconsReact';
 import { ContainerFilters, DialogContainer, TitleFilters } from './styles';
 
 const GreenCheckbox = withStyles({
@@ -36,6 +45,7 @@ interface IPropsDialog {
 const DialogFilter: FC<IPropsDialog> = (props) => {
   const { onClose, isOpen, onCancel } = props;
   const [categorias, setCategorias] = useState([]);
+  const [marcas, setMarcas] = useState([]);
   const [checkeds, setCheckeds] = useState([]);
 
   useEffect(() => {
@@ -43,8 +53,13 @@ const DialogFilter: FC<IPropsDialog> = (props) => {
       const response = await api.get('/Categoria/buscarTodos');
       setCategorias(response.data);
     }
+    async function getMarcas(): Promise<void> {
+      const response = await api.get('/Marca/buscarTodos');
+      setMarcas(response.data);
+    }
 
     getCategorias();
+    getMarcas();
   }, []);
 
   const handleClose = () => {
@@ -54,7 +69,7 @@ const DialogFilter: FC<IPropsDialog> = (props) => {
   const handleOK = () => {
     onClose(checkeds);
     setCheckeds([]);
-  }
+  };
 
   const handleChangeCategories = (event: React.ChangeEvent<HTMLInputElement>) => {
     setCheckeds([...checkeds, event.target.name]);
@@ -64,44 +79,63 @@ const DialogFilter: FC<IPropsDialog> = (props) => {
     setCheckeds([...checkeds, event.target.name]);
   };
 
+  const handleChangeBrand = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCheckeds([...checkeds, event.target.name]);
+  };
+
   return (
     <Dialog onClose={handleClose} aria-labelledby="simple-dialog-title" open={isOpen}>
       <DialogContainer>
-        <DialogTitle id="simple-dialog-title">Filtro</DialogTitle>
+        <DialogTitle className="header" id="simple-dialog-title">
+          <SymbolLogo />
+        </DialogTitle>
         <hr />
         <FormGroup row>
-        <div>
-          <TitleFilters>Categoria veículo</TitleFilters>
-          <ContainerFilters>
-            {categorias.map((categoria) => (
-              <div key={categoria.id}>
-                <FormControlLabel
-                  control={<GreenCheckbox onChange={handleChangeCategories} name={categoria.nome} />}
-                  label={categoria.nome}
-                />
-              </div>
-            ))}
-          </ContainerFilters>
-        </div>
-        <div>
-          <TitleFilters>Ano veículo</TitleFilters>
-          <ContainerFilters>
-            {anos.map((ano) => (
-              <div key={ano.id}>
-                <FormControlLabel
-                  control={<GreenCheckbox onChange={handleChangeYears} name={ano?.nome?.toString()} />}
-                  label={ano.nome}
-                />
-              </div>
-            ))}
-          </ContainerFilters>
-        </div>
-        <div className="button-filter">
-          <Button color="yellow" onClick={() => onCancel()}>
-            Cancelar
-          </Button>
-          <Button onClick={handleOK}>OK</Button>
-        </div>
+          <div>
+            <TitleFilters>Categoria veículo</TitleFilters>
+            <ContainerFilters>
+              {categorias.map((categoria) => (
+                <div key={categoria.id}>
+                  <FormControlLabel
+                    control={<GreenCheckbox onChange={handleChangeCategories} name={categoria.nome} />}
+                    label={categoria.nome}
+                  />
+                </div>
+              ))}
+            </ContainerFilters>
+          </div>
+          <div>
+            <TitleFilters>Marca</TitleFilters>
+            <ContainerFilters>
+              {marcas.map((marca) => (
+                <div key={marca.id}>
+                  <FormControlLabel
+                    control={<GreenCheckbox onChange={handleChangeBrand} name={marca.nome} />}
+                    label={marca.nome}
+                  />
+                </div>
+              ))}
+            </ContainerFilters>
+          </div>
+          <div>
+            <TitleFilters>Ano veículo</TitleFilters>
+            <ContainerFilters>
+              {anos.map((ano) => (
+                <div key={ano.id}>
+                  <FormControlLabel
+                    control={<GreenCheckbox onChange={handleChangeYears} name={ano?.nome?.toString()} />}
+                    label={ano.nome}
+                  />
+                </div>
+              ))}
+            </ContainerFilters>
+          </div>
+          <div className="button-filter">
+            <Button color="yellow" onClick={() => onCancel()}>
+              Cancelar
+            </Button>
+            <Button onClick={handleOK}>OK</Button>
+          </div>
         </FormGroup>
       </DialogContainer>
     </Dialog>
