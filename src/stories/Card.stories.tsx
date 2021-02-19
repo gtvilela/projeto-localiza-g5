@@ -1,3 +1,5 @@
+
+import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
 import { IPropsCard } from '../components/global/Card/types/index';
@@ -12,3 +14,4 @@ const Template: Story<IPropsCard> = (args) => <CardWithSchedules {...args} />;
 
 export const CardDefault = Template.bind({});
 CardDefault.args = {};
+
