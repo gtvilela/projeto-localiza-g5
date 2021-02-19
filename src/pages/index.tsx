@@ -1,7 +1,7 @@
 import React, { FC, useRef, useEffect, useState } from "react";
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-import { FiCalendar } from 'react-icons/fi'
+import { FiCalendar, FiFilter } from 'react-icons/fi'
 
 import Header from '../components/global/Header';
 import Input from '../components/global/Input'
@@ -11,27 +11,61 @@ import Card from '../components/global/Card';
 import { Section, SectionContainer, Content, HeaderPag, BoxCards } from '../styles/pages/dashboard';
 
 import api from '../services/api';
+import DialogFilter from "@components/DialogFilter/DialogFilter";
 
 interface IProps {
   id: number;
   valorHora: number;
   url: string;
   marca: {
+    id: number,
     nome: string;
   }
   modelo: {
+    id: number,
     nome: string;
   }
+  categoria: {
+    id: number,
+    nome: string;
+  },
+  ano: number
 }
 
 const Dashboard: FC = () => {
   const formRef = useRef<FormHandles>();
+  const [open, setOpen] = useState(false)
   const [veiculos, setVeiculos] = useState<IProps[]>([]);
+  const [filteredVeiculos, setfilteredVeiculos] = useState(veiculos);
+  const [value, setValue] = useState([])
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+   setValue(value)
+  };
+
+  useEffect(() => {
+    justFiltereds(value)
+  },[value])
+
+
+  function justFiltereds(value) {
+    value.map(i => {
+     const teste = veiculos.filter(({categoria, ano}) => {
+        return  categoria.nome === i || ano === i
+      })
+      setfilteredVeiculos(teste)
+    })
+  }
   useEffect(() => {
     async function getVeiculos(): Promise<void> {
       const response = await api.get('/Veiculo/buscarTodos');
       setVeiculos(response.data)
+      setfilteredVeiculos(response.data)
     }
 
     getVeiculos()
@@ -58,10 +92,12 @@ const Dashboard: FC = () => {
       <Content>
         <HeaderPag>
           <h2>Selecione um carro</h2>
-          <span>Total 6 carros</span>
+          <span>Total {filteredVeiculos.length} carros</span>
+          <Button onClick={handleClickOpen}><FiFilter /></Button>
+          <DialogFilter onClose={handleClose} isOpen={open}/>
         </HeaderPag>
         <BoxCards>
-          {veiculos.map((veiculo) => (
+          {filteredVeiculos.map((veiculo) => (
             <Card key={veiculo.id} veiculo={veiculo} />
             ))}
         </BoxCards>
