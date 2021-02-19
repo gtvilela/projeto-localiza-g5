@@ -1,5 +1,5 @@
 import { Button } from '@components/global';
-import { Checkbox, CheckboxProps, Dialog, DialogTitle, FormControlLabel, withStyles } from '@material-ui/core';
+import { Checkbox, CheckboxProps, Dialog, DialogTitle, FormControlLabel, FormGroup, withStyles } from '@material-ui/core';
 import { green } from '@material-ui/core/colors';
 import React, { FC, useEffect, useState } from 'react';
 import api from 'services/api';
@@ -64,6 +64,7 @@ const DialogFilter: FC<IPropsDialog> = (props) => {
       <DialogContainer>
         <DialogTitle id="simple-dialog-title">Filtro</DialogTitle>
         <hr />
+        <FormGroup row>
         <div>
           <TitleFilters>Categoria veículo</TitleFilters>
           <ContainerFilters>
@@ -96,6 +97,7 @@ const DialogFilter: FC<IPropsDialog> = (props) => {
           </Button>
           <Button onClick={() => onClose(checkeds)}>OK</Button>
         </div>
+        </FormGroup>
       </DialogContainer>
     </Dialog>
   );

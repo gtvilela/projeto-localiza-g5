@@ -46,6 +46,7 @@ const Dashboard: FC = () => {
   const handleClose = (value) => {
     setOpen(false);
     setValue(value);
+    console.log(value)
   };
 
   const handleCancel = () => {
@@ -58,11 +59,10 @@ const Dashboard: FC = () => {
   }, [value]);
 
   function justFiltereds(value) {
-    value.map((i) => {
+    value.map((i: string) => {
       const teste = veiculos.filter(({ categoria, ano }) => {
-        return categoria.nome === i || ano === i;
+        return categoria.nome === i || ano.toString() === i;
       });
-      console.log(teste)
       setfilteredVeiculos(teste);
     });
   }
