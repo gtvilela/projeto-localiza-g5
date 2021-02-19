@@ -27,6 +27,15 @@ export const SectionContainer = styled.div`
   }
 
     h1 {
+      max-width: 415px;
+      font-weight: 400;
+
+      span {
+        display: inline-block;
+        font-weight: bold;
+        color: ${theme.colors.secondary};
+      }
+
       @media (max-width: 425px) {
       display: none;
     }

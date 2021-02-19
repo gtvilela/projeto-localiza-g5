@@ -13,8 +13,3 @@ const Template: Story<IPropsHeader> = (args: IPropsHeader) => <Header {...args} 
 
 export const Default = Template.bind({});
 Default.args = {};
-
-export const Voltar = Template.bind({});
-Voltar.args = {
-  hidden: false,
-};
