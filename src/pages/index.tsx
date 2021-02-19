@@ -48,6 +48,11 @@ const Dashboard: FC = () => {
    setValue(value)
   };
 
+  const handleCancel = () => {
+    setOpen(false);
+    setfilteredVeiculos(veiculos)
+  }
+
   useEffect(() => {
     justFiltereds(value)
   },[value])
@@ -94,7 +99,7 @@ const Dashboard: FC = () => {
           <h2>Selecione um carro</h2>
           <span>Total {filteredVeiculos.length} carros</span>
           <Button onClick={handleClickOpen}><FiFilter /></Button>
-          <DialogFilter onClose={handleClose} isOpen={open}/>
+          <DialogFilter onClose={handleClose} onCancel={handleCancel} isOpen={open}/>
         </HeaderPag>
         <BoxCards>
           {filteredVeiculos.map((veiculo) => (
