@@ -47,6 +47,11 @@ export const Content = styled.div`
   max-width: 1120px;
   margin: 0 auto;
   padding: 48px 16px 24px;
+
+  .button-filter {
+    border-radius: 50%;
+    padding: 20px;
+  }
 `
 
 export const HeaderPag = styled.div`
