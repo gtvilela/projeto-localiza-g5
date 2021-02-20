@@ -3,8 +3,8 @@ import { SubmitHandler, FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { FiLock } from 'react-icons/fi';
 
-import Input from '@components/global/Input';
-import Button from '@components/global/Button';
+import Input from '../../../components/global/Input';
+import Button from '../../../components/global/Button';
 
 const FormPassword: FC = () => {
   const formRef = useRef<FormHandles>(null);
@@ -33,7 +33,7 @@ const FormPassword: FC = () => {
         icon={FiLock}
         type="password"
       />
-      <Button>Confirmar</Button>
+      <Button fullwidth>Confirmar</Button>
     </Form>
   )
 }

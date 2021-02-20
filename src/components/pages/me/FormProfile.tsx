@@ -2,10 +2,8 @@ import React, { FC, useRef, useCallback } from 'react';
 import { SubmitHandler, FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { FiUser, FiMail, FiCreditCard } from 'react-icons/fi';
-
-import Input from '@components/global/Input';
-import Button from '@components/global/Button';
-
+import Input from '../../../components/global/Input';
+import Button from '../../../components/global/Button';
 const FormProfile: FC = () => {
   const formRef = useRef<FormHandles>(null);
 
@@ -30,7 +28,7 @@ const FormProfile: FC = () => {
         label="Cpf"
         icon={FiCreditCard}
       />
-      <Button>Salvar alterações</Button>
+      <Button fullwidth>Salvar alterações</Button>
     </Form>
   )
 }

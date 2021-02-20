@@ -10,11 +10,10 @@ export const HeaderContainer = styled.header`
     justify-content: flex-end;
     margin-right: 5%;
 
-    @media(min-width: 1420px) {
-     margin-right: 20%;
+    @media (min-width: 1420px) {
+      margin-right: 20%;
     }
   }
-
 `;
 
 export const Content = styled.div`
@@ -34,7 +33,7 @@ export const HeaderStart = styled.div`
 `;
 
 export const LogoContainer = styled.a`
- transition: .3s;
+  transition: 0.3s;
 
   &:hover {
     transform: scale(1.04);
@@ -44,47 +43,50 @@ export const LogoContainer = styled.a`
 export const ButtonBack = styled.div`
   margin-left: 64px;
 
-  ${({ hidden }) => hidden &&
+  ${({ hidden }) =>
+    hidden &&
     css`
-    display: none;
-  `}
+      display: none;
+    `}
 
-   a {
-     text-decoration: none;
-     color: ${theme.colors.white};
-     display: flex;
-     align-items: center;
-     transition: .3s;
-     position: relative;
+  a {
+    text-decoration: none;
+    color: ${theme.colors.white};
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+    position: relative;
 
-     &::after {
-       content: '';
-       width: 1px;
-       height: 2px;
-       position: absolute;
-       background: transparent;
-       bottom: -4px;
-       left: 0;
-       transition: .2s;
-       border-radius: 4px;
-     }
+    &::after {
+      content: '';
+      width: 1px;
+      height: 2px;
+      position: absolute;
+      background: transparent;
+      bottom: -4px;
+      left: 0;
+      transition: 0.2s;
+      border-radius: 4px;
+    }
 
-     &:hover {
-       transform: translateX(8px);
+    &:hover {
+      transform: translateX(8px);
 
-       &::after {
-       content: '';
+      &::after {
+        content: '';
         width: 100%;
         background: ${theme.colors.white};
       }
-     }
+    }
 
+    svg {
+      margin-right: 8px;
+    }
+  }
 
-
-     svg {
-       margin-right: 8px;
-     }
-   }
+  @media (max-width: 452px) {
+   display: none;
+  }
 `;
 
 export const HeaderEnd = styled.div``;

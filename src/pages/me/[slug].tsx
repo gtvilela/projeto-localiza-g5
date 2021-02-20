@@ -1,14 +1,13 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
 
-import Header from '@components/global/Header/Header';
-import Tab from '@components/global/Tab/Tab';
+import {Header, Tab } from '../../components/global/';
 
-import FormProfile from '@components/pages/me/FormProfile';
-import FormPassword from '@components/pages/me/FormPassword';
-import CardWithSchedules from '@components/global/CardWithSchedules';
+import FormProfile from '../../components/pages/me/FormProfile';
+import FormPassword from '../../components/pages/me/FormPassword';
+import CardWithSchedules from '../../components/global/CardWithSchedules';
 
-import { Content, BoxProfile, Title, BoxSchedules, ImageContainer  } from '@styles/pages/me/profile'
+import { Content, BoxProfile, Title, BoxSchedules, ImageContainer  } from '../../styles/pages/me/profile'
 
 const Profile: FC = () => {
   return (
@@ -37,7 +36,7 @@ const Profile: FC = () => {
           </Tab>
         </BoxProfile>
         <BoxSchedules>
-          <Title>Agendamentos feitos</Title>
+          <Title>Últimos agendamentos</Title>
           <CardWithSchedules />
           <CardWithSchedules />
         </BoxSchedules>

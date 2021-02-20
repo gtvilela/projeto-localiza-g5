@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { Form } from '@unform/web';
 
-import theme from '@styles/theme'
+import theme from '../../styles/theme';
 
 export const Section = styled.div`
   min-height: 264px;
@@ -27,18 +26,27 @@ export const SectionContainer = styled.div`
     flex-direction: column-reverse;
   }
 
-`;
-export const TitleSection = styled.h1`
-  @media (max-width: 425px) {
-    display: none;
-  }
-`;
+  h1 {
+    max-width: 415px;
+    font-weight: 400;
 
-export const FormCustom = styled(Form)`
-  max-width: 348px;
+    span {
+      display: inline-block;
+      font-weight: bold;
+      color: ${theme.colors.secondary};
+    }
 
-  @media (max-width: 425px) {
-    max-width: 100%;
+    @media (max-width: 425px) {
+      display: none;
+    }
+
+    form {
+      max-width: 348px;
+
+      @media (max-width: 425px) {
+        max-width: 100%;
+      }
+    }
   }
 `;
 
@@ -47,7 +55,12 @@ export const Content = styled.div`
   max-width: 1120px;
   margin: 0 auto;
   padding: 48px 16px 24px;
-`
+
+  .button-filter {
+    border-radius: 50%;
+    padding: 20px;
+  }
+`;
 
 export const HeaderPag = styled.div`
   display: flex;
@@ -71,7 +84,7 @@ export const HeaderPag = styled.div`
   }
 
   span {
-    color: ${theme.colors.textLighter}
+    color: ${theme.colors.textLighter};
   }
 `;
 

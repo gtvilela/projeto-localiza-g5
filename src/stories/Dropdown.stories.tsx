@@ -1,6 +1,5 @@
-
 import { Story, Meta } from '@storybook/react';
-import Dropdown from '../components/global/Dropdown/Dropdown';
+import Dropdown from '../components/global/Dropdown';
 import { IPropsDropdown } from '../components/global/Dropdown/types';
 
 export default {
@@ -10,7 +9,7 @@ export default {
 
 const Template: Story<IPropsDropdown> = (args: IPropsDropdown) => <Dropdown {...args} />;
 
-export const MenuDefault = Template.bind({});
-MenuDefault.args = {
-  isOpen: true
+export const Default = Template.bind({});
+Default.args = {
+  isOpen: true,
 };
