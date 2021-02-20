@@ -11,27 +11,16 @@ export const DropdownContainer = styled.div`
   ul {
     padding: 0;
     margin: 0;
+
     li {
       list-style-type: none;
       outline: none;
 
-      &:first-of-type {
-        > a {
-          border-top: 1px solid #ccc;
-          border-top-left-radius: 4px;
-          border-top-right-radius: 4px;
-        }
-      }
-
-      &:last-of-type > a {
-        border-bottom-left-radius: 4px;
-        border-bottom-right-radius: 4px;
-      }
-
-      a {
+      a, button {
         display: flex;
         justify-content: space-between;
         background-color: ${theme.colors.primary};
+        color: ${theme.colors.white};
         font-size: 16px;
         padding: 15px 20px 15px 20px;
         border: 0;
@@ -45,6 +34,7 @@ export const DropdownContainer = styled.div`
         span {
           color: #fff;
         }
+
         &:hover {
           cursor: pointer;
           font-weight: bold;

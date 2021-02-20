@@ -1,3 +1,4 @@
 export interface IPropsHeader {
-  hidden: boolean
+  hidden: boolean;
+  items?: Array<Object>;
 }

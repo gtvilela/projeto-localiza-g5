@@ -3,17 +3,20 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FiArrowLeft } from 'react-icons/fi'
 
-import { HeaderContainer, Content, HeaderStart, LogoContainer, ButtonBack, HeaderEnd, ImageUser, User } from './style';
+import { HeaderContainer, Content, HeaderStart, LogoContainer, ButtonBack, HeaderEnd, ImageUser, User, LinkLogin } from './style';
 
 import { IPropsHeader } from './types/index';
 
 import Dropdown from '../Dropdown';
-import LogoLocalizaComponent from '../../../../public/images-components/LogoLocalizaSvg';
-import Avatar from '../../../../public/images-components/AvatarSvg';
+import { AvatarSvg, LogoLocalizaSvg } from '../../../../public/images-components/IconsReact';
+
+import { useAuth } from '../../../context/auth';
+import Button from '../Button';
 
 const Header: FC<IPropsHeader> = ({ hidden = true}) => {
-
   const [open, setOpen] = useState(false);
+  const { user } = useAuth();
+
   const toggle = (open: boolean) => {setOpen(open)};
   const wrapperRef = useRef(null);
 
@@ -40,7 +43,7 @@ useOutsideAlerter(wrapperRef);
         <HeaderStart>
           <Link href="/" passHref>
             <LogoContainer>
-              <LogoLocalizaComponent />
+              <LogoLocalizaSvg />
             </LogoContainer>
           </Link>
           <ButtonBack hidden={hidden}>
@@ -53,21 +56,30 @@ useOutsideAlerter(wrapperRef);
           </ButtonBack>
         </HeaderStart>
         <HeaderEnd>
-          <User
-            tabIndex={0}
-            role="button"
-            onKeyPress={() => toggle(!open)}
-            onClick={() => toggle(!open)}
-          >
-            <div className="user-name">Usuário</div>
-            <ImageUser>
-              <Avatar className="icon-user" />
-            </ImageUser>
-          </User>
+          {user &&
+            <User
+              tabIndex={0}
+              role="button"
+              onKeyPress={() => toggle(!open)}
+              onClick={() => toggle(!open)}
+            >
+              <div className="user-name">Usuário</div>
+              <ImageUser>
+                <AvatarSvg className="icon-user" />
+              </ImageUser>
+            </User>
+          }
+          {!user &&
+            <Link href="/sessions" passHref>
+              <LinkLogin>
+                Entrar
+              </LinkLogin>
+            </Link>
+          }
         </HeaderEnd>
       </Content>
       <div className="menu">
-      <Dropdown isOpen={open}/>
+      <Dropdown isOpen={open} setOpen={setOpen}/>
       </div>
     </HeaderContainer>
 

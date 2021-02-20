@@ -1,24 +1,38 @@
 import React, { FC } from 'react';
+import Link from 'next/link';
+
+import { useAuth } from '../../../context/auth';
+
 import { IPropsDropdown } from './types';
 import { DropdownContainer } from './styles';
-import Link from 'next/link';
-import {items} from './types/items';
 
-const Dropdown: FC<IPropsDropdown> = ({ isOpen }) => {
+const Dropdown: FC<IPropsDropdown> = ({ isOpen, setOpen }) => {
+  const { signOut } = useAuth();
+
+  const handleSignOut = () => {
+    setOpen(false);
+    signOut();
+  }
 
   return (
     <DropdownContainer>
       {isOpen && (
         <ul className="dd-list">
-          {items.map((item) => (
-            <li key={item.id}>
-              <Link href={`/${item.rota.toLowerCase()}/1`} passHref>
+          <li>
+            <Link href={`/me/1`} passHref>
               <a>
-                <span>{item.value}</span>
+                <span>Profile</span>
               </a>
-              </Link>
-            </li>
-          ))}
+            </Link>
+            <Link href={`/me/1`} passHref>
+              <a>
+                <span>Agendamentos</span>
+              </a>
+            </Link>
+            <button onClick={handleSignOut}>
+              Sair
+            </button>
+          </li>
         </ul>
       )}
     </DropdownContainer>

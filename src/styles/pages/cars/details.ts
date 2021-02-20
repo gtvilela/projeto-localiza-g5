@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import theme from '../../../styles/theme'
+import theme from '../../../styles/theme';
 
 export const DetailsContainer = styled.div`
   width: 100%;
@@ -13,6 +13,7 @@ export const HeaderDetails = styled.div`
   display: flex;
   flex-direction: row;
   gap: 123px;
+  margin-bottom: 10px;
 
   .car-specification {
     display: flex;
@@ -40,10 +41,12 @@ export const HeaderDetails = styled.div`
     }
   }
 
-  @media (max-width: 420px) {
+  @media (max-width: 452px) {
     justify-content: center;
-    margin: 10px auto;
+    div {
+      align-items: center;
     }
+  }
 `;
 
 export const LabelHeader = styled.span`
@@ -60,25 +63,41 @@ export const ContainerInfoCar = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin-top: 40px;
-
-  @media (max-width: 420px) {
-    flex-direction: column;
-    justify-content: center;
+  button {
+    margin: 0 auto;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
   }
 
+  @media (max-width: 452px) {
+    flex-direction: column;
+    justify-content: center;
+    .imagem {
+      margin: 0 auto;
+      img {
+        width: 300px;
+        margin-bottom: 20px;
+      }
+    }
+  }
 `;
 
 export const ContainerLabels = styled.div`
+  width: 100%;
   max-width: 390px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
 
-  @media (max-width: 420px) {
+  @media (max-width: 452px) {
     grid-template-columns: 1fr;
-    justify-content: center;
-  }
 
+    div {
+      margin: 0 auto;
+    }
+  }
 `;
 
 export const Label = styled.div`
@@ -93,27 +112,16 @@ export const Label = styled.div`
   flex-direction: row;
   gap: 42px;
 
-  @media (max-width: 420px) {
+  @media (max-width: 452px) {
     width: 300px;
     align-items: center;
     justify-content: space-between;
     padding: 40px;
   }
-
 `;
 
-export const TabContainer = styled.div`
-  max-width: 450px;
-  margin-top: 24px;
-  padding: 0;
-
-  .description {
-    width: 444px;
-
-    @media (max-width: 420px) {
-     width: 300px;
-   }
-  }
-
-
+export const ContentDescription = styled.div`
+  max-width: 440px;
+  text-align: center;
+  margin: 24px 0;
 `;

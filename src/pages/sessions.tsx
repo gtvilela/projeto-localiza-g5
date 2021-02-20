@@ -1,5 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router'
+import { useAuth } from '../context/auth';
 
 import { Tab } from '../components/global/index'
 
@@ -14,6 +16,14 @@ import {
 } from '../styles/pages/sessions';
 
 const Sessions: FC = () => {
+  const { user } = useAuth();
+  const { push } = useRouter()
+
+  useEffect(() => {
+    if (user)
+    push('/')
+  }, [user])
+
   return (
     <Container>
       <Background />
