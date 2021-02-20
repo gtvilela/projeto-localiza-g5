@@ -6,4 +6,5 @@ export interface IPropsInput extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   containerStyle?: object;
   icon?: React.ComponentType<IconBaseProps>;
+  background: string
 }
