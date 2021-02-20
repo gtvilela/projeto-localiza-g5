@@ -28,6 +28,7 @@ export const DatePickerHeaderContainer = styled.div`
 `;
 
 export const DatePickerButtonContainer = styled.button<IDatePickerButtonContainerProps>`
+    margin: unset !important;
     text-align: center;
     background: #F2F2FA;
     border-radius: 3px;

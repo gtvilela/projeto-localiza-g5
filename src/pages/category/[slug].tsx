@@ -70,8 +70,8 @@ const Categories: FC = () => {
       );
     });
     setfilteredVeiculos(filtrados);
-    console.log(filteredVeiculos)
   };
+
   useEffect(() => {
     justFiltereds(value);
   }, [value]);
