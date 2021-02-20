@@ -34,6 +34,9 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Storybook](https://storybook.js.org/)
 - [Styled Components](https://styled-components.com/)
 - [TypeScript](https://www.typescriptlang.org/)
+- [.NET 5.0](https://dotnet.microsoft.com/)
+- [Entity Framework](https://docs.microsoft.com/pt-br/ef/)
+- [SQL Server](https://www.microsoft.com/pt-br/sql-server/)
 
 <br />
 
@@ -54,6 +57,16 @@ npm install
 ```
 
 > Utilizar o npm para instalações, pois foi o pacote utilizado e configurado o ESlint
+
+<br />
+
+# 👨‍💻 Storybook
+
+Para iniciar o Storybook e ver os components utilizados no projeto é necessário realizar o seguinte comando:
+
+```bash
+npm run storybook
+```
 
 <br />
 
@@ -89,9 +102,9 @@ npm install
 
 <br />
 
-# 🧠 API
+# ⚙️ API
 
-(Especificação api)
+Foi utilizado a arquitetura Onion implementando clean code.
 
 As rotas podem ser acessadas e editadas em `pages/api/hello.js`.
 

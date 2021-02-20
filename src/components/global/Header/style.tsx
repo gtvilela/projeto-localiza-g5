@@ -92,11 +92,12 @@ export const ButtonBack = styled.div`
 
 export const HeaderEnd = styled.div``;
 
-export const User = styled.a`
+export const User = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
   width: 100%;
+  background: none;
 
   .user-name {
     font-family: 'Poppins';

@@ -48,13 +48,13 @@ const ListModels: FC = () => {
 
   const handleCloseModalAfterWinAction = useCallback((type: 'new' | 'edit', data: IModelProps) => {
     if (type === 'new') {
-      // setModels([{ id: 1, nome: 'gui'}])
+      setModels((oldModels => [...oldModels, data]))
       handleCloseModal()
     } else if ( type === 'edit') {
-      // setModels(
-      //   models.map(mappedModels =>
-      //     mappedModels.id === data.id ? { ...data } : mappedModels)
-      // )
+      setModels(
+        models.map(mappedModels =>
+          mappedModels.id === data.id ? { ...data } : mappedModels)
+      )
       handleCloseModal()
     }
   }, [models, setModels, handleCloseModal])
@@ -63,7 +63,7 @@ const ListModels: FC = () => {
     <>
       <Header hidden={false} />
       <Container>
-        <HeaderPages title="Gerenciar Marcas" />
+        <HeaderPages title="Gerenciar Modelos" />
           <Table>
             <thead>
               <tr>
@@ -121,7 +121,7 @@ const ListModels: FC = () => {
               <ModalDelete
                 toggle={modalInfo.isOpen}
                 toggleModal={handleCloseModal}
-                link="categoria"
+                link="modelo"
                 id={modalInfo.dataEdit.id}
               />
             )}

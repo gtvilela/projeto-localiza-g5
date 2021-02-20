@@ -63,7 +63,8 @@ export const ModalWindow = styled.div`
       text-align: center;
 
       :hover {
-        background: ${({ theme }) => theme.colors.textLighter};
+        background: ${({ theme }) => theme.colors.primary};
+        color: ${({ theme }) => theme.colors.white};
       }
     }
 

@@ -48,13 +48,13 @@ const ListBrands: FC = () => {
 
   const handleCloseModalAfterWinAction = useCallback((type: 'new' | 'edit', data: IBrandProps) => {
     if (type === 'new') {
-      setBrands([...brands, data])
+      setBrands((oldBrands) => [...oldBrands, data] );
       handleCloseModal()
     } else if ( type === 'edit') {
-      // setBrands(
-      //   brands.map(mappedBrands =>
-      //     mappedBrands.id === data.id ? { ...data } : mappedBrands)
-      // )
+      setBrands(
+        brands.map(mappedBrands =>
+          mappedBrands.id === data.id ? { ...data } : mappedBrands)
+      );
       handleCloseModal()
     }
   }, [brands, setBrands, handleCloseModal])

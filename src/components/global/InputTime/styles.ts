@@ -98,14 +98,5 @@ export const Container = styled.div<ContainerProps>`
     props.isErrored &&
     css`
       border-color: ${theme.colors.error};
-      margin-bottom: 32px;
     `}
-`;
-
-export const Error = styled.p`
-  font-size: 12px;
-  color: ${theme.colors.error};
-  position: absolute;
-  bottom: -24px;
-  left: 0;
 `;

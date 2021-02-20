@@ -9,34 +9,33 @@ import api from '../../../../../services/api';
 
 import { Modal, Input, Button } from '../../../../../components/global';
 
-interface IBrandProps {
+interface IVehicleProps {
   id: number;
   nome: string;
 }
 
-interface IModalNewProps {
+interface IModalFormNewAndEditProps {
   toggle: boolean;
   toggleModal(): void;
-  initialData: IBrandProps | null;
-  handleCloseModalAfterWinAction(type: 'new' | 'edit', data: IBrandProps): void;
-  type: 'new' | 'edit';
+  initialData: IVehicleProps | null;
+  handleCloseModalAfterWinAction(type: 'new' | 'edit', data: IVehicleProps): void
 }
 
 interface IData {
   nome: string;
 }
 
-const ModalNew: FC<IModalNewProps> = ({ toggle, toggleModal, type, initialData, handleCloseModalAfterWinAction }) => {
+const ModalFormNewAndEdit: FC<IModalFormNewAndEditProps> = ({ toggle, toggleModal, initialData, handleCloseModalAfterWinAction }) => {
   const formRef = useRef<FormHandles>(null);
 
   const handleSubmit = useCallback(
     async (data: IData) => {
       try {
         if (initialData) {
-          await api.put(`api/marca/${initialData.id}`, data);
+          await api.put(`api/veiculo/${initialData.id}`, data);
           handleCloseModalAfterWinAction('edit', { id: initialData.id, ...data})
         } else {
-          const response = await api.post('api/marca', data);
+          const response = await api.post('api/veiculo', data);
           handleCloseModalAfterWinAction('new', response.data)
         }
       } catch (err) {
@@ -51,7 +50,7 @@ const ModalNew: FC<IModalNewProps> = ({ toggle, toggleModal, type, initialData, 
   }, [initialData]);
 
   return (
-    <Modal title={`${initialData ? 'Editar' : 'Cadastrar'} Marca`} toggle={toggle} toggleModal={toggleModal}>
+    <Modal title={`${initialData ? 'Editar' : 'Cadastrar'} Veículo`} toggle={toggle} toggleModal={toggleModal}>
       <Form ref={formRef} onSubmit={handleSubmit} initialData={initialData} >
         <Input name="nome" label="Nome" icon={AiOutlineCar} />
         <Button type="submit" size="medium">
@@ -62,4 +61,4 @@ const ModalNew: FC<IModalNewProps> = ({ toggle, toggleModal, type, initialData, 
   )
 }
 
-export default ModalNew
+export default ModalFormNewAndEdit

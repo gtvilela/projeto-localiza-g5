@@ -12,6 +12,8 @@ import { Modal, Input, Button } from '../../../../../components/global';
 interface ICategoryProps {
   id: number;
   nome: string;
+  url: string;
+  descricao: string;
 }
 
 interface IModalFormNewAndEditProps {
@@ -23,25 +25,22 @@ interface IModalFormNewAndEditProps {
 
 interface IData {
   nome: string;
+  url: string;
+  descricao: string;
 }
 
 const ModalFormNewAndEdit: FC<IModalFormNewAndEditProps> = ({ toggle, toggleModal, initialData, handleCloseModalAfterWinAction }) => {
   const formRef = useRef<FormHandles>(null);
 
-  useEffect(() => {
-    formRef.current.clearField('nome');
-  }, [toggle])
-
   const handleSubmit = useCallback(
     async (data: IData) => {
       try {
         if (initialData) {
-          //await api.put('api/categoria', data);
+          await api.put(`categoria/${initialData.id}`, data);
           handleCloseModalAfterWinAction('edit', { id: initialData.id, ...data})
         } else {
           const response = await api.post('api/categoria', data);
-          //alterar ...inital data por response.data
-          handleCloseModalAfterWinAction('edit', {...initialData})
+          handleCloseModalAfterWinAction('new', response.data)
         }
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -52,12 +51,14 @@ const ModalFormNewAndEdit: FC<IModalFormNewAndEditProps> = ({ toggle, toggleModa
           return;
         }
       }
-  }, []);
+  }, [initialData]);
 
   return (
     <Modal title={`${initialData ? 'Editar' : 'Cadastrar'} Categoria`} toggle={toggle} toggleModal={toggleModal}>
       <Form ref={formRef} onSubmit={handleSubmit} initialData={initialData} >
         <Input name="nome" label="Nome" icon={AiOutlineCar} />
+        <Input name="url" label="Url da imagem" icon={AiOutlineCar} />
+        <Input name="descricao" label="Descrição" icon={AiOutlineCar} />
         <Button type="submit" size="medium">
           {initialData ? 'Editar' : 'Cadastrar'}
         </Button>
