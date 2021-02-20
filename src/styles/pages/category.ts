@@ -66,10 +66,6 @@ export const SectionContainer = styled.div`
       color: ${theme.colors.secondary};
     }
 
-    @media (max-width: 425px) {
-      display: none;
-    }
-
     form {
       max-width: 348px;
 
