@@ -1,6 +1,10 @@
-import Header from '../../components/global/Header';
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import React, { FC, useEffect, useRef, useState } from 'react';
+import Header from '../../components/global/Header';
 import { useRouter } from 'next/router';
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
+
 import {
   HeaderDetails,
   DetailsContainer,
@@ -8,11 +12,15 @@ import {
   ContainerInfoCar,
   ContainerLabels,
   Label,
+  TabContainer
 } from '../../styles/pages/cars/details';
 import Tab from '../../components/global/Tab';
 import Button from '../../components/global/Button';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
+
+import { Header, Tab, Button } from '../../components/global'
+
 import { FuelSvg, GroupSvg, HorsepowerSvg, LuggageSvg, MeterSvg, TransmissionSvg } from '../../../public/images-components/IconsReact';
 import { AiFillHourglass, AiOutlineHourglass } from 'react-icons/ai';
 
@@ -51,7 +59,6 @@ interface IProps {
   };
 }
 
-
 const Details: FC = () => {
   const formRef = useRef<FormHandles>();
   const [vehicle, setVehicle] = useState<IProps>({} as IProps);
@@ -59,12 +66,16 @@ const Details: FC = () => {
 
   useEffect(() => {
     async function getvehicle(): Promise<void> {
-      const response = await api.get(`api/veiculo/${query.slug}`);
-      setVehicle(response.data)
+      if(query.slug) {
+        const response = await api.get(`api/veiculo/${query.slug}`);
+        setVehicle(response.data)
+      }
     }
 
     getvehicle()
-  }, [])
+  }, [query])
+
+  const handleSubmitSchedule = useCallback(() => {}, [])
 
   const calculaAgendamento = (data: any) => {
     const start = moment((String(data.start_date).replaceAll('/','-')) + (String(data.time_to_get)), 'DD MM YYYY hh:mm'); //todays date
@@ -131,8 +142,8 @@ const Details: FC = () => {
                   <Tab.HeaderItem eventKey={1}>Sobre</Tab.HeaderItem>
                 </Tab.Header>
                 <Tab.Content eventKey={0}>
-                  <Form ref={formRef} onSubmit={(data) => calculaAgendamento(data)}>
                     <DatePickerForm background="#ffffff" color="#000000" type="text" name={'start_date'} label={'Data da retirada'} />
+                  <Form ref={formRef} onSubmit={(data) => calculaAgendamento(data)}>
                     <InputTime
                       name="time_to_get"
                       icon={AiFillHourglass}
@@ -148,9 +159,9 @@ const Details: FC = () => {
                   </Form>
                 </Tab.Content>
                 <Tab.Content eventKey={1}>
-                  <div>
+                  <p style={{maxWidth: 400}}>
                     {vehicle.descricao}
-                  </div>
+                  </p>
                 </Tab.Content>
               </Tab>
             </TabContainer>
