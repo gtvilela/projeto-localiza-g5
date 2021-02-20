@@ -31,6 +31,10 @@ export const SectionContainer = styled.div`
     font-weight: 400;
 
     span {
+      color: ${theme.colors.secondary};
+    }
+
+    span {
       display: inline-block;
       font-weight: bold;
       color: ${theme.colors.secondary};

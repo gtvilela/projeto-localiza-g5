@@ -82,10 +82,8 @@ const Dashboard: FC = () => {
       <Header hidden={true} />
       <Section>
         <SectionContainer>
-          <h1>
-            Aluguel de Carros com a maior frota do Brasil!
-            <br />
-            Faça sua simulação!
+          <h1>Aluguel de Carros com a maior frota do Brasil!
+            <span>Faça sua simulação!</span>
           </h1>
           <Form ref={formRef} onSubmit={() => console.log('oi')}>
             <Input name="date" label="Data e hora da retirada" icon={FiCalendar} />

@@ -50,11 +50,11 @@ const DialogFilter: FC<IPropsDialog> = (props) => {
 
   useEffect(() => {
     async function getCategorias(): Promise<void> {
-      const response = await api.get('/Categoria/buscarTodos');
+      const response = await api.get('api/Categoria/buscarTodos');
       setCategorias(response.data);
     }
     async function getMarcas(): Promise<void> {
-      const response = await api.get('/Marca/buscarTodos');
+      const response = await api.get('api/Marca/buscarTodos');
       setMarcas(response.data);
 
     }
