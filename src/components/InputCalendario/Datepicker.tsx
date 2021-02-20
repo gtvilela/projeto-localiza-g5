@@ -140,7 +140,7 @@ const DatePicker: FC<IPropsDatePicker> = ({ selectedDate, outputDate }) => {
                                             selectedDay={day.selected} selectingDay={e => selectingDay(e)}></DatePickerButton> :
                             <DatePickerButton key={key} value={day.day} selected={true} selectedDay={day.selected} selectingDay={e => selectingDay(e)}
                                 gridColumnsStart={+moment(moment(new Date(defaultYear.current, defaultMonth.current - 1))
-                                    .startOf('month')._d).format('d') + 1}>
+                                    .startOf('month')).format('d') + 1}>
                             </DatePickerButton>
                         )
                     }
