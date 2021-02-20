@@ -1,10 +1,10 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
-import { DatePickerBodyContainer, DatePickerContainer, DatePickerHeaderContainer, SubHeaderDatePickerContainer } from './StyledComponent/DatePickerStyle';
-import { IPropsDatePicker } from './types/Datepicker';
+import { DatePickerBodyContainer, DatePickerContainer, DatePickerHeaderContainer, SubHeaderDatePickerContainer } from '../global/InputDatepicker/StyledComponent/DatePickerStyle';
+import { IPropsDatePicker } from '../global/InputDatepicker/types/Datepicker';
 import moment from 'moment';
 import { RiArrowDropLeftLine, RiArrowDropRightLine } from 'react-icons/ri';
-import DatePickerButton from './DatePickerButton';
-import { IDay } from './types/Day';
+import DatePickerButton from '../global/InputDatepicker/DatePickerButton';
+import { IDay } from '../global/InputDatepicker/types/Day';
 
 const DatePicker: FC<IPropsDatePicker> = ({ selectedDate, outputDate }) => {
 
