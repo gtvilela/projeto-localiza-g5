@@ -11,6 +11,8 @@ import ModalDelete from '../../components/pages/admin/global/ModalDelete';
 interface ICategoryProps {
   id: number;
   nome: string;
+  url: string;
+  descricao: string;
 }
 
 type IStateProps = {
@@ -89,7 +91,7 @@ const ListCategories: FC = () => {
                       <Button
                         color="yellow"
                         size="medium"
-                        onClick={() => handleClickAction('edit', {id: category.id, nome: category.nome})}
+                        onClick={() => handleClickAction('edit', {id: category.id, nome: category.nome, url: category.url, descricao: category.descricao})}
                         radius
                       >
                         <FiEdit2 />
@@ -97,7 +99,7 @@ const ListCategories: FC = () => {
                       <Button
                         color="red"
                         size="medium"
-                        onClick={() => handleClickAction('delete', {id: category.id, nome: category.nome})}
+                        onClick={() => handleClickAction('delete', {id: category.id, nome: category.nome, url: category.url, descricao: category.descricao })}
                         radius
                       >
                         <FiTrash />

@@ -63,7 +63,7 @@ const ListModels: FC = () => {
     <>
       <Header hidden={false} />
       <Container>
-        <HeaderPages title="Gerenciar Marcas" />
+        <HeaderPages title="Gerenciar Modelos" />
           <Table>
             <thead>
               <tr>

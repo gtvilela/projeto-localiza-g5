@@ -19,11 +19,14 @@ const ModalDelete: FC<IModalDeleteProps> = ({ toggle, toggleModal, id, link }) =
 
   return (
     <Modal title="Deletar marca" toggle={toggle} toggleModal={toggleModal}>
+      <p style={{marginBottom: 32}}>
+        Você tem certeza que deseja deletar esse item?
+      </p>
       <ButtonsGroup>
-      <Button size="medium">
+      <Button size="medium" color="red" onClick={toggleModal}>
           Cancelar
         </Button>
-        <Button size="medium" color="red" onClick={handleDeleteElement}>
+        <Button size="medium" color="green" onClick={handleDeleteElement}>
           Confimar
         </Button>
         </ButtonsGroup>
