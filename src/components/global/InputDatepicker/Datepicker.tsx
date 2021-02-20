@@ -6,8 +6,8 @@ import {
   DatePickerBodyContainer,
   DatePickerContainer,
   DatePickerHeaderContainer,
-  SubHeaderDatePickerContainer,
-} from './StyledComponent/DatePickerStyle';
+  SubHeaderDatePickerContainer
+} from '../InputDatepicker/StyledComponent/DatePickerStyle';
 import { IPropsDatePicker } from './types/Datepicker';
 import DatePickerButton from './DatePickerButton';
 import { IDay } from './types/Day';
