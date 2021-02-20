@@ -7,7 +7,8 @@ import {
   LabelHeader,
   ContainerInfoCar,
   ContainerLabels,
-  Label
+  Label,
+  TabContainer
 } from '../../styles/pages/cars/details';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
@@ -26,7 +27,6 @@ enum Combustivel {
 import api from '../../services/api';
 import DatePickerForm from '@components/global/InputDatepicker/DatePickerForm';
 import InputTime from '@components/global/InputTime/InputTime';
-import { TabContainer } from '@components/global/Tab/styles';
 import moment from 'moment';
 import { useAuth } from '../../context/auth';
 
@@ -56,7 +56,7 @@ interface IProps {
 const Details: FC = () => {
   const formRef = useRef<FormHandles>();
   const [vehicle, setVehicle] = useState<IProps>({} as IProps);
-  const { query } = useRouter();
+  const { query, push } = useRouter();
   const { user } = useAuth();
 
   useEffect(() => {
@@ -71,39 +71,46 @@ const Details: FC = () => {
   }, [query])
 
   const handleSubmitSchedule = useCallback(async (data) => {
-    await api.post(`api/agendamento/`, data);
-  }, [])
 
-  const calculaAgendamento = (data: any) => {
-    const start = moment((String(data.start_date).replaceAll('/','-')) + (String(data.time_to_get)), 'DD MM YYYY hh:mm'); //todays date
-    const end = moment((String(data.end_date).replaceAll('/','-')) + (String(data.time_to_deliver)), 'DD MM YYYY hh:mm'); // another date
-    const duration = moment.duration(start.diff(end));
-    const hours = duration.asHours();
-    const valorTotal = Math.abs(hours) * vehicle.valorHora;
-    const body = {
-      "dataAgendamento": moment().toDate(),
-      "dataColetaPrevista": start.toDate(),
-      "dataColetaRealizada": start.toDate(),
-      "dataEntregaPrevista": end.toDate(),
-      "dataEntregaRealizada": end.toDate(),
-      "valorHora": vehicle.valorHora,
-      "horasLocacao": Math.abs(hours),
-      "subTotal": valorTotal,
-      "custosAdicionais": 0,
-      "valorTotal": valorTotal,
-      "realizadaVistoria": true,
-      "idPessoa": user.id,
-      "idVeiculo": vehicle.id,
-    } 
-    console.log(start);
-    // start.format('YYYY-MM-DD hh:mm')
-    console.log(moment('20/05/2020').locale('en-US').format('YYYY-MM-DD'));
-    
-    
-    console.log(body);
-    
-    handleSubmitSchedule(body);
-  }
+    try {
+      if (!user) {
+        push('/sessions');
+        return
+      }
+
+      if (data.start_date && data.time_to_get && data.end_date && data.time_to_deliver) {
+        const start = moment((String(data.start_date).replaceAll('/','-')) + (String(data.time_to_get)), 'DD MM YYYY hh:mm'); //todays date
+        const end = moment((String(data.end_date).replaceAll('/','-')) + (String(data.time_to_deliver)), 'DD MM YYYY hh:mm'); // another date
+        const duration = moment.duration(start.diff(end));
+        const hours = duration.asHours();
+        const valorTotal = Math.abs(hours) * vehicle.valorHora;
+        const body = {
+          "dataAgendamento": moment().toDate(),
+          "dataColetaPrevista": start.toDate(),
+          "dataColetaRealizada": start.toDate(),
+          "dataEntregaPrevista": end.toDate(),
+          "dataEntregaRealizada": end.toDate(),
+          "valorHora": vehicle.valorHora,
+          "horasLocacao": Math.abs(hours),
+          "subTotal": valorTotal,
+          "custosAdicionais": 0,
+          "valorTotal": valorTotal,
+          "realizadaVistoria": true,
+          "idPessoa": user.id,
+          "idVeiculo": vehicle.id,
+        }
+
+        await api.post(`api/agendamento/`, body);
+      }
+
+    } catch (error) {
+
+    }
+
+
+
+
+  }, [])
 
   return (
     <>
@@ -160,7 +167,7 @@ const Details: FC = () => {
                   <Tab.HeaderItem eventKey={1}>Sobre</Tab.HeaderItem>
                 </Tab.Header>
                 <Tab.Content eventKey={0}>
-                  <Form ref={formRef} onSubmit={(data) => calculaAgendamento(data)}>
+                  <Form ref={formRef} onSubmit={handleSubmitSchedule}>
                     <DatePickerForm background="#ffffff" color="#000000" type="text" name={'start_date'} label={'Data da retirada'} />
                     <InputTime
                       name="time_to_get"
@@ -177,7 +184,7 @@ const Details: FC = () => {
                   </Form>
                 </Tab.Content>
                 <Tab.Content eventKey={1}>
-                  <p style={{maxWidth: 400}}>
+                  <p style={{maxWidth: 395}}>
                     {vehicle.descricao}
                   </p>
                 </Tab.Content>
