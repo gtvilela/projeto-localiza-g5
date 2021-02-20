@@ -2,6 +2,7 @@ import React, { FC, useRef, useEffect, useState } from 'react';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { FiCalendar, FiFilter } from 'react-icons/fi';
+import { AiFillHourglass, AiOutlineHourglass } from 'react-icons/ai';
 
 import Header from '../components/global/Header';
 import Button from '../components/global/Button';
@@ -13,6 +14,7 @@ import { Section, SectionContainer, Content, HeaderPag, BoxCards } from '../styl
 import api from '../services/api';
 import DatePickerForm from "@components/global/InputDatepicker/DatePickerForm";
 import DialogFilter from '@components/DialogFilter/DialogFilter';
+import InputTime from '@components/global/InputTime/InputTime';
 
 interface IProps {
   id: number;
@@ -88,7 +90,17 @@ const Dashboard: FC = () => {
           </h1>
           <Form ref={formRef} onSubmit={() => console.log('oi')}>
             <DatePickerForm background="#ffffff" color="#000000" type="text" />
+            <InputTime
+              name="time_to_deliver"
+              icon={AiFillHourglass}
+              label="Hora de retirada"
+              />
             <DatePickerForm background="#ffffff" color="#000000" type="text" />
+            <InputTime
+              name="time_to_deliver"
+              icon={AiOutlineHourglass}
+              label="Hora de entrega"
+              />
             <Button fullwidth color="yellow">Reservar agora</Button>
 
           </Form>
