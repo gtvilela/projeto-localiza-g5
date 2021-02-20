@@ -12,8 +12,8 @@ const CardCategory: FC<IPropsCard> = ({ category }) => {
         <Image src={category.url ? category.url : '/assets/imageNotFound.jpg'} width={248} height={136} />
         <CardDescription>
           <div>
-            <strong>{category.descricao}</strong>
-            <p>{category.nome}</p>
+            <strong>{category.nome}</strong>
+            <p>{category.descricao}</p>
           </div>
         </CardDescription>
       </CardContainer>

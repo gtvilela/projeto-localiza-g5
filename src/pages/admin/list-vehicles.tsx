@@ -52,7 +52,7 @@ const ListVehicles: FC = () => {
 
   const handleCloseModalAfterWinAction = useCallback((type: 'new' | 'edit', data: IVehicleProps) => {
     if (type === 'new') {
-      setVehicles([...vehicles, data])
+      setVehicles(oldVehicles => [...oldVehicles, data])
       handleCloseModal()
     } else if ( type === 'edit') {
       setVehicles(
@@ -61,7 +61,7 @@ const ListVehicles: FC = () => {
       )
       handleCloseModal()
     }
-  }, [vehicles, setVehicles, handleCloseModal])
+  }, [setVehicles, handleCloseModal])
 
   return (
     <>

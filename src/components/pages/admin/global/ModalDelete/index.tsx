@@ -15,7 +15,8 @@ const ModalDelete: FC<IModalDeleteProps> = ({ toggle, toggleModal, id, link }) =
 
   const handleDeleteElement = useCallback(async () => {
     await api.delete(`api/${link}/${id}`)
-  }, [])
+    toggleModal();
+  }, [toggleModal])
 
   return (
     <Modal title="Deletar marca" toggle={toggle} toggleModal={toggleModal}>

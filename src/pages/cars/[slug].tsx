@@ -1,6 +1,7 @@
 import Header from '../../components/global/Header';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import {
   HeaderDetails,
   DetailsContainer,
@@ -8,7 +9,6 @@ import {
   ContainerInfoCar,
   ContainerLabels,
   Label,
-  ContentDescription,
 } from '../../styles/pages/cars/details';
 import Tab from '../../components/global/Tab';
 import Button from '../../components/global/Button';
@@ -57,10 +57,11 @@ interface IProps {
 const Details: FC = () => {
   const formRef = useRef<FormHandles>();
   const [vehicle, setVehicle] = useState<IProps>({} as IProps);
+  const { query } = useRouter();
 
   useEffect(() => {
     async function getvehicle(): Promise<void> {
-      const response = await api.get('api/veiculo/5');
+      const response = await api.get(`api/veiculo/${query.slug}`);
       setVehicle(response.data)
     }
 
@@ -145,14 +146,6 @@ const Details: FC = () => {
                 </Tab.Content>
               </Tab>
             </TabContainer>
-            <ContentDescription>
-              {vehicle.descricao}
-            </ContentDescription>
-            <Button>
-              <Link href="/">
-                Escolher o período do aluguel
-              </Link>
-            </Button>
           </div>
         </ContainerInfoCar>
       </DetailsContainer>

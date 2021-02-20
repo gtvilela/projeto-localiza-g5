@@ -88,28 +88,12 @@ const Categories: FC = () => {
 
   return (
     <>
-      <Header hidden={true} />
+      <Header hidden={false} />
       <Section>
         <SectionContainer>
           <h1>Aluguel de Carros com a maior frota do Brasil!
             <span>Faça sua simulação!</span>
           </h1>
-          <Form ref={formRef} onSubmit={() => console.log('oi')}>
-            <DatePickerForm background="#ffffff" color="#000000" type="text" />
-            <InputTime
-              name="time_to_deliver"
-              icon={AiFillHourglass}
-              label="Hora de retirada"
-              />
-            <DatePickerForm background="#ffffff" color="#000000" type="text" />
-            <InputTime
-              name="time_to_deliver"
-              icon={AiOutlineHourglass}
-              label="Hora de entrega"
-              />
-            <Button fullwidth color="yellow">Reservar agora</Button>
-
-          </Form>
         </SectionContainer>
       </Section>
       <Content>

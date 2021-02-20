@@ -46,7 +46,7 @@ export const ButtonContainer = styled.button<IButtonProps>`
 
   padding: ${({ size }) => size === 'large' ? css`12px 32px` : css`4px 16px` };
 
-  padding: ${({ radius }) => radius && css`8px 8px`};
+  padding: ${({ radius }) => radius  && css`8px 8px`};
   border-radius: ${({ radius }) => radius ? css`50%` : css`4px` };
 
   width: ${({ fullwidth }) => fullwidth && css`100%` };

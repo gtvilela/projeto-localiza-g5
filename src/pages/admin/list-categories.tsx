@@ -50,7 +50,7 @@ const ListCategories: FC = () => {
 
   const handleCloseModalAfterWinAction = useCallback((type: 'new' | 'edit', data: ICategoryProps) => {
     if (type === 'new') {
-      setCategories([...categories, data])
+      setCategories((oldCategories) => [...oldCategories, data])
       handleCloseModal()
     } else if ( type === 'edit') {
       setCategories(

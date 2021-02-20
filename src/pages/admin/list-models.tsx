@@ -48,7 +48,7 @@ const ListModels: FC = () => {
 
   const handleCloseModalAfterWinAction = useCallback((type: 'new' | 'edit', data: IModelProps) => {
     if (type === 'new') {
-      setModels([...models, data])
+      setModels((oldModels => [...oldModels, data]))
       handleCloseModal()
     } else if ( type === 'edit') {
       setModels(
@@ -121,7 +121,7 @@ const ListModels: FC = () => {
               <ModalDelete
                 toggle={modalInfo.isOpen}
                 toggleModal={handleCloseModal}
-                link="categoria"
+                link="modelo"
                 id={modalInfo.dataEdit.id}
               />
             )}
