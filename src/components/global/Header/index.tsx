@@ -8,8 +8,7 @@ import { HeaderContainer, Content, HeaderStart, LogoContainer, ButtonBack, Heade
 import { IPropsHeader } from './types/index';
 
 import Dropdown from '../Dropdown';
-import LogoLocalizaComponent from '../../../../public/images-components/LogoLocalizaSvg';
-import Avatar from '../../../../public/images-components/AvatarSvg';
+import { AvatarSvg, LogoLocalizaSvg } from '../../../../public/images-components/IconsReact';
 
 const Header: FC<IPropsHeader> = ({ hidden = true}) => {
 
@@ -40,7 +39,7 @@ useOutsideAlerter(wrapperRef);
         <HeaderStart>
           <Link href="/" passHref>
             <LogoContainer>
-              <LogoLocalizaComponent />
+              <LogoLocalizaSvg />
             </LogoContainer>
           </Link>
           <ButtonBack hidden={hidden}>
@@ -61,7 +60,7 @@ useOutsideAlerter(wrapperRef);
           >
             <div className="user-name">Usuário</div>
             <ImageUser>
-              <Avatar className="icon-user" />
+              <AvatarSvg className="icon-user" />
             </ImageUser>
           </User>
         </HeaderEnd>

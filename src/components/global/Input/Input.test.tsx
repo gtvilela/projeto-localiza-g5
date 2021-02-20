@@ -1,8 +1,7 @@
 import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { FiMail } from 'react-icons/fi';
 
-import theme from '../../../styles/theme';
 import Input from '../Input';
 
 jest.mock('@unform/core', () => {

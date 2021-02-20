@@ -1,44 +1,73 @@
-# Projeto Localiza - Grupo 5 :memo:
+<h1 align="center">
+  <img alt="" src="./public/assets/logo-green.svg" />
+  <small>G5</small>
+</h1>
 
-Disponibilizar o site para que o cliente visualize os veículos por categorias, realize o cadastro e efetue a locação do veículo.
+<p align="center">🌎 Uma simulação de aluguel de veículos da maior locadora da América Latina</p>
 
-<ol>
-<li> O site deverá exibir os veículos disponíveis para locação
-Disponibilizar um formulário de simulação de locação com base no veículo selecionado, valor hora do veículo, total de horas. Caso o cliente confirme, validar\realizar o login para a simulação se tornar uma reserva.</li>
-<li>Caso o cpf ainda não esteja na base de dados, realizar o cadastro de cliente informando os dados conforme especificação web services.</li>
-<li>Listar as locações já realizadas pelo cliente por data.</li>
-</ol>
+<br />
 
-## Tecnologias :computer:
+<p align="center">
+  <kbd>
+    <img width="220" style="border-radius: 5px" height="400" src="./public/assets/rent-a-car.jpeg" alt="Intro">
+  </kbd>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <kbd>
+    <img width="220" style="border-radius: 5px" height="400" src="./public/assets/profile.jpeg" alt="Register adopt">
+  </kbd>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <kbd>
+    <img width="220" style="border-radius: 5px" height="400" src="./public/assets/schedules.jpeg" alt="Chat">
+  </kbd>
+</p>
 
-<ul>
-  <li>React</li>
-  <li>Next.js</li>
-  <li>Typescript</li>
-  <li>Jest</li>
-</ul>
+<br />
 
-## Desenvolvimento :man_technologist:
+# ⚙️ Tecnologias
 
-Para iniciar o desenvolvimento, é necessário clonar o projeto do GitHub num diretório de sua preferência:
+As seguintes ferramentas foram usadas na construção do projeto:
 
-```shell
-cd "diretorio de sua preferencia"
+- [Jest](https://jestjs.io/)
+- [.NET](https://dotnet.microsoft.com/)
+- [Next.js](https://nextjs.org/)
+- [React](https://pt-br.reactjs.org/)
+- [Storybook](https://storybook.js.org/)
+- [Styled Components](https://styled-components.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+
+<br />
+
+# 👨‍💻 Desenvolvimento
+
+Para iniciar o desenvolvimento, é necessário clonar o repositório em um diretório de sua preferência:
+
+```bash
+cd ../minha-pasta
 git clone https://github.com/gtvilela/projeto-localiza-g5.git
 cd projeto-localiza-g5
+```
+
+Instale as dependências necessárias para o correto funcionamento da aplicação:
+
+```bash
 npm install
 ```
-Obs.: Gentileza utilizar o npm para instalações, pois o projeto foi criado por npm e configurado o ESlint. Com isso, o yarn pode fazer o projeto quebrar.
 
-### Padronização de branches
+> Utilizar o npm para instalações, pois foi o pacote utilizado e configurado o ESlint
+
+<br />
+
+# 📝 Padronização de branches
 
 <ul>
   <li><strong>feature/</strong>nome-da-branch</li>
   <li><strong>hotfix/</strong>nome-da-branch</li>
   <li><strong>release/</strong>nome-da-branch</li>
- </ul>
+</ul>
 
-### Padronização commits:
+<br />
+
+# 📝 Padronização de commits
 
 1. <strong>build:</strong> Alterações que afetam o sistema de construção ou dependências externas (escopos de exemplo: gulp, broccoli, npm),
 2. <strong>ci:</strong> Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs);
@@ -52,30 +81,34 @@ Obs.: Gentileza utilizar o npm para instalações, pois o projeto foi criado por
 10. <strong>chore:</strong> Atualização de tarefas que não ocasionam alteração no código de produção, mas mudanças de ferramentas, mudanças de configuração e bibliotecas que realmente não entram em produção;
 11. <strong>env:</strong> basicamente utilizado na descrição de modificações ou adições em arquivos de configuração em processos e métodos de integração contínua (CI), como parâmetros em arquivos de configuração de containers.
 
+<br />
 
-## Deploy e Publicação :cloud:
-
-(Especificação deploy)
+# ☁️ Deploy e Publicação
 
 [Plataforma Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)
 
-## Api :dizzy:
+<br />
+
+# 🧠 API
 
 (Especificação api)
 
 As rotas podem ser acessadas e editadas em `pages/api/hello.js`.
 
-## Testes :test_tube:
+<br />
 
-(Especificação dos testes)
+# 🧠 Contribuidores
 
-## Inicialização :timer_clock:
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/gtvilela"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/gtvilela" width="100px;" alt=""/><br /><sub><b>Gabriel Vilela</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/GuiiMaranhao"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/GuiiMaranhao" width="100px;" alt=""/><br /><sub><b>Guilherme Maranhão</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/hugoflaus"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/hugoflaus" width="100px;" alt=""/><br /><sub><b>Hugo Flausino</b></sub></a><br /></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/LuanBarbosaA"><img style="border-radius: 50%; margin-top: 0.4em" src="https://avatars.githubusercontent.com/LuanBarbosaA" width="100px;" alt=""/><br /><sub><b>Luan Barbosa</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/lpsystemas"><img style="border-radius: 50%; margin-top: 0.4em" src="https://avatars.githubusercontent.com/lpsystemas" width="100px;" alt=""/><br /><sub><b>Lúcio Pimenta</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/samuelpietra"><img style="border-radius: 50%; margin-top: 0.4em" src="https://avatars.githubusercontent.com/samuelpietra" width="100px;" alt=""/><br /><sub><b>Samuel Pietra</b></sub></a><br /></td>
 
-Para inicialização do servidor:
-
-```bash
-npm run dev
-```
-
-Abrir [http://localhost:3000](http://localhost:3000) no navegador para ver o resultado.
-
+  </tr>
+</table>

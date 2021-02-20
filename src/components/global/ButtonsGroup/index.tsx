@@ -2,14 +2,10 @@ import React, { HTMLAttributes, FC } from 'react';
 
 import { ButtonsGroupContainer } from './styles';
 
-type IButtonsGroupProps = HTMLAttributes<HTMLDivElement>
+type IPropsButtonsGroup = HTMLAttributes<HTMLDivElement>;
 
-const ButtonsGroup: FC<IButtonsGroupProps> = ({ children }) => {
-  return (
-    <ButtonsGroupContainer>
-      {children}
-    </ButtonsGroupContainer>
-  );
+const ButtonsGroup: FC<IPropsButtonsGroup> = ({ children }) => {
+  return <ButtonsGroupContainer>{children}</ButtonsGroupContainer>;
 };
 
 export default ButtonsGroup;
