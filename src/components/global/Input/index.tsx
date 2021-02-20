@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useField } from '@unform/core';
 
 import { IPropsInput } from './types/index';
-import { Container } from './styles';
+import { Container, Error } from './styles';
 
 const Input: React.FC<IPropsInput> = ({ name, containerStyle = {}, label, icon: Icon, ...rest }) => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -50,6 +50,7 @@ const Input: React.FC<IPropsInput> = ({ name, containerStyle = {}, label, icon: 
         ref={inputRef}
         {...rest}
       />
+      {error && <Error>{error}</Error>}
     </Container>
   );
 };

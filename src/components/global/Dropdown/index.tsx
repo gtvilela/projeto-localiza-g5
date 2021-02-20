@@ -19,12 +19,12 @@ const Dropdown: FC<IPropsDropdown> = ({ isOpen, setOpen }) => {
       {isOpen && (
         <ul className="dd-list">
           <li>
-            <Link href={`/me/1`} passHref>
+            <Link href={`/me`} passHref>
               <a>
                 <span>Profile</span>
               </a>
             </Link>
-            <Link href={`/me/1`} passHref>
+            <Link href={`/me`} passHref>
               <a>
                 <span>Agendamentos</span>
               </a>

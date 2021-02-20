@@ -36,7 +36,6 @@ const Header: FC<IPropsHeader> = ({ hidden = true}) => {
 }
 
 useOutsideAlerter(wrapperRef);
-
   return (
     <HeaderContainer ref={wrapperRef}>
       <Content>
@@ -63,7 +62,7 @@ useOutsideAlerter(wrapperRef);
               onKeyPress={() => toggle(!open)}
               onClick={() => toggle(!open)}
             >
-              <div className="user-name">Usuário</div>
+              <span className="user-name">{user.name}</span>
               <ImageUser>
                 <AvatarSvg className="icon-user" />
               </ImageUser>
@@ -78,9 +77,11 @@ useOutsideAlerter(wrapperRef);
           }
         </HeaderEnd>
       </Content>
-      <div className="menu">
-      <Dropdown isOpen={open} setOpen={setOpen}/>
-      </div>
+      {user &&
+        <div className="menu">
+          <Dropdown isOpen={open} setOpen={setOpen}/>
+        </div>
+      }
     </HeaderContainer>
 
   );

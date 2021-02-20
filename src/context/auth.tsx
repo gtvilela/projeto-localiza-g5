@@ -5,6 +5,7 @@ import Cookies from 'js-cookie'
 interface User {
   id: number;
   name: string;
+  tipo: string;
 }
 
 
@@ -12,6 +13,7 @@ interface IResponseAxios {
   id: number;
   name: string;
   token: string;
+  tipo: string;
 }
 
 interface SignInCredentials {
@@ -59,9 +61,9 @@ const AuthProvider: React.FC = ({ children }) => {
       senha
     });
 
-    const { id, name, token} = response.data;
+    const { id, name, token, tipo} = response.data;
 
-    const user = { id, name };
+    const user = { id, name, tipo };
 
     Cookies.set('@Localiza:user', JSON.stringify(user));
     Cookies.set('@Localiza:token', JSON.stringify(token));
