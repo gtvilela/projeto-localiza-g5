@@ -15,7 +15,7 @@ const DatePickerForm: FC<IProps> = ({
   ...rest
 }) => {
   const [open, setOpen] = useState(false);
-  const [date, setDate] = useState('20/05/2020');
+  const [date, setDate] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const visibleRef = useRef<HTMLDivElement>(null);
 
