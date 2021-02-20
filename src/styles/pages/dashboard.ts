@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import theme from '../../styles/theme'
+import theme from '../../styles/theme';
 
 export const Section = styled.div`
   min-height: 264px;
@@ -26,17 +26,17 @@ export const SectionContainer = styled.div`
     flex-direction: column-reverse;
   }
 
-    h1 {
-      max-width: 415px;
-      font-weight: 400;
+  h1 {
+    max-width: 415px;
+    font-weight: 400;
 
-      span {
-        display: inline-block;
-        font-weight: bold;
-        color: ${theme.colors.secondary};
-      }
+    span {
+      display: inline-block;
+      font-weight: bold;
+      color: ${theme.colors.secondary};
+    }
 
-      @media (max-width: 425px) {
+    @media (max-width: 425px) {
       display: none;
     }
 
@@ -48,7 +48,6 @@ export const SectionContainer = styled.div`
       }
     }
   }
-
 `;
 
 export const Content = styled.div`
@@ -56,7 +55,12 @@ export const Content = styled.div`
   max-width: 1120px;
   margin: 0 auto;
   padding: 48px 16px 24px;
-`
+
+  .button-filter {
+    border-radius: 50%;
+    padding: 20px;
+  }
+`;
 
 export const HeaderPag = styled.div`
   display: flex;
@@ -80,7 +84,7 @@ export const HeaderPag = styled.div`
   }
 
   span {
-    color: ${theme.colors.textLighter}
+    color: ${theme.colors.textLighter};
   }
 `;
 

@@ -1,5 +1,6 @@
 import Header from '../../components/global/Header';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import {
   HeaderDetails,
   DetailsContainer,
@@ -11,18 +12,16 @@ import {
 } from '../../styles/pages/cars/details';
 import Tab from '../../components/global/Tab';
 import Button from '../../components/global/Button';
-import FuelSvg from '../../../public/images-components/FuelSvg';
-import MeterSvg from '../../../public/images-components/MeterSvg';
-import TransmissionSvg from '../../../public/images-components/TransmissionSvg';
-import GroupSvg from '../../../public/images-components/GroupSvg';
-import HorsepowerSvg from '../../../public/images-components/HorsepowerSvg';
-import LuggageSvg from '../../../public/images-components/LuggageSvg';
-import Link from 'next/link';
+import { Form } from '@unform/web';
+import Input from '@components/global/Input';
+import { FiCalendar } from 'react-icons/fi';
+import { FormHandles } from '@unform/core';
+import { FuelSvg, GroupSvg, HorsepowerSvg, LuggageSvg, MeterSvg, TransmissionSvg } from '../../../public/images-components/IconsReact';
 
 enum Combustivel {
   'Gasolina' = 1,
   'Álcool' = 2,
-  'Diesel' = 3
+  'Diesel' = 3,
 }
 
 import api from '../../services/api';

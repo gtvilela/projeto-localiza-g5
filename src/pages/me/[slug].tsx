@@ -36,7 +36,7 @@ const Profile: FC = () => {
           </Tab>
         </BoxProfile>
         <BoxSchedules>
-          <Title>Agendamentos feitos</Title>
+          <Title>Últimos agendamentos</Title>
           <CardWithSchedules />
           <CardWithSchedules />
         </BoxSchedules>
