@@ -85,6 +85,7 @@ export const ContainerInfoCar = styled.div`
 `;
 
 export const ContainerLabels = styled.div`
+  width: 100%;
   max-width: 390px;
   display: grid;
   grid-template-columns: 1fr 1fr;
