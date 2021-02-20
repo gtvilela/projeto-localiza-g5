@@ -57,7 +57,6 @@ const Dashboard: FC = () => {
   };
 
   const justFiltereds = (value) => {
-    console.log(value)
     const filtrados = veiculos.filter(({ano, categoria, marca}) => {
       debugger;
       return (
