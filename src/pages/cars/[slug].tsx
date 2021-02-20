@@ -17,6 +17,7 @@ import Input from '@components/global/Input';
 import { FiCalendar } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { FuelSvg, GroupSvg, HorsepowerSvg, LuggageSvg, MeterSvg, TransmissionSvg } from '../../../public/images-components/IconsReact';
+import { AiFillHourglass, AiOutlineHourglass } from 'react-icons/ai';
 
 enum Combustivel {
   'Gasolina' = 1,
@@ -25,6 +26,9 @@ enum Combustivel {
 }
 
 import api from '../../services/api';
+import DatePickerForm from '@components/global/InputDatepicker/DatePickerForm';
+import InputTime from '@components/global/InputTime/InputTime';
+import { TabContainer } from '@components/global/Tab/styles';
 
 interface IProps {
   id: number;
@@ -51,6 +55,7 @@ interface IProps {
 
 
 const Details: FC = () => {
+  const formRef = useRef<FormHandles>();
   const [vehicle, setVehicle] = useState<IProps>({} as IProps);
 
   useEffect(() => {
@@ -110,6 +115,36 @@ const Details: FC = () => {
                 <div>{vehicle.potencia}HP</div>
               </Label>
             </ContainerLabels>
+            <TabContainer>
+              <Tab>
+                <Tab.Header>
+                  <Tab.HeaderItem eventKey={0}>Período</Tab.HeaderItem>
+                  <Tab.HeaderItem eventKey={1}>Sobre</Tab.HeaderItem>
+                </Tab.Header>
+                <Tab.Content eventKey={0}>
+                  <Form ref={formRef} onSubmit={() => console.log('oi')}>
+                  <DatePickerForm background="#ffffff" color="#000000" type="text" />
+                    <InputTime
+                      name="time_to_deliver"
+                      icon={AiFillHourglass}
+                      label="Hora de retirada"
+                      />
+                    <DatePickerForm background="#ffffff" color="#000000" type="text" />
+                    <InputTime
+                      name="time_to_deliver"
+                      icon={AiOutlineHourglass}
+                      label="Hora de entrega"
+                      />
+                    <Button fullwidth color="yellow">Reservar agora</Button>
+                  </Form>
+                </Tab.Content>
+                <Tab.Content eventKey={1}>
+                  <div>
+                    {vehicle.descricao}
+                  </div>
+                </Tab.Content>
+              </Tab>
+            </TabContainer>
             <ContentDescription>
               {vehicle.descricao}
             </ContentDescription>

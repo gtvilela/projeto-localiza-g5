@@ -11,8 +11,42 @@ interface IProps {
   descricao: string;
 }
 
-const Dashboard = () => {
-  const [categories, setCategories] = useState<IProps[]>([]);
+const Dashboard: FC = () => {
+  const formRef = useRef<FormHandles>();
+  const [open, setOpen] = useState(false);
+  const [veiculos, setVeiculos] = useState<IProps[]>([]);
+  const [filteredVeiculos, setfilteredVeiculos] = useState(veiculos);
+  const [value, setValue] = useState([]);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (value) => {
+    setOpen(false);
+    setValue(value);
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+    setfilteredVeiculos(veiculos);
+  };
+
+  const justFiltereds = (value) => {
+    const filtrados = veiculos.filter(({ano, categoria, marca}) => {
+      debugger;
+      return (
+        value.indexOf(ano) !== -1 ||
+        value.indexOf(categoria.nome) !== -1 ||
+        value.indexOf(marca.nome) !== -1
+      );
+    });
+    setfilteredVeiculos(filtrados);
+    console.log(filteredVeiculos)
+  };
+  useEffect(() => {
+    justFiltereds(value);
+  }, [value]);
 
   useEffect(() => {
     async function getCategories(): Promise<void> {

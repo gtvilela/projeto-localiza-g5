@@ -43,6 +43,8 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
             rel="stylesheet"
           />
+          <link rel="apple-touch-icon" sizes="57x57" href="/favicon.ico"></link>
+          <title>Localiza G5</title>
         </Head>
         <body>
           <Main />
