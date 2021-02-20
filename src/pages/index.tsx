@@ -55,14 +55,17 @@ const Dashboard: FC = () => {
   };
 
   const justFiltereds = (value) => {
-    const filtrados = veiculos.filter((veiculo) => {
+    console.log(value)
+    const filtrados = veiculos.filter(({ano, categoria, marca}) => {
+      debugger;
       return (
-        value.indexOf(veiculo.ano) !== -1 ||
-        value.indexOf(veiculo.categoria.nome) !== -1 ||
-        value.indexOf(veiculo.marca.nome) !== -1
+        value.indexOf(ano) !== -1 ||
+        value.indexOf(categoria.nome) !== -1 ||
+        value.indexOf(marca.nome) !== -1
       );
     });
     setfilteredVeiculos(filtrados);
+    console.log(filteredVeiculos)
   };
   useEffect(() => {
     justFiltereds(value);
@@ -104,7 +107,7 @@ const Dashboard: FC = () => {
           <DialogFilter onClose={handleClose} onCancel={handleCancel} isOpen={open} />
         </HeaderPag>
         <BoxCards>
-          {veiculos.map((veiculo) => (
+          {filteredVeiculos.map((veiculo) => (
             <Card key={veiculo.id} vehicles={veiculo} />
             ))}
         </BoxCards>
