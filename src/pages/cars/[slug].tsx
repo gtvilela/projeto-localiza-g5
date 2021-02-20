@@ -1,7 +1,8 @@
-import Header from '../../components/global/Header';
-import React, { FC, useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
+
 import {
   HeaderDetails,
   DetailsContainer,
@@ -9,13 +10,11 @@ import {
   ContainerInfoCar,
   ContainerLabels,
   Label,
+  TabContainer
 } from '../../styles/pages/cars/details';
-import Tab from '../../components/global/Tab';
-import Button from '../../components/global/Button';
-import { Form } from '@unform/web';
-import Input from '@components/global/Input';
-import { FiCalendar } from 'react-icons/fi';
-import { FormHandles } from '@unform/core';
+
+import { Header, Tab, Button } from '../../components/global'
+
 import { FuelSvg, GroupSvg, HorsepowerSvg, LuggageSvg, MeterSvg, TransmissionSvg } from '../../../public/images-components/IconsReact';
 import { AiFillHourglass, AiOutlineHourglass } from 'react-icons/ai';
 
@@ -28,7 +27,6 @@ enum Combustivel {
 import api from '../../services/api';
 import DatePickerForm from '@components/global/InputDatepicker/DatePickerForm';
 import InputTime from '@components/global/InputTime/InputTime';
-import { TabContainer } from '@components/global/Tab/styles';
 
 interface IProps {
   id: number;
@@ -53,7 +51,6 @@ interface IProps {
   };
 }
 
-
 const Details: FC = () => {
   const formRef = useRef<FormHandles>();
   const [vehicle, setVehicle] = useState<IProps>({} as IProps);
@@ -61,12 +58,16 @@ const Details: FC = () => {
 
   useEffect(() => {
     async function getvehicle(): Promise<void> {
-      const response = await api.get(`api/veiculo/${query.slug}`);
-      setVehicle(response.data)
+      if(query.slug) {
+        const response = await api.get(`api/veiculo/${query.slug}`);
+        setVehicle(response.data)
+      }
     }
 
     getvehicle()
-  }, [])
+  }, [query])
+
+  const handleSubmitSchedule = useCallback(() => {}, [])
 
   return (
     <>
@@ -123,7 +124,7 @@ const Details: FC = () => {
                   <Tab.HeaderItem eventKey={1}>Sobre</Tab.HeaderItem>
                 </Tab.Header>
                 <Tab.Content eventKey={0}>
-                  <Form ref={formRef} onSubmit={() => console.log('oi')}>
+                  <Form ref={formRef} onSubmit={handleSubmitSchedule}>
                   <DatePickerForm background="#ffffff" color="#000000" type="text" />
                     <InputTime
                       name="time_to_deliver"
@@ -136,13 +137,13 @@ const Details: FC = () => {
                       icon={AiOutlineHourglass}
                       label="Hora de entrega"
                       />
-                    <Button fullwidth color="yellow">Reservar agora</Button>
+                    <Button fullwidth color="yellow" type="submit">Reservar agora</Button>
                   </Form>
                 </Tab.Content>
                 <Tab.Content eventKey={1}>
-                  <div>
+                  <p style={{maxWidth: 400}}>
                     {vehicle.descricao}
-                  </div>
+                  </p>
                 </Tab.Content>
               </Tab>
             </TabContainer>

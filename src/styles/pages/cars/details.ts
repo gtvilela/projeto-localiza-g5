@@ -74,13 +74,6 @@ export const ContainerInfoCar = styled.div`
   flex-direction: row;
   justify-content: space-between;
   margin-top: 40px;
-  button {
-    margin: 0 auto;
-    a {
-      text-decoration: none;
-      color: #fff;
-    }
-  }
 
   @media (max-width: 452px) {
     flex-direction: column;
@@ -97,7 +90,6 @@ export const ContainerInfoCar = styled.div`
 
 export const ContainerLabels = styled.div`
   width: 100%;
-  max-width: 390px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
@@ -112,7 +104,6 @@ export const ContainerLabels = styled.div`
 `;
 
 export const Label = styled.div`
-  width: 219.05px;
   height: 64.31px;
   padding: 20px;
   background: ${theme.colors.white};
@@ -122,9 +113,9 @@ export const Label = styled.div`
   display: flex;
   flex-direction: row;
   gap: 42px;
+  width: 100%;
 
   @media (max-width: 452px) {
-    width: 300px;
     align-items: center;
     justify-content: space-between;
     padding: 40px;

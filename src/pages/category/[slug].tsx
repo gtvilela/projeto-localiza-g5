@@ -78,13 +78,15 @@ const Categories: FC = () => {
 
   useEffect(() => {
     async function getVeiculos(): Promise<void> {
-      const response = await api.get(`api/Veiculo/categoria/${query.slug}`);
-      setVeiculos(response.data);
-      setfilteredVeiculos(response.data);
+      if(query.slug) {
+        const response = await api.get(`api/Veiculo/categoria/${query.slug}`);
+        setVeiculos(response.data);
+        setfilteredVeiculos(response.data);
+      }
     }
 
     getVeiculos();
-  }, []);
+  }, [query]);
 
   return (
     <>

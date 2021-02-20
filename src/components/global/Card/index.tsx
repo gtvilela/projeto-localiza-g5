@@ -7,7 +7,7 @@ import { CardContainer, CardDescription } from './styles';
 
 const Card: FC<IPropsCard> = ({ vehicles }) => {
   return (
-    <Link href={`/cars/${vehicles.id}`}>
+    <Link href={`/cars/${vehicles.id}`} passHref>
       <CardContainer>
         <Image src={vehicles.url} width={248} height={136} />
         <CardDescription>
