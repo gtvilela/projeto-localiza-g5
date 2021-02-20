@@ -1,7 +1,7 @@
 import React, { FC, useRef, useEffect, useState } from 'react';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
-import { FiCalendar, FiFilter } from 'react-icons/fi';
+import { FiFilter } from 'react-icons/fi';
 
 import Header from '../components/global/Header';
 import Button from '../components/global/Button';
@@ -55,17 +55,13 @@ const Dashboard: FC = () => {
   };
 
   const justFiltereds = (value) => {
-    console.log(value)
-    const filtrados = veiculos.filter(({ano, categoria, marca}) => {
-      debugger;
+    const filtrados = veiculos.filter(({ano, marca}) => {
       return (
         value.indexOf(ano) !== -1 ||
-        value.indexOf(categoria.nome) !== -1 ||
         value.indexOf(marca.nome) !== -1
       );
     });
     setfilteredVeiculos(filtrados);
-    console.log(filteredVeiculos)
   };
   useEffect(() => {
     justFiltereds(value);
