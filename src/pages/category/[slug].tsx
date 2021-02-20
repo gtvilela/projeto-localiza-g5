@@ -70,6 +70,7 @@ const Categories: FC = () => {
     });
     setfilteredVeiculos(filtrados);
   };
+
   useEffect(() => {
     justFiltereds(value);
   }, [value]);

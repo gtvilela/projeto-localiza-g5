@@ -1,7 +1,5 @@
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
-import { FormHandles } from '@unform/core';
-import { Form } from '@unform/web';
 
 import {
   HeaderDetails,
@@ -9,9 +7,10 @@ import {
   LabelHeader,
   ContainerInfoCar,
   ContainerLabels,
-  Label,
-  TabContainer
+  Label
 } from '../../styles/pages/cars/details';
+import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
 
 import { Header, Tab, Button } from '../../components/global'
 
@@ -27,6 +26,9 @@ enum Combustivel {
 import api from '../../services/api';
 import DatePickerForm from '@components/global/InputDatepicker/DatePickerForm';
 import InputTime from '@components/global/InputTime/InputTime';
+import { TabContainer } from '@components/global/Tab/styles';
+import moment from 'moment';
+import { useAuth } from '../../context/auth';
 
 interface IProps {
   id: number;
@@ -55,6 +57,7 @@ const Details: FC = () => {
   const formRef = useRef<FormHandles>();
   const [vehicle, setVehicle] = useState<IProps>({} as IProps);
   const { query } = useRouter();
+  const { user } = useAuth();
 
   useEffect(() => {
     async function getvehicle(): Promise<void> {
@@ -67,7 +70,40 @@ const Details: FC = () => {
     getvehicle()
   }, [query])
 
-  const handleSubmitSchedule = useCallback(() => {}, [])
+  const handleSubmitSchedule = useCallback(async (data) => {
+    await api.post(`api/agendamento/`, data);
+  }, [])
+
+  const calculaAgendamento = (data: any) => {
+    const start = moment((String(data.start_date).replaceAll('/','-')) + (String(data.time_to_get)), 'DD MM YYYY hh:mm'); //todays date
+    const end = moment((String(data.end_date).replaceAll('/','-')) + (String(data.time_to_deliver)), 'DD MM YYYY hh:mm'); // another date
+    const duration = moment.duration(start.diff(end));
+    const hours = duration.asHours();
+    const valorTotal = Math.abs(hours) * vehicle.valorHora;
+    const body = {
+      "dataAgendamento": moment().toDate(),
+      "dataColetaPrevista": start.toDate(),
+      "dataColetaRealizada": start.toDate(),
+      "dataEntregaPrevista": end.toDate(),
+      "dataEntregaRealizada": end.toDate(),
+      "valorHora": vehicle.valorHora,
+      "horasLocacao": Math.abs(hours),
+      "subTotal": valorTotal,
+      "custosAdicionais": 0,
+      "valorTotal": valorTotal,
+      "realizadaVistoria": true,
+      "idPessoa": user.id,
+      "idVeiculo": vehicle.id,
+    } 
+    console.log(start);
+    // start.format('YYYY-MM-DD hh:mm')
+    console.log(moment('20/05/2020').locale('en-US').format('YYYY-MM-DD'));
+    
+    
+    console.log(body);
+    
+    handleSubmitSchedule(body);
+  }
 
   return (
     <>
@@ -124,20 +160,20 @@ const Details: FC = () => {
                   <Tab.HeaderItem eventKey={1}>Sobre</Tab.HeaderItem>
                 </Tab.Header>
                 <Tab.Content eventKey={0}>
-                  <Form ref={formRef} onSubmit={handleSubmitSchedule}>
-                  <DatePickerForm background="#ffffff" color="#000000" type="text" />
+                  <Form ref={formRef} onSubmit={(data) => calculaAgendamento(data)}>
+                    <DatePickerForm background="#ffffff" color="#000000" type="text" name={'start_date'} label={'Data da retirada'} />
                     <InputTime
-                      name="time_to_deliver"
+                      name="time_to_get"
                       icon={AiFillHourglass}
                       label="Hora de retirada"
                       />
-                    <DatePickerForm background="#ffffff" color="#000000" type="text" />
+                    <DatePickerForm background="#ffffff" color="#000000" type="text" name={'end_date'} label={'Data da entrega'}/>
                     <InputTime
                       name="time_to_deliver"
                       icon={AiOutlineHourglass}
                       label="Hora de entrega"
                       />
-                    <Button fullwidth color="yellow" type="submit">Reservar agora</Button>
+                    <Button fullwidth color="yellow" type={'submit'}>Reservar agora</Button>
                   </Form>
                 </Tab.Content>
                 <Tab.Content eventKey={1}>

@@ -12,6 +12,7 @@ const DatePickerForm: FC<IProps> = ({
   iconEnd,
   label,
   type,
+  name,
   ...rest
 }) => {
   const [open, setOpen] = useState(false);
@@ -76,8 +77,8 @@ const DatePickerForm: FC<IProps> = ({
     <>
       <div onClick={() => toggleDatepicker(!open)}>
         <InputDatepicker
-          name="dataRetirada"
-          label="Data da retirada"
+          name={name}
+          label={label}
           icon={FiCalendar}
           onChange={(event) => normalizeInputNumber(event)}
           background={background}
