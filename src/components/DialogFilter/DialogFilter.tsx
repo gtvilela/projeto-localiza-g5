@@ -44,22 +44,15 @@ interface IPropsDialog {
 
 const DialogFilter: FC<IPropsDialog> = (props) => {
   const { onClose, isOpen, onCancel } = props;
-  const [categorias, setCategorias] = useState([]);
   const [marcas, setMarcas] = useState([]);
   const [checkeds, setCheckeds] = useState([]);
 
   useEffect(() => {
-    async function getCategorias(): Promise<void> {
-      const response = await api.get('api/Categoria/buscarTodos');
-      setCategorias(response.data);
-    }
     async function getMarcas(): Promise<void> {
       const response = await api.get('api/Marca/buscarTodos');
       setMarcas(response.data);
 
     }
-
-    getCategorias();
     getMarcas();
   }, []);
 
@@ -74,10 +67,6 @@ const DialogFilter: FC<IPropsDialog> = (props) => {
   const handleOK = () => {
     onClose(checkeds);
     setCheckeds([]);
-  };
-
-  const handleChangeCategories = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCheckeds([...checkeds, event.target.name]);
   };
 
   const handleChangeYears = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -96,19 +85,6 @@ const DialogFilter: FC<IPropsDialog> = (props) => {
         </DialogTitle>
         <hr />
         <FormGroup row>
-          <div>
-            <TitleFilters>Categoria veículo</TitleFilters>
-            <ContainerFilters>
-              {categorias.map(({ id, nome }) => (
-                <div key={id}>
-                  <FormControlLabel
-                    control={<GreenCheckbox onChange={handleChangeCategories} name={nome} />}
-                    label={nome}
-                  />
-                </div>
-              ))}
-            </ContainerFilters>
-          </div>
           <div>
             <TitleFilters>Marca</TitleFilters>
             <ContainerFilters>
