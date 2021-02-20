@@ -7,7 +7,7 @@ import {
   ContainerInfoCar,
   ContainerLabels,
   Label,
-  TabContainer,
+  ContentDescription,
 } from '../../styles/pages/cars/details';
 import Tab from '../../components/global/Tab';
 import Button from '../../components/global/Button';
@@ -25,44 +25,43 @@ enum Combustivel {
   'Diesel' = 3
 }
 
-const Details: FC = () => {
- const [veiculo, setVeiculo] = useState({
-    modelo: {
-      nome: ''
-    },
-    marca: {
-      nome: ''
-    },
-    url: '',
-    velocidadeMaxima: '',
-    limitePorMalas: '',
-    valorHora: 0,
-    combustivel: 0,
-    cambio: '',
-    ocupantes: 0,
-    potencia: 0,
-    descricao: ''
- })
-  const getQueryStringParams = query => {
-    return query
-        ? (/^[?#]/.test(query) ? query.slice(1) : query)
-            .split('&')
-            .reduce((params, param) => {
-                    let [key, value] = param.split('=');
-                    params[key] = value ? decodeURIComponent(value.replace(/\+/g, ' ')) : '';
-                    return params;
-                }, {}
-            )
-        : {}
-  };
+import api from '../../services/api';
 
+interface IProps {
+  id: number;
+  url: string;
+  valorHora: number;
+  combustivel: number;
+  kilomentroPorLitro: string;
+  velocidadeMaxima: string;
+  ocupantes: number;
+  cambio: string;
+  limitePorMalas: string;
+  potencia: string;
+  descricao: string;
+  categoria: {
+    nome: string;
+  };
+  marca: {
+    nome: string;
+  };
+  modelo: {
+    nome: string;
+  };
+}
+
+
+const Details: FC = () => {
+  const [vehicle, setVehicle] = useState<IProps>({} as IProps);
 
   useEffect(() => {
-    const { data } = getQueryStringParams(window.location.search);
-    console.log(JSON.parse(data))
-    setVeiculo(JSON.parse(data))
-  }, []);
+    async function getvehicle(): Promise<void> {
+      const response = await api.get('api/veiculo/5');
+      setVehicle(response.data)
+    }
 
+    getvehicle()
+  }, [])
 
   return (
     <>
@@ -70,12 +69,12 @@ const Details: FC = () => {
       <DetailsContainer>
         <HeaderDetails>
           <div className="car-specification">
-            <LabelHeader>{veiculo.marca.nome}</LabelHeader>
-            <span className="model">{veiculo.modelo.nome}</span>
+            <LabelHeader>{vehicle.marca?.nome}</LabelHeader>
+            <span className="model">{vehicle.modelo?.nome}</span>
           </div>
           <div className="info-price">
             <LabelHeader>Ao dia</LabelHeader>
-            <span className="price">R${veiculo.valorHora * 24}</span>
+            <span className="price">R${vehicle.valorHora * 24}</span>
           </div>
         </HeaderDetails>
 
@@ -83,52 +82,38 @@ const Details: FC = () => {
 
         <ContainerInfoCar>
           <div className="imagem">
-            <img src={veiculo.url} />
+            <img src={vehicle.url} />
           </div>
           <div className="container-around">
             <ContainerLabels>
               <Label>
                 <MeterSvg width={20} height={20} />
-                <div>{veiculo.velocidadeMaxima}km/h</div>
+                <div>{vehicle.velocidadeMaxima}km/h</div>
               </Label>
               <Label>
                 <LuggageSvg width={20} height={20} />
-                <div>{veiculo.limitePorMalas}L</div>
+                <div>{vehicle.limitePorMalas}L</div>
               </Label>
               <Label>
                 <FuelSvg width={20} height={20} />
-                <div>{Combustivel[veiculo.combustivel]}</div>
+                <div>{Combustivel[vehicle.combustivel]}</div>
               </Label>
               <Label>
                 <TransmissionSvg width={20} height={20} />
-                <div>{veiculo.cambio}</div>
+                <div>{vehicle.cambio}</div>
               </Label>
               <Label>
                 <GroupSvg width={20} height={20} />
-                <div>{veiculo.ocupantes} pessoas</div>
+                <div>{vehicle.ocupantes} pessoas</div>
               </Label>
               <Label>
                 <HorsepowerSvg width={20} height={20} />
-                <div>{veiculo.potencia}HP</div>
+                <div>{vehicle.potencia}HP</div>
               </Label>
             </ContainerLabels>
-            <TabContainer>
-              <Tab>
-                <Tab.Header>
-                  <Tab.HeaderItem eventKey={0}>Sobre</Tab.HeaderItem>
-                  <Tab.HeaderItem eventKey={1}>Período</Tab.HeaderItem>
-                </Tab.Header>
-                <Tab.Content eventKey={0}>
-                  <div>
-                 {veiculo.descricao}
-                  </div>
-
-                </Tab.Content>
-                <Tab.Content eventKey={1}>
-                  <div className="description">Teste 2</div>
-                </Tab.Content>
-              </Tab>
-            </TabContainer>
+            <ContentDescription>
+              {vehicle.descricao}
+            </ContentDescription>
             <Button>
               <Link href="/">
                 Escolher o período do aluguel

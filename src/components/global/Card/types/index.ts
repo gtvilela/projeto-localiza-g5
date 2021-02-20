@@ -1,5 +1,5 @@
 export interface IPropsCard {
-  veiculo: {
+  vehicles: {
     id: number;
     valorHora: number;
     url: string;

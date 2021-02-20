@@ -18,30 +18,25 @@ interface IModalNewProps {
   toggle: boolean;
   toggleModal(): void;
   initialData: IBrandProps | null;
-  handleCloseModalAfterWinAction(type: 'new' | 'edit', data: IBrandProps): void
+  handleCloseModalAfterWinAction(type: 'new' | 'edit', data: IBrandProps): void;
+  type: 'new' | 'edit';
 }
 
 interface IData {
   nome: string;
 }
 
-const ModalNew: FC<IModalNewProps> = ({ toggle, toggleModal, initialData, handleCloseModalAfterWinAction }) => {
+const ModalNew: FC<IModalNewProps> = ({ toggle, toggleModal, type, initialData, handleCloseModalAfterWinAction }) => {
   const formRef = useRef<FormHandles>(null);
-
-  useEffect(() => {
-    formRef.current.clearField('nome');
-  }, [toggle])
-
   const handleSubmit = useCallback(
     async (data: IData) => {
       try {
         if (initialData) {
-          //await api.put('/marca', data);
+          await api.put(`api/marca/${initialData.id}`, data);
           handleCloseModalAfterWinAction('edit', { id: initialData.id, ...data})
         } else {
-          const response = await api.post('/marca', data);
-          //alterar ...inital data por response.data
-          handleCloseModalAfterWinAction('edit', {...initialData})
+          const response = await api.post('api/marca', data);
+          handleCloseModalAfterWinAction('new', response.data)
         }
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -52,7 +47,7 @@ const ModalNew: FC<IModalNewProps> = ({ toggle, toggleModal, initialData, handle
           return;
         }
       }
-  }, []);
+  }, [initialData,]);
 
   return (
     <Modal title={`${initialData ? 'Editar' : 'Cadastrar'} Marca`} toggle={toggle} toggleModal={toggleModal}>

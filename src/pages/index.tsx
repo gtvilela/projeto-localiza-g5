@@ -26,11 +26,11 @@ interface IProps {
 
 const Dashboard: FC = () => {
   const formRef = useRef<FormHandles>();
-  const [veiculos, setVeiculos] = useState<IProps[]>([]);
+  const [veiculos, setVeiculos] = useState<IProps[]>([] as IProps[]);
 
   useEffect(() => {
     async function getVeiculos(): Promise<void> {
-      const response = await api.get('/Veiculo/buscarTodos');
+      const response = await api.get('api/veiculo/buscarTodos');
       setVeiculos(response.data)
     }
 
@@ -61,7 +61,7 @@ const Dashboard: FC = () => {
         </HeaderPag>
         <BoxCards>
           {veiculos.map((veiculo) => (
-            <Card key={veiculo.id} veiculo={veiculo} />
+            <Card key={veiculo.id} vehicles={veiculo} />
             ))}
         </BoxCards>
      </Content>

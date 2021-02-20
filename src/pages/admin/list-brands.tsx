@@ -28,13 +28,13 @@ const ListBrands: FC = () => {
   })
 
   useEffect(() => {
-    api.get('/Marca/buscarTodos')
+    api.get('api/Marca/buscarTodos')
     .then(response => {
       setBrands(response.data)
     })
   }, [])
 
-  const handleClickAction = useCallback((type: 'edit' | 'new' | 'delete', data?: IBrandProps) => {
+  const handleClickAction = useCallback((type: 'edit' | 'new' | 'delete', data: IBrandProps) => {
     setModalInfo({
       isOpen: true,
       type,
@@ -48,7 +48,7 @@ const ListBrands: FC = () => {
 
   const handleCloseModalAfterWinAction = useCallback((type: 'new' | 'edit', data: IBrandProps) => {
     if (type === 'new') {
-      // setBrands([{ id: 1, nome: 'gui'}])
+      setBrands([...brands, data])
       handleCloseModal()
     } else if ( type === 'edit') {
       // setBrands(
@@ -71,7 +71,7 @@ const ListBrands: FC = () => {
                   Nome
                 </th>
                 <th align="right">
-                  <Button size="medium" onClick={() => handleClickAction('new')}>
+                  <Button size="medium" onClick={() => handleClickAction('new', null)}>
                     <FiPlus />
                     Adicionar
                   </Button>
@@ -113,6 +113,7 @@ const ListBrands: FC = () => {
                 toggle={modalInfo.isOpen}
                 toggleModal={handleCloseModal}
                 initialData={modalInfo.dataEdit}
+                type={modalInfo.type}
                 handleCloseModalAfterWinAction={handleCloseModalAfterWinAction}
               />
             )}
@@ -121,7 +122,7 @@ const ListBrands: FC = () => {
               <ModalDelete
                 toggle={modalInfo.isOpen}
                 toggleModal={handleCloseModal}
-                link="categoria"
+                link="marca"
                 id={modalInfo.dataEdit.id}
               />
             )}

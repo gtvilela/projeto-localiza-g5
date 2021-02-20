@@ -14,7 +14,7 @@ interface IModalDeleteProps {
 const ModalDelete: FC<IModalDeleteProps> = ({ toggle, toggleModal, id, link }) => {
 
   const handleDeleteElement = useCallback(async () => {
-    await api.delete(`/${link}/${id}`)
+    await api.delete(`api/${link}/${id}`)
   }, [])
 
   return (

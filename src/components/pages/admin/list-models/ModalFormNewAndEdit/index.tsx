@@ -36,10 +36,10 @@ const ModalFormNewAndEdit: FC<IModalFormNewAndEditProps> = ({ toggle, toggleModa
     async (data: IData) => {
       try {
         if (initialData) {
-          //await api.put('/modelo', data);
+          //await api.put('api/modelo', data);
           handleCloseModalAfterWinAction('edit', { id: initialData.id, ...data})
         } else {
-          const response = await api.post('/modelo', data);
+          const response = await api.post('api/modelo', data);
           //alterar ...inital data por response.data
           handleCloseModalAfterWinAction('edit', {...initialData})
         }

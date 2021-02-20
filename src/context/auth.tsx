@@ -3,10 +3,15 @@ import api from '../services/api';
 import Cookies from 'js-cookie'
 
 interface User {
-  id: string;
+  id: number;
   name: string;
-  email: string;
-  avatar_url: string;
+}
+
+
+interface IResponseAxios {
+  id: number;
+  name: string;
+  token: string;
 }
 
 interface SignInCredentials {
@@ -15,23 +20,22 @@ interface SignInCredentials {
 }
 
 interface AuthState {
-  token: string;
   user: User;
+  token: string;
 }
 
 interface AuthContextData {
   user: User;
   signIn(credentials: SignInCredentials): Promise<void>;
   signOut(): void;
-  updateUser(user: User): void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<AuthState>(() => {
-    const token = Cookies.get('@Localiza:token');
     const user = Cookies.get('@Localiza:user');
+    const token = Cookies.get('@Localiza:token');
 
     if (token && user) {
       api.defaults.headers.authorization = `Bearer ${token}`;
@@ -50,36 +54,24 @@ const AuthProvider: React.FC = ({ children }) => {
   }, []);
 
   const signIn = useCallback(async ({ login, senha }) => {
-    const response = await api.post('/login', {
+    const response = await api.post<IResponseAxios>('/login', {
       login,
       senha
     });
 
-    const { token, user } = response.data;
+    const { id, name, token} = response.data;
 
-    Cookies.set('@Localiza:token', token);
+    const user = { id, name };
+
     Cookies.set('@Localiza:user', JSON.stringify(user));
+    Cookies.set('@Localiza:token', JSON.stringify(token));
 
-    api.defaults.headers.authorization = `Bearer ${token}`;
-
-    setData({ token, user });
+    setData({ user, token });
   }, []);
-
-  const updateUser = useCallback(
-    (user: User) => {
-      Cookies.set('@Localiza:user', JSON.stringify(user));
-
-      setData({
-        token: data.token,
-        user,
-      });
-    },
-    [setData, data.token],
-  );
 
   return (
     <AuthContext.Provider
-      value={{ user: data.user, signIn, signOut, updateUser }}
+      value={{ user: data.user, signIn, signOut }}
     >
       {children}
     </AuthContext.Provider>

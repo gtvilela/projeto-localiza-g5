@@ -8,9 +8,9 @@ export const Container = styled.div`
 
 export const Background = styled.div`
   flex: 1;
-  background: url('https://source.unsplash.com/collection/1508295/1600x900')
-    no-repeat center;
-  background-size: cover;
+  background: url('assets/background-sessions.jpg')
+    no-repeat right;
+    background-size: cover
 `;
 
 export const Content = styled.div`

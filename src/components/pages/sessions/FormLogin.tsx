@@ -20,7 +20,7 @@ const FormPassword: FC = () => {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
-          documento: Yup.string().required('Cpf é obrigatório'),
+          login: Yup.string().required('Cpf é obrigatório'),
           senha: Yup.string().required('Senha é obrigatória'),
         });
 

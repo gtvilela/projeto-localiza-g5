@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { shade } from 'polished';
 import theme from '../../../styles/theme';
 
 export const HeaderContainer = styled.header`
@@ -109,6 +110,19 @@ export const User = styled.a`
     @media (max-width: 425px) {
       display: none;
     }
+  }
+`;
+
+export const LinkLogin = styled.a`
+  background: ${theme.colors.secondary};
+  border-radius: 4px;
+  padding: 12px 32px;
+  text-decoration: none;
+  color: ${theme.colors.primaryDark};
+  transition: .2s;
+
+  &:hover {
+    background: ${shade(.2, theme.colors.secondary)}
   }
 `;
 

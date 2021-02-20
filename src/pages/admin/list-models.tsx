@@ -28,7 +28,7 @@ const ListModels: FC = () => {
   })
 
   useEffect(() => {
-    api.get('/modelo/buscarTodos')
+    api.get('api/modelo/buscarTodos')
     .then(response => {
       setModels(response.data)
     })

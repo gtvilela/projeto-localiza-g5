@@ -28,7 +28,7 @@ const ListCategories: FC = () => {
   })
 
   useEffect(() => {
-    api.get('/categoria/buscarTodos')
+    api.get('api/categoria/buscarTodos')
     .then(response => {
       setCategories(response.data)
     })
