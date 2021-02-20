@@ -54,7 +54,6 @@ const Details: FC = () => {
 
   useEffect(() => {
     const { data } = getQueryStringParams(window.location.search);
-    console.log(JSON.parse(data));
     setVeiculo(JSON.parse(data));
   }, []);
 

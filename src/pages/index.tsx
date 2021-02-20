@@ -53,12 +53,7 @@ const Dashboard: FC = () => {
     setfilteredVeiculos(veiculos);
   };
 
-  useEffect(() => {
-    justFiltereds(value);
-  }, [value]);
-
-  function justFiltereds(value) {
-    console.log(value);
+  const justFiltereds = (value) => {
     const filtrados = veiculos.filter((veiculo) => {
       return (
         value.indexOf(veiculo.ano) !== -1 ||
@@ -67,7 +62,11 @@ const Dashboard: FC = () => {
       );
     });
     setfilteredVeiculos(filtrados);
-  }
+  };
+  useEffect(() => {
+    justFiltereds(value);
+  }, [value]);
+
   useEffect(() => {
     async function getVeiculos(): Promise<void> {
       const response = await api.get('/Veiculo/buscarTodos');

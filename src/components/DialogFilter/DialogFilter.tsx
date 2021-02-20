@@ -56,6 +56,7 @@ const DialogFilter: FC<IPropsDialog> = (props) => {
     async function getMarcas(): Promise<void> {
       const response = await api.get('/Marca/buscarTodos');
       setMarcas(response.data);
+
     }
 
     getCategorias();
@@ -63,6 +64,10 @@ const DialogFilter: FC<IPropsDialog> = (props) => {
   }, []);
 
   const handleClose = () => {
+    if (checkeds.length === 0) {
+      onCancel();
+    }
+
     onClose(checkeds);
   };
 
@@ -94,11 +99,11 @@ const DialogFilter: FC<IPropsDialog> = (props) => {
           <div>
             <TitleFilters>Categoria veículo</TitleFilters>
             <ContainerFilters>
-              {categorias.map((categoria) => (
-                <div key={categoria.id}>
+              {categorias.map(({ id, nome }) => (
+                <div key={id}>
                   <FormControlLabel
-                    control={<GreenCheckbox onChange={handleChangeCategories} name={categoria.nome} />}
-                    label={categoria.nome}
+                    control={<GreenCheckbox onChange={handleChangeCategories} name={nome} />}
+                    label={nome}
                   />
                 </div>
               ))}
@@ -107,12 +112,9 @@ const DialogFilter: FC<IPropsDialog> = (props) => {
           <div>
             <TitleFilters>Marca</TitleFilters>
             <ContainerFilters>
-              {marcas.map((marca) => (
-                <div key={marca.id}>
-                  <FormControlLabel
-                    control={<GreenCheckbox onChange={handleChangeBrand} name={marca.nome} />}
-                    label={marca.nome}
-                  />
+              {marcas.map(({ id, nome }) => (
+                <div key={id}>
+                  <FormControlLabel control={<GreenCheckbox onChange={handleChangeBrand} name={nome} />} label={nome} />
                 </div>
               ))}
             </ContainerFilters>
@@ -120,18 +122,18 @@ const DialogFilter: FC<IPropsDialog> = (props) => {
           <div>
             <TitleFilters>Ano veículo</TitleFilters>
             <ContainerFilters>
-              {anos.map((ano) => (
-                <div key={ano.id}>
+              {anos.map(({ id, nome }) => (
+                <div key={id}>
                   <FormControlLabel
-                    control={<GreenCheckbox onChange={handleChangeYears} name={ano?.nome?.toString()} />}
-                    label={ano.nome}
+                    control={<GreenCheckbox onChange={handleChangeYears} name={nome?.toString()} />}
+                    label={nome}
                   />
                 </div>
               ))}
             </ContainerFilters>
           </div>
           <div className="button-filter">
-            <Button color="yellow" onClick={() => onCancel()}>
+            <Button color="yellow" onClick={onCancel}>
               Cancelar
             </Button>
             <Button onClick={handleOK}>OK</Button>
