@@ -6,7 +6,7 @@ import { RiArrowDropLeftLine, RiArrowDropRightLine } from 'react-icons/ri';
 import DatePickerButton from './DatePickerButton';
 import { IDay } from './types/Day';
 
-const DatePicker: FC<IPropsDatePicker> = ({ selectedDate, outputDate, minDate, maxDate }) => {
+const DatePicker: FC<IPropsDatePicker> = ({ selectedDate, outputDate }) => {
 
     let defaultDay = useRef(+moment().format('DD'));
     let defaultMonth = useRef(+moment().format('MM'));
@@ -42,8 +42,8 @@ const DatePicker: FC<IPropsDatePicker> = ({ selectedDate, outputDate, minDate, m
                 days.push({day: dateStart.format('D'), selected: false, disabled: false});
             }
             dateStart.add(1, 'days');
-        }   
-        
+        }
+
         return days
     }
 
@@ -73,11 +73,11 @@ const DatePicker: FC<IPropsDatePicker> = ({ selectedDate, outputDate, minDate, m
     }
 
     const getMonthName = () => {
-        return moment(new Date(defaultYear.current, defaultMonth.current - 1)).locale('pt-br').format('MMMM');    
+        return moment(new Date(defaultYear.current, defaultMonth.current - 1)).locale('pt-br').format('MMMM');
     }
 
     const getYearNumber = () => {
-        return moment(new Date(defaultYear.current, defaultMonth.current - 1)).locale('pt-br').format('YYYY');  
+        return moment(new Date(defaultYear.current, defaultMonth.current - 1)).locale('pt-br').format('YYYY');
     }
 
     const selectingDay = (value: number) => {
@@ -135,12 +135,12 @@ const DatePicker: FC<IPropsDatePicker> = ({ selectedDate, outputDate, minDate, m
                 </SubHeaderDatePickerContainer>
                 <DatePickerBodyContainer>
                     {
-                        days.map((day: IDay, key) => 
-                            key !== 0 ? <DatePickerButton key={key} value={day.day} selected={true} 
-                                            selectedDay={day.selected} selectingDay={e => selectingDay(e)}></DatePickerButton> : 
+                        days.map((day: IDay, key) =>
+                            key !== 0 ? <DatePickerButton key={key} value={day.day} selected={true}
+                                            selectedDay={day.selected} selectingDay={e => selectingDay(e)}></DatePickerButton> :
                             <DatePickerButton key={key} value={day.day} selected={true} selectedDay={day.selected} selectingDay={e => selectingDay(e)}
                                 gridColumnsStart={+moment(moment(new Date(defaultYear.current, defaultMonth.current - 1))
-                                    .startOf('month')._d).format('d') + 1}>                                    
+                                    .startOf('month')._d).format('d') + 1}>
                             </DatePickerButton>
                         )
                     }
