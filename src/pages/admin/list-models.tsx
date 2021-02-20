@@ -48,13 +48,13 @@ const ListModels: FC = () => {
 
   const handleCloseModalAfterWinAction = useCallback((type: 'new' | 'edit', data: IModelProps) => {
     if (type === 'new') {
-      // setModels([{ id: 1, nome: 'gui'}])
+      setModels([...models, data])
       handleCloseModal()
     } else if ( type === 'edit') {
-      // setModels(
-      //   models.map(mappedModels =>
-      //     mappedModels.id === data.id ? { ...data } : mappedModels)
-      // )
+      setModels(
+        models.map(mappedModels =>
+          mappedModels.id === data.id ? { ...data } : mappedModels)
+      )
       handleCloseModal()
     }
   }, [models, setModels, handleCloseModal])
