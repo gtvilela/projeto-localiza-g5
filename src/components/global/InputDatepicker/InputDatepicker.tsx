@@ -4,7 +4,10 @@ import { useField } from '@unform/core';
 import { IPropsInput } from './types/InputDatepicker';
 import { Container } from './StyledComponent/InputDatepicker';
 
-const InputDatepicker: React.ForwardRefRenderFunction<HTMLInputElement, PropsWithChildren<IPropsInput>> = (props, ref) => {
+const InputDatepicker: React.ForwardRefRenderFunction<HTMLInputElement, PropsWithChildren<IPropsInput>> = (
+  props,
+  ref
+) => {
   const { name, containerStyle = {}, label, icon: Icon, ...rest } = props;
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
@@ -36,7 +39,14 @@ const InputDatepicker: React.ForwardRefRenderFunction<HTMLInputElement, PropsWit
         </div>
       )}
       <label htmlFor={name}>{label}</label>
-      <input id={name} onFocus={handleInputFocus} onBlur={handleInputBlur} defaultValue={defaultValue} ref={ref} {...rest} />
+      <input
+        id={name}
+        onFocus={handleInputFocus}
+        onBlur={handleInputBlur}
+        defaultValue={defaultValue}
+        ref={ref}
+        {...rest}
+      />
     </Container>
   );
 };
