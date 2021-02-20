@@ -1,25 +1,41 @@
-import React from 'react';
+import React, { FC } from 'react';
 import Image from 'next/image';
 import { FiArrowRight } from 'react-icons/fi';
 
 import theme from '../../../styles/theme';
 import { CardContainer, CardContent, CardDescription, CardFooter } from './styles';
 
-const CardWithSchedules = () => {
+interface IVehicle {
+  data: {
+    id: number;
+    veiculo: {
+      url: string;
+      valorHora: string;
+      marca: {
+        nome: string;
+      }
+      modelo: {
+        nome: string;
+      }
+    }
+  }
+}
+
+const CardWithSchedules: FC<IVehicle> = ( { data } ) => {
   return (
     <CardContainer>
       <CardContent>
         <CardDescription>
           <div>
-            <span>Fiat</span>
-            <strong>Uno 1.0</strong>
+            <span>{data.veiculo.marca.nome}</span>
+            <strong>{data.veiculo.modelo.nome}</strong>
           </div>
           <div>
-            <span>Ao dia</span>
-            <strong>R$ 68,18</strong>
+            <span>por dia</span>
+            <strong>R$ {Number(data.veiculo.valorHora) * 24}</strong>
           </div>
         </CardDescription>
-        <Image src="https://www.localiza.com/brasil-site/geral/Frota/SANX.png" width={248} height={136} />
+        <Image src={data.veiculo.url ? data.veiculo.url : '/assets/imageNotFound.jpg'} width={248} height={136} />
       </CardContent>
       <CardFooter>
         <span>Periodo do aluguel</span>

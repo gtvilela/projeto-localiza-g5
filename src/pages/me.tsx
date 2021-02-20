@@ -14,8 +14,22 @@ import CardWithSchedules from '../components/global/CardWithSchedules';
 
 import { Content, BoxProfile, Title, BoxSchedules, ImageContainer  } from '../styles/pages/me/profile'
 
+interface IVehicle {
+  id: number;
+  veiculo: {
+    url: string;
+    valorHora: string;
+    marca: {
+      nome: string;
+    }
+    modelo: {
+      nome: string;
+    }
+  }
+}
+
 const Profile: FC = () => {
-  const [schedules, setSchedules] = useState([]);
+  const [schedules, setSchedules] = useState<IVehicle[]>([]);
   const { user } = useAuth();
   const { push, query } = useRouter();
 
@@ -28,7 +42,7 @@ const Profile: FC = () => {
   useEffect(() => {
     async function getSchedules(): Promise<void> {
       if(user) {
-        const response = await api.get(`/api/Agendamento/buscarPorCPF/${user.id}`);
+        const response = await api.get(`/api/Agendamento/buscarPorCPF/${user.documento}`);
         setSchedules(response.data);
       }
     }
@@ -65,7 +79,10 @@ const Profile: FC = () => {
         <BoxSchedules>
           <Title>Últimos agendamentos</Title>
           {schedules.length > 0 && schedules.map(schedule => (
-            <CardWithSchedules key={schedule.id} />
+            <CardWithSchedules
+              key={schedule.id}
+              data={schedule}
+            />
           ))}
           {schedules.length === 0 && (
             <p>Nenhum agendamento encontrado</p>
