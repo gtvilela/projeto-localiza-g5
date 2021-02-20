@@ -28,6 +28,7 @@ interface IData {
 
 const ModalNew: FC<IModalNewProps> = ({ toggle, toggleModal, type, initialData, handleCloseModalAfterWinAction }) => {
   const formRef = useRef<FormHandles>(null);
+
   const handleSubmit = useCallback(
     async (data: IData) => {
       try {
@@ -47,7 +48,7 @@ const ModalNew: FC<IModalNewProps> = ({ toggle, toggleModal, type, initialData, 
           return;
         }
       }
-  }, [initialData,]);
+  }, [initialData]);
 
   return (
     <Modal title={`${initialData ? 'Editar' : 'Cadastrar'} Marca`} toggle={toggle} toggleModal={toggleModal}>

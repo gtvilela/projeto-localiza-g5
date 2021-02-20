@@ -34,7 +34,7 @@ const ListCategories: FC = () => {
     })
   }, [])
 
-  const handleClickAction = useCallback((type: 'edit' | 'new' | 'delete', data?: ICategoryProps) => {
+  const handleClickAction = useCallback((type: 'edit' | 'new' | 'delete', data: ICategoryProps) => {
     setModalInfo({
       isOpen: true,
       type,
@@ -48,13 +48,13 @@ const ListCategories: FC = () => {
 
   const handleCloseModalAfterWinAction = useCallback((type: 'new' | 'edit', data: ICategoryProps) => {
     if (type === 'new') {
-      // setCategories([{ id: 1, nome: 'gui'}])
+      setCategories([...categories, data])
       handleCloseModal()
     } else if ( type === 'edit') {
-      // setCategories(
-      //   categories.map(mappedCategories =>
-      //     mappedCategories.id === data.id ? { ...data } : mappedCategories)
-      // )
+      setCategories(
+        categories.map(mappedBrands =>
+          mappedBrands.id === data.id ? { ...data } : mappedBrands)
+      )
       handleCloseModal()
     }
   }, [categories, setCategories, handleCloseModal])
@@ -63,7 +63,7 @@ const ListCategories: FC = () => {
     <>
       <Header hidden={false} />
       <Container>
-        <HeaderPages title="Gerenciar Marcas" />
+        <HeaderPages title="Gerenciar Categorias" />
           <Table>
             <thead>
               <tr>
@@ -71,7 +71,7 @@ const ListCategories: FC = () => {
                   Nome
                 </th>
                 <th align="right">
-                  <Button size="medium" onClick={() => handleClickAction('new')}>
+                  <Button size="medium" onClick={() => handleClickAction('new', null)}>
                     <FiPlus />
                     Adicionar
                   </Button>

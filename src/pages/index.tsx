@@ -1,38 +1,14 @@
-import React, { FC, useRef, useEffect, useState } from 'react';
-import { FormHandles } from '@unform/core';
-import { Form } from '@unform/web';
-import { FiCalendar, FiFilter } from 'react-icons/fi';
-import { AiFillHourglass, AiOutlineHourglass } from 'react-icons/ai';
-
-import Header from '../components/global/Header';
-import Button from '../components/global/Button';
-
-import Card from '../components/global/Card';
-
-import { Section, SectionContainer, Content, HeaderPag, BoxCards } from '../styles/pages/dashboard';
-
+import React, { FC, useState, useEffect} from 'react'
 import api from '../services/api';
-import DatePickerForm from "@components/global/InputDatepicker/DatePickerForm";
-import DialogFilter from '@components/DialogFilter/DialogFilter';
-import InputTime from '@components/global/InputTime/InputTime';
+import { Header, Container, CardCategory } from '../components/global';
+
+import { BoxCards, HeaderPag, Section, SectionContainer } from '../styles/pages/category';
 
 interface IProps {
   id: number;
-  valorHora: number;
+  nome: string;
   url: string;
-  marca: {
-    id: number;
-    nome: string;
-  };
-  modelo: {
-    id: number;
-    nome: string;
-  };
-  categoria: {
-    id: number;
-    nome: string;
-  };
-  ano: string;
+  descricao: string;
 }
 
 const Dashboard: FC = () => {
@@ -73,15 +49,13 @@ const Dashboard: FC = () => {
   }, [value]);
 
   useEffect(() => {
-    async function getVeiculos(): Promise<void> {
-      const response = await api.get('api/Veiculo/buscarTodos');
-      setVeiculos(response.data);
-      setfilteredVeiculos(response.data);
+    async function getCategories(): Promise<void> {
+      const response = await api.get('api/categoria/buscarTodos');
+      setCategories(response.data);
     }
 
-    getVeiculos();
+    getCategories();
   }, []);
-
   return (
     <>
       <Header hidden={true} />
@@ -90,41 +64,21 @@ const Dashboard: FC = () => {
           <h1>Aluguel de Carros com a maior frota do Brasil!
             <span>Faça sua simulação!</span>
           </h1>
-          <Form ref={formRef} onSubmit={() => console.log('oi')}>
-            <DatePickerForm background="#ffffff" color="#000000" type="text" />
-            <InputTime
-              name="time_to_deliver"
-              icon={AiFillHourglass}
-              label="Hora de retirada"
-              />
-            <DatePickerForm background="#ffffff" color="#000000" type="text" />
-            <InputTime
-              name="time_to_deliver"
-              icon={AiOutlineHourglass}
-              label="Hora de entrega"
-              />
-            <Button fullwidth color="yellow">Reservar agora</Button>
-
-          </Form>
         </SectionContainer>
       </Section>
-      <Content>
+      <Container>
         <HeaderPag>
-          <h2>Selecione um carro</h2>
-          <span>Total {filteredVeiculos.length} carros</span>
-          <Button className="button-filter" size="medium" onClick={handleClickOpen}>
-            <FiFilter />
-          </Button>
-          <DialogFilter onClose={handleClose} onCancel={handleCancel} isOpen={open} />
+          <h2>Selecione uma categoria</h2>
+          <span>Total {categories.length}  categorias</span>
         </HeaderPag>
         <BoxCards>
-          {filteredVeiculos.map((veiculo) => (
-            <Card key={veiculo.id} vehicles={veiculo} />
-            ))}
+          {categories.map((category) => (
+            <CardCategory key={category.id} category={category} />
+          ))}
         </BoxCards>
-      </Content>
+      </Container>
     </>
-  );
-};
+  )
+}
 
 export default Dashboard;

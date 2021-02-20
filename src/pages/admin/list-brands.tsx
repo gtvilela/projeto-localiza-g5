@@ -51,10 +51,10 @@ const ListBrands: FC = () => {
       setBrands([...brands, data])
       handleCloseModal()
     } else if ( type === 'edit') {
-      // setBrands(
-      //   brands.map(mappedBrands =>
-      //     mappedBrands.id === data.id ? { ...data } : mappedBrands)
-      // )
+      setBrands(
+        brands.map(mappedBrands =>
+          mappedBrands.id === data.id ? { ...data } : mappedBrands)
+      )
       handleCloseModal()
     }
   }, [brands, setBrands, handleCloseModal])

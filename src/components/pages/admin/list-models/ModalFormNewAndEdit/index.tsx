@@ -28,20 +28,15 @@ interface IData {
 const ModalFormNewAndEdit: FC<IModalFormNewAndEditProps> = ({ toggle, toggleModal, initialData, handleCloseModalAfterWinAction }) => {
   const formRef = useRef<FormHandles>(null);
 
-  useEffect(() => {
-    formRef.current.clearField('nome');
-  }, [toggle])
-
   const handleSubmit = useCallback(
     async (data: IData) => {
       try {
         if (initialData) {
-          //await api.put('api/modelo', data);
+          await api.put(`api/modelo/${initialData.id}`, data);
           handleCloseModalAfterWinAction('edit', { id: initialData.id, ...data})
         } else {
           const response = await api.post('api/modelo', data);
-          //alterar ...inital data por response.data
-          handleCloseModalAfterWinAction('edit', {...initialData})
+          handleCloseModalAfterWinAction('new', response.data)
         }
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -52,7 +47,7 @@ const ModalFormNewAndEdit: FC<IModalFormNewAndEditProps> = ({ toggle, toggleModa
           return;
         }
       }
-  }, []);
+  }, [initialData]);
 
   return (
     <Modal title={`${initialData ? 'Editar' : 'Cadastrar'} Modelo`} toggle={toggle} toggleModal={toggleModal}>
