@@ -193,7 +193,8 @@ const DatePicker: React.ForwardRefRenderFunction<HTMLDivElement, PropsWithChildr
                 selectedDay={day.selected}
                 selectingDay={(e) => selectingDay(e)}
                 gridColumnsStart={
-                  +moment(moment(new Date(defaultYear.current, defaultMonth.current - 1)).startOf('month')).format(
+                  //@ts-ignore
+                  +moment(moment(new Date(defaultYear.current, defaultMonth.current - 1)).startOf('month')._d).format(
                     'd'
                   ) + 1
                 }

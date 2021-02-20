@@ -19,13 +19,14 @@ const InputDatepicker: React.ForwardRefRenderFunction<HTMLInputElement, PropsWit
 
   const handleInputBlur = useCallback(() => {
     setIsFocused(false);
-
+    //@ts-ignore
     setIsFilled(Boolean(ref.current?.value));
   }, []);
 
   useEffect(() => {
     registerField({
       name: fieldName,
+      //@ts-ignore
       ref: ref.current,
       path: 'value',
     });
